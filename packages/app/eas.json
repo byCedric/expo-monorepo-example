@@ -1,0 +1,14 @@
+{
+  "builds": {
+    "android": {
+      "apk": {
+        "workflow": "managed",
+        "buildType": "apk"
+      },
+      "aab": {
+        "workflow": "managed",
+        "buildType": "app-bundle"
+      }
+    }
+  }
+}
