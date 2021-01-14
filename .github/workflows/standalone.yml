@@ -1,0 +1,38 @@
+name: standalone
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: EAS build profile (apk/aab)
+        required: true
+        default: apk
+jobs:
+  build:
+    name: Install and build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v1
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Find cache
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --check-files
+      - name: Build packages
+        run: yarn build
+      - name: Start EAS build
+        working-directory: packages/app
+        run: npx eas-cli build --wait --platform=android --profile=${{ github.event.inputs.profile }}
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
