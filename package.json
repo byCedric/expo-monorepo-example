@@ -1,20 +1,17 @@
 {
   "private": true,
+  "name": "@acme/monorepo",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo web",
-    "eject": "expo eject",
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
-    "first-app": "yarn workspace @expo/first-app expo start",
-    "second-app": "yarn workspace @expo/second-app expo start"
+    "build": "yarn workspaces run build",
+    "test":" yarn workspaces run test",
+    "start": "yarn workspace @acme/app expo start"
   },
   "workspaces": [
-    "apps/*",
     "packages/*"
   ],
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
     "expo-yarn-workspaces": "~1.3.0"
   }
 }

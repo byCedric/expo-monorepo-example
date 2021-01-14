@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
+    "name": "eas-monorepo-example",
+    "slug": "eas-monorepo-example",
+    "owner": "bycedric",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,9 +18,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.bycedric.easmonorepoexample",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.bycedric.easmonorepoexample",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",

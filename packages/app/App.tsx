@@ -1,15 +1,14 @@
+import { Paragraph, Strong } from "@acme/ui";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import firstMessage from "first-package";
-import secondMessage from "second-package";
+import { StyleSheet, View } from "react-native";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello from the second application</Text>
-      <Text>{firstMessage}</Text>
-      <Text>{secondMessage}</Text>
+      <Paragraph>
+        Hello from an <Strong>EAS</Strong> monorepo
+      </Paragraph>
       <StatusBar style="auto" />
     </View>
   );
