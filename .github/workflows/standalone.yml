@@ -29,8 +29,6 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: yarn install --frozen-lockfile --check-files
-      - name: Build packages
-        run: yarn build
       - name: Start EAS build
         working-directory: packages/app
         run: npx eas-cli build --wait --platform=android --profile=${{ github.event.inputs.profile }}
