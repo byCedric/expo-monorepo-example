@@ -84,7 +84,7 @@ project.ext.react = [
 apply from: '../../node_modules/react-native-unimodules/gradle.groovy'
 apply from: "../../node_modules/react-native/react.gradle"
 apply from: "../../node_modules/expo-constants/scripts/get-app-config-android.gradle"
-apply from: "../../node_modules/expo-updates/scripts/create-manifest-android.gradle"
+// apply from: "../../node_modules/expo-updates/scripts/create-manifest-android.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -217,3 +217,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: "./eas-build.gradle"
+
+// Integration with Expo updates
+apply from: "../../../../node_modules/expo-updates/scripts/create-manifest-android.gradle"
