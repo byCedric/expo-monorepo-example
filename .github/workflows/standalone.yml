@@ -2,6 +2,10 @@ name: standalone
 on:
   workflow_dispatch:
     inputs:
+      app:
+        description: App to build (ejected/managed)
+        required: true
+        default: managed
       profile:
         description: EAS build profile (apk/aab)
         required: true
@@ -30,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile --check-files
       - name: Start EAS build
-        working-directory: packages/app
+        working-directory: apps/${{ github.event.inputs.app }}
         run: npx eas-cli build --wait --platform=android --profile=${{ github.event.inputs.profile }}
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}

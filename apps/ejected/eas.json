@@ -1,0 +1,13 @@
+{
+  "builds": {
+    "android": {
+      "apk": {
+        "workflow": "generic",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "aab": {
+        "workflow": "generic"
+      }
+    }
+  }
+}
