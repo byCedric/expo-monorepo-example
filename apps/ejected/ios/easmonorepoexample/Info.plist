@@ -55,13 +55,13 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.bycedric.easmonorepoexample</string>
+          <string>com.bycedric.easmonorepoexample.ejected</string>
         </array>
       </dict>
     </array>
     <key>UIRequiresFullScreen</key>
     <true/>
     <key>CFBundleDisplayName</key>
-    <string>eas-monorepo-example</string>
+    <string>eas-monorepo-app-ejected</string>
   </dict>
 </plist>

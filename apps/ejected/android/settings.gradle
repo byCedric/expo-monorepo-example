@@ -1,4 +1,4 @@
-rootProject.name = 'eas-monorepo-example'
+rootProject.name = 'eas-monorepo-app-ejected'
 
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
 includeUnimodulesProjects()

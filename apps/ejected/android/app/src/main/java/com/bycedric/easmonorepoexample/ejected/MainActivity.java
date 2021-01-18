@@ -1,4 +1,4 @@
-package com.bycedric.easmonorepoexample;
+package com.bycedric.easmonorepoexample.ejected;
 
 import android.os.Bundle;
 

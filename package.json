@@ -5,9 +5,11 @@
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
     "build": "yarn workspaces run build",
     "test":" yarn workspaces run test",
-    "start": "yarn workspace @acme/app expo start"
+    "managed": "yarn workspace @acme/app-managed",
+    "ejected": "yarn workspace @acme/app-ejected"
   },
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "devDependencies": {

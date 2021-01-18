@@ -310,13 +310,13 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bycedric.easmonorepoexample";
-				PRODUCT_NAME = easmonorepoexample;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bycedric.easmonorepoexample.ejected";
+				PRODUCT_NAME = ejected;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				CODE_SIGN_ENTITLEMENTS = easmonorepoexample/easmonorepoexample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = easmonorepoexample/ejected.entitlements;
 			};
 			name = Debug;
 		};
@@ -336,12 +336,12 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bycedric.easmonorepoexample";
-				PRODUCT_NAME = easmonorepoexample;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bycedric.easmonorepoexample.ejected";
+				PRODUCT_NAME = ejected;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				CODE_SIGN_ENTITLEMENTS = easmonorepoexample/easmonorepoexample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = easmonorepoexample/ejected.entitlements;
 			};
 			name = Release;
 		};
@@ -402,7 +402,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				CODE_SIGN_ENTITLEMENTS = easmonorepoexample/easmonorepoexample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = easmonorepoexample/ejected.entitlements;
 			};
 			name = Debug;
 		};
@@ -456,7 +456,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				CODE_SIGN_ENTITLEMENTS = easmonorepoexample/easmonorepoexample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = easmonorepoexample/ejected.entitlements;
 			};
 			name = Release;
 		};
