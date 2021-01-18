@@ -5,6 +5,9 @@ jobs:
     name: Publish preview
     runs-on: ubuntu-latest
     if: github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example'
+    strategy:
+      matrix:
+        app: [managed]
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
@@ -33,7 +36,7 @@ jobs:
       - name: Build packages
         run: yarn build
       - name: Publish to Expo
-        working-directory: packages/app
+        working-directory: apps/${{ matrix.app }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
       - name: Get deployment link
         run: echo "::set-output name=path::@bycedric/eas-monorepo-example?release-channel=pr-${{ github.event.number }}"
@@ -43,4 +46,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: Awesome! You can [preview the PR here](https://expo.io/${{ steps.expo.outputs.path }}).<br><br><a href="https://exp.host/${{ steps.expo.outputs.path }}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=exp://exp.host/${{ steps.expo.outputs.path }}" height="200px" width="200px"></a>
+          msg: You can preview [`apps/${{ matrix.app }}` here](https://expo.io/${{ steps.expo.outputs.path }}).<br><br><a href="https://exp.host/${{ steps.expo.outputs.path }}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=exp://exp.host/${{ steps.expo.outputs.path }}" height="200px" width="200px"></a>
