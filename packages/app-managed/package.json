@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@acme/app",
+  "name": "@acme/app-managed",
   "version": "1.0.0",
   "main": "__generated__/AppEntry.js",
   "scripts": {
