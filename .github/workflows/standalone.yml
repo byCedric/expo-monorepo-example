@@ -6,10 +6,14 @@ on:
         description: App to build (ejected/managed)
         required: true
         default: managed
-      profile:
-        description: EAS build profile (apk/aab)
+      platform:
+        description: Platform to build for (android/ios)
         required: true
-        default: apk
+        default: android
+      profile:
+        description: EAS build profile (local/store)
+        required: true
+        default: local
 jobs:
   build:
     name: Install and build
@@ -35,6 +39,6 @@ jobs:
         run: yarn install --frozen-lockfile --check-files
       - name: Start EAS build
         working-directory: apps/${{ github.event.inputs.app }}
-        run: npx eas-cli build --wait --platform=android --profile=${{ github.event.inputs.profile }}
+        run: npx eas-cli build --wait --platform=${{ github.events.inputs.platform }} --profile=${{ github.event.inputs.profile }}
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
