@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "eas-monorepo-app-ejected",
+    "slug": "eas-monorepo-app-ejected",
+    "owner": "bycedric",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.bycedric.easmonorepoexample.ejected",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.bycedric.easmonorepoexample.ejected",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

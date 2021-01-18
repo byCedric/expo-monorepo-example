@@ -1,0 +1,68 @@
+{
+  "private": true,
+  "name": "@acme/app-ejected",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Nothing to build'",
+    "test": "eslint --ext js,ts,tsx .",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "postinstall": "expo-yarn-workspaces postinstall && cd ../.. && yarn build"
+  },
+  "dependencies": {
+    "@acme/ui": "*",
+    "expo": "~40.0.0",
+    "expo-file-system": "~9.3.0",
+    "expo-permissions": "~10.0.0",
+    "expo-splash-screen": "~0.8.0",
+    "expo-status-bar": "~1.0.3",
+    "expo-updates": "~0.4.0",
+    "react-dom": "16.13.1",
+    "react": "16.13.1",
+    "react-native": "~0.63.4",
+    "react-native-unimodules": "~0.12.0",
+    "react-native-web": "~0.13.12",
+    "react-native-gesture-handler": "~1.8.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-screens": "~2.15.0"
+  },
+  "devDependencies": {
+    "@acme/babel-preset-expo": "*",
+    "@acme/eslint-config": "*",
+    "@babel/core": "~7.9.0",
+    "@types/react": "~16.9.35",
+    "@types/react-dom": "~16.9.8",
+    "@types/react-native": "~0.63.2",
+    "typescript": "~4.0.0",
+    "babel-jest": "~25.2.6",
+    "jest": "~25.2.6",
+    "react-test-renderer": "~16.13.1"
+  },
+  "eslintConfig": {
+    "extends": "@acme/eslint-config",
+    "ignorePatterns": [
+      "__generated__"
+    ]
+  },
+  "expo-yarn-workspaces": {
+    "symlinks": [
+      "@unimodules/core",
+      "@unimodules/react-native-adapter",
+      "expo-constants",
+      "expo-file-system",
+      "expo-permissions",
+      "expo-splash-screen",
+      "expo-updates",
+      "unimodules-app-loader",
+      "unimodules-constants-interface",
+      "unimodules-file-system-interface",
+      "unimodules-font-interface",
+      "unimodules-image-loader-interface",
+      "unimodules-permissions-interface"
+    ]
+  }
+}
