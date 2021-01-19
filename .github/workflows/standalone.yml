@@ -39,6 +39,6 @@ jobs:
         run: yarn install --frozen-lockfile --check-files
       - name: Start EAS build
         working-directory: apps/${{ github.event.inputs.app }}
-        run: npx eas-cli build --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
+        run: npx eas-cli build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
