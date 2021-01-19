@@ -9,7 +9,7 @@ on:
       platform:
         description: Platform to build for (android/ios)
         required: true
-        default: android
+        default: all
       profile:
         description: EAS build profile (local/store)
         required: true
