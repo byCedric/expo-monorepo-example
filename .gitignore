@@ -1,4 +1,5 @@
 # Monorepo
+apps/*/credentials.json
 packages/*/build
 
 # Expo
