@@ -9,7 +9,7 @@ on:
       platform:
         description: Platform to build for (android/ios)
         required: true
-        default: android
+        default: all
       profile:
         description: EAS build profile (local/store)
         required: true
@@ -37,8 +37,25 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: yarn install --frozen-lockfile --check-files
+      - name: Restore iOS credentials
+        uses: actions/github-script@v3
+        if: contains('ios all', github.event.inputs.platform)
+        env:
+          EXPO_CREDENTIALS_EJECTED: ${{ secrets.EXPO_CREDENTIALS_EJECTED }}
+          EXPO_CREDENTIALS_MANAGED: ${{ secrets.EXPO_CREDENTIALS_MANAGED }}
+        with:
+          script: |
+            const fs = require('fs')
+            const path = require('path')
+            const env = 'EXPO_CREDENTIALS_' + context.payload.inputs.app.toUpperCase()
+            console.log('Writing credentials from:', env)
+            JSON.parse(process.env[env]).forEach(target => {
+              fs.mkdirSync(path.dirname(target.file), { recursive: true })
+              fs.writeFileSync(target.file, Buffer.from(target.code, 'base64'))
+              console.log('  -', target.file);
+            })
       - name: Start EAS build
         working-directory: apps/${{ github.event.inputs.app }}
-        run: npx eas-cli build --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
+        run: npx eas-cli build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
