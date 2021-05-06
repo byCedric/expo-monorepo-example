@@ -35,6 +35,27 @@ jobs:
         run: yarn install --frozen-lockfile --check-files
       - name: Build packages
         run: yarn build
+
+      # Restore react-native metro cache for speed-up publish time
+      # See: https://github.com/facebook/metro/blob/7dca99af2e2af17921aa4a1e16b1972adc0d11e4/packages/metro-config/src/defaults/index.js#L121-L125
+      - name: Find Metro cache
+        id: metro-cache-dir-path
+        uses: actions/github-script@v4
+        with:
+          result-encoding: string
+          script: |
+            const os = require('os');
+            const path = require('path');
+            return path.join(os.tmpdir(), 'metro-cache');
+      - name: Restore Metro cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.metro-cache-dir-path.outputs.result }}
+          key: ${{ runner.os }}-metro-cache-${{ matrix.app }}-${{ github.ref }}
+          restore-keys: |
+            ${{ runner.os }}-metro-cache-${{ matrix.app }}-${{ github.base_ref }}
+            ${{ runner.os }}-metro-cache-${{ matrix.app }}-
+
       - name: Publish to Expo
         working-directory: apps/${{ matrix.app }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
