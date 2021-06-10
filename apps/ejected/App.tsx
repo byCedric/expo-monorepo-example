@@ -1,7 +1,9 @@
 import { Paragraph, Strong } from "@acme/ui";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
+
+const img = require('./assets/icon.png');
 
 export default function App() {
   return (
@@ -10,6 +12,7 @@ export default function App() {
         Hello from an <Strong>EAS</Strong> monorepo (ejected)
       </Paragraph>
       <StatusBar style="auto" />
+      <Image source={img} />
     </View>
   );
 }
