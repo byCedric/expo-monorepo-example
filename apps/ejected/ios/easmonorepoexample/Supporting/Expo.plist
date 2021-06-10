@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
-    <key>EXUpdatesSDKVersion</key>
-    <string>40.0.0</string>
     <key>EXUpdatesURL</key>
     <string>https://exp.host/@bycedric/eas-monorepo-app-ejected</string>
     <key>EXUpdatesEnabled</key>
@@ -12,5 +10,7 @@
     <string>ALWAYS</string>
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
+    <key>EXUpdatesRuntimeVersion</key>
+    <string>40.0.0</string>
   </dict>
 </plist>
