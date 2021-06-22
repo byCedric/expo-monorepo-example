@@ -25,6 +25,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      - name: Setup EAS
+        uses: expo/expo-github-action@v6
+        with:
+          eas-version: latest
+          eas-cache: true
+          token: ${{ secrets.EXPO_TOKEN }}
       - name: Find cache
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -56,6 +62,4 @@ jobs:
             })
       - name: Start EAS build
         working-directory: apps/${{ github.event.inputs.app }}
-        run: npx eas-cli build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}

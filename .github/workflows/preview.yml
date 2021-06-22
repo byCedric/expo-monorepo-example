@@ -16,11 +16,11 @@ jobs:
         with:
           node-version: 14.x
       - name: Setup Expo
-        uses: expo/expo-github-action@v5
+        uses: expo/expo-github-action@v6
         with:
-          expo-cache: true
           expo-version: 4.x
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          expo-cache: true
+          token: ${{ secrets.EXPO_TOKEN }}
       - name: Find cache
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
