@@ -51,6 +51,7 @@
       "expo-permissions",
       "expo-splash-screen",
       "expo-updates",
+      "expo-structured-headers",
       "unimodules-app-loader",
       "unimodules-constants-interface",
       "unimodules-file-system-interface",
