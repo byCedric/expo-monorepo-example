@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "@acme/eslint-config": "*",
-    "react-native-builder-bob": "^0.17.1",
-    "typescript": "^4.1.3"
+    "react-native-builder-bob": "^0.18.1",
+    "typescript": "^4.3.5"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config"
