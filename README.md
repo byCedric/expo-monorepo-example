@@ -83,15 +83,6 @@ If you want to maintain the keystore or certificates yourself, you have to [conf
 
 > It's highly recommended to keep keystores and certificates out of your repository to avoid security issues.
 
-In this example, [we added a custom Node script](./.github/workflows/standalone.yml#L40-L56) that generates these files from JSON. This JSON is stored in a secret repository variable and contains the base64 strings of the required files. It uses the following structure:
-
-```
-[
-  { "file": "credentials.json", "code": "<base64>" },
-  { "file": "ios/certs/dist-cert.p12", "code": "<base64>" },
-  { "file": "ios/certs/profile.mobileprovision", "code": "<base64>" }
-]
-```
 ## ❌ Common Errors
 
 ### Scripts not found
