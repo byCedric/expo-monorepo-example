@@ -14,7 +14,7 @@
     "test": "echo 'Nothing to test'"
   },
   "dependencies": {
-    "@babel/core": "^7.12.10",
-    "babel-preset-expo": "^8.3.0"
+    "@babel/core": "^7.14.6",
+    "babel-preset-expo": "^8.4.0"
   }
 }

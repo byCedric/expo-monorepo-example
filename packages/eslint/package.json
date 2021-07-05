@@ -14,11 +14,11 @@
     "test": "echo 'Nothing to test'"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.13.0",
-    "@typescript-eslint/parser": "^4.13.0",
-    "eslint": "^7.17.0",
-    "eslint-config-universe": "^7.0.0",
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.3"
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "eslint": "^7.30.0",
+    "eslint-config-universe": "^7.0.1",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
   }
 }
