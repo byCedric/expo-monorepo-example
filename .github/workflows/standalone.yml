@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
     inputs:
       app:
-        description: App to build (ejected/managed)
+        description: App to build (apps/<name>)
         required: true
         default: managed
       platform:
-        description: Platform to build for (android/ios)
+        description: Platform to build for (all/android/ios)
         required: true
         default: all
       profile:
