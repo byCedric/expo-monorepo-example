@@ -48,6 +48,7 @@
   },
   "expo-yarn-workspaces": {
     "symlinks": [
+      "@sentry/cli",
       "@sentry/react-native",
       "@unimodules/core",
       "@unimodules/react-native-adapter",
