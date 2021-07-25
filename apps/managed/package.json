@@ -2,7 +2,7 @@
   "private": true,
   "name": "@acme/app-managed",
   "version": "1.0.0",
-  "main": "__generated__/AppEntry.js",
+  "main": "index.js",
   "scripts": {
     "build": "echo 'Nothing to build'",
     "test": "eslint --ext js,ts,tsx .",

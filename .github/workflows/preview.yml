@@ -19,10 +19,12 @@ jobs:
     needs: changes
     name: Publish preview
     runs-on: ubuntu-latest
-    if: github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example'
+    if: needs.changes.outputs.apps != '[]'
     strategy:
       matrix:
         app: ${{ fromJSON(needs.changes.outputs.apps) }}
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
       - name: 🚀 Setup repo
         uses: actions/checkout@v2
@@ -58,7 +60,8 @@ jobs:
         with:
           script: |
             // Load manifest to fetch project info
-            const manifest = require('./apps/${{ matrix.app }}/app.json');
+            const app = '${{ matrix.app }}';
+            const manifest = require(`./apps/${app}/app.json`);
 
             // Get the app information and build links
             const { owner, slug } = manifest.expo;
@@ -71,5 +74,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `You can preview [\`apps/${appName}\` here](${projectLink}).<br><br><a href="${projectLink}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${projectQR}" height="200px" width="200px"></a>`
+              body: `You can preview [\`apps/${app}\` here](${projectLink}).<br><br><a href="${projectLink}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${projectQR}" height="200px" width="200px"></a>`
             });

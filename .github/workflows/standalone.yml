@@ -18,31 +18,33 @@ jobs:
   build:
     name: Install and build
     runs-on: ubuntu-latest
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
-      - name: Setup repo
+      - name: 🚀 Setup repo
         uses: actions/checkout@v1
-      - name: Setup Node
+      - name: 🚀 Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Setup EAS
+      - name: 🚀 Setup EAS
         uses: expo/expo-github-action@v6
         with:
           eas-version: latest
           eas-cache: true
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: Find cache
+      - name: 🔎 Find cache
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Restore cache
+      - name: ♻️ Restore cache
         uses: actions/cache@v2
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Install dependencies
+      - name: 📋 Install dependencies
         run: yarn install --frozen-lockfile --check-files
-      - name: Start EAS build
+      - name: 📢 Start EAS build
         working-directory: apps/${{ github.event.inputs.app }}
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
