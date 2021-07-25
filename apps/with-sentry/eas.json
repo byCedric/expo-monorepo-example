@@ -1,0 +1,24 @@
+{
+  "builds": {
+    "android": {
+      "local": {
+        "workflow": "managed",
+        "buildType": "apk"
+      },
+      "store": {
+        "workflow": "managed",
+        "buildType": "app-bundle"
+      }
+    },
+    "ios": {
+      "local": {
+        "workflow": "managed",
+        "distribution": "internal"
+      },
+      "store": {
+        "workflow": "managed",
+        "distribution": "store"
+      }
+    }
+  }
+}

@@ -46,21 +46,10 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: 🚀 Install dependencies
+      - name: 📋 Install dependencies
         run: yarn install --frozen-lockfile --check-files
       - name: 👷 Build packages
         run: yarn build
-      - name: 📢 Test path 1
-        run: ls -la
-      - name: 📢 Test path 2
-        working-directory: apps
-        run: ls -la
-      - name: 📢 Test path 3
-        working-directory: apps/${{ matrix.app }}
-        run: ls -la
-      - name: 📢 Test path 4
-        working-directory: apps/with-sentry
-        run: ls -la
       - name: 📢 Publish to Expo
         working-directory: apps/${{ matrix.app }}
         run: expo publish --release-channel=pr-${{ github.event.number }}

@@ -1,0 +1,65 @@
+{
+  "private": true,
+  "name": "@acme/app-with-sentry",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Nothing to build'",
+    "test": "eslint --ext js,ts,tsx .",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "postinstall": "expo-yarn-workspaces postinstall && cd ../.. && yarn build"
+  },
+  "dependencies": {
+    "@acme/ui": "*",
+    "expo": "~42.0.1",
+    "expo-application": "~3.2.0",
+    "expo-constants": "~11.0.1",
+    "expo-device": "~3.3.0",
+    "expo-status-bar": "~1.0.4",
+    "expo-updates": "~0.8.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-web": "~0.13.12"
+  },
+  "devDependencies": {
+    "@acme/babel-preset-expo": "*",
+    "@acme/eslint-config": "*",
+    "@babel/core": "^7.9.0",
+    "@types/react": "~16.9.35",
+    "@types/react-native": "~0.63.2",
+    "sentry-expo": "^4.0.1",
+    "typescript": "~4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "@acme/eslint-config",
+    "ignorePatterns": [
+      "__generated__"
+    ]
+  },
+  "expo-yarn-workspaces": {
+    "symlinks": [
+      "@unimodules/core",
+      "@unimodules/react-native-adapter",
+      "expo-application",
+      "expo-asset",
+      "expo-constants",
+      "expo-error-recovery",
+      "expo-file-system",
+      "expo-font",
+      "expo-image-loader",
+      "expo-keep-awake",
+      "expo-modules-core",
+      "expo-splash-screen",
+      "expo-structured-headers",
+      "expo-updates-interface",
+      "expo-updates",
+      "unimodules-app-loader",
+      "unimodules-task-manager-interface"
+    ]
+  }
+}
