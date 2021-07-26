@@ -56,7 +56,7 @@ To set this repository up, you need an Expo account [with access to EAS](https:/
 
 - `$ yarn` - This installs all required Node libraries using Yarn Workspaces
 - `$ yarn build` - To precompile the packages to publish them to NPM and/or use them in your apps.
-- Change the `expo.owner` and `expo.android.package` / `expo.ios.bundleIdentifier` properties in `app.json` for both apps.
+- Change the `expo.owner` and `expo.android.package` / `expo.ios.bundleIdentifier` properties in `app.json` for all apps.
 
 ### Starting apps
 
