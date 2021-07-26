@@ -15,11 +15,11 @@
   </sup>
   <br />
   <p align="center">
-    <a href="https://github.com/byCedric/eas-monorepo-example#-how-to-use-it"><b>How to use it</b></a>
+    <a href="https://github.com/byCedric/eas-monorepo-example/tree/main/apps/with-sentry#-how-to-use-it"><b>How to use it</b></a>
     &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#%EF%B8%8F-caveats"><b>Caveats</b></a>
+    <a href="https://github.com/byCedric/eas-monorepo-example/tree/main/apps/with-sentry#%EF%B8%8F-caveats"><b>Caveats</b></a>
     &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#-common-errors"><b>Common Errors</b></a>
+    <a href="https://github.com/byCedric/eas-monorepo-example/tree/main/apps/with-sentry#-common-errors"><b>Common Errors</b></a>
   </p>
   <br />
 </div>
