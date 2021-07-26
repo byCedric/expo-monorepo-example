@@ -47,7 +47,7 @@
 
 ## 👷 Workflows
 
-- [`preview`](./.github/workflows/preview.yml) - Publishes `apps/managed` to a PR-specific release channel and adds a QR code in that PR.
+- [`preview`](./.github/workflows/preview.yml) - Publishes managed apps to a PR-specific release channel and adds a QR code to that PR.
 - [`standalone`](./.github/workflows/standalone.yml) - Starts the EAS builds for user-provided OS and build profiles.
 - [`test`](./.github/workflows/test.yml) - Ensures that the apps and packages are passing lint and build checks.
 
