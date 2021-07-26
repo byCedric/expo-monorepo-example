@@ -47,9 +47,9 @@ If you build an app without native code through EAS, we will [run `expo prebuild
 As mentioned in the caveats, you also need to configure your app as a bare project. The `sentry-expo` plugin takes care of all native code changes required. If you run into this error, please check the following:
 
 - **When using `sentry-expo` in a bare project, you need to install additional libraries (see [step 3 of `sentry-expo`](https://github.com/expo/sentry-expo#step-3))**
-  The current native modules contain hardcoded links to their locations. To ensure this library is included in your build, you must symlink this module with `expo-yarn-workspaces` into the app's `node_modules` folder.
+  > The current native modules contain hardcoded links to their locations. To ensure this library is included in your build, you must symlink this module with `expo-yarn-workspaces` into the app's `node_modules` folder.
 - **When using a `postPublish` hook, the [Expo config plugin will automatically configure Sentry](https://github.com/expo/sentry-expo/blob/master/plugin/src/withSentry.ts#L32-L71) to trigger this in a bare project**
-  Because Sentry requires `@sentry/cli` to upload the sourcemap, you also need to symlink this dependency into your app's `node_modules` folder.
+  > Because Sentry requires `@sentry/cli` to upload the sourcemap, you also need to symlink this dependency into your app's `node_modules` folder.
 
 After installing and symlinking three modules, `sentry-expo`, `@sentry/react-native`, and `@sentry/cli` (if you use a hook), this should solve the issue.
 
