@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@acme/app-managed",
+  "name": "@acme/app-with-sentry",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -16,16 +16,20 @@
   "dependencies": {
     "@acme/ui": "*",
     "expo": "^42.0.0",
+    "expo-application": "~3.2.0",
+    "expo-constants": "~11.0.1",
+    "expo-device": "~3.3.0",
     "expo-file-system": "~11.1.3",
     "expo-permissions": "~12.1.1",
     "expo-splash-screen": "~0.11.2",
     "expo-status-bar": "~1.0.4",
-    "expo-updates": "~0.8.0",
+    "expo-updates": "~0.8.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "0.63.4",
     "react-native-unimodules": "~0.14.2",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "sentry-expo": "^4.0.1"
   },
   "devDependencies": {
     "@acme/babel-preset-expo": "*",
@@ -44,11 +48,14 @@
   },
   "expo-yarn-workspaces": {
     "symlinks": [
+      "@sentry/cli",
+      "@sentry/react-native",
       "@unimodules/core",
       "@unimodules/react-native-adapter",
       "expo-application",
       "expo-asset",
       "expo-constants",
+      "expo-device",
       "expo-error-recovery",
       "expo-file-system",
       "expo-font",
@@ -59,6 +66,7 @@
       "expo-structured-headers",
       "expo-updates-interface",
       "expo-updates",
+      "sentry-expo",
       "unimodules-app-loader",
       "unimodules-task-manager-interface"
     ]

@@ -1,49 +1,78 @@
 name: preview
-on: [workflow_dispatch, pull_request]
+on: [pull_request]
 jobs:
-  preview:
-    name: Publish preview
+  changes:
+    name: Find changed apps
     runs-on: ubuntu-latest
     if: github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example'
+    outputs:
+      apps: ${{ steps.filter.outputs.changes }}
+    steps:
+      - id: filter
+        name: 🕵️ Detect changed apps
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            managed: apps/managed
+            with-sentry: apps/with-sentry
+  preview:
+    needs: changes
+    name: Publish preview
+    runs-on: ubuntu-latest
+    if: needs.changes.outputs.apps != '[]'
     strategy:
       matrix:
-        app: [managed]
+        app: ${{ fromJSON(needs.changes.outputs.apps) }}
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
-      - name: Setup repo
+      - name: 🚀 Setup repo
         uses: actions/checkout@v2
-      - name: Setup Node
+      - name: 🚀 Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
-      - name: Setup Expo
+          node-version: 16.x
+      - name: 🚀 Setup Expo
         uses: expo/expo-github-action@v6
         with:
           expo-version: 4.x
           expo-cache: true
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: Find cache
+      - name: 🔎 Find cache
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Restore cache
+      - name: ♻️ Restore cache
         uses: actions/cache@v2
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Install dependencies
+      - name: 📋 Install dependencies
         run: yarn install --frozen-lockfile --check-files
-      - name: Build packages
+      - name: 👷 Build packages
         run: yarn build
-      - name: Publish to Expo
+      - name: 📢 Publish to Expo
         working-directory: apps/${{ matrix.app }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
-      - name: Get deployment link
-        run: echo "::set-output name=path::@bycedric/eas-monorepo-example?release-channel=pr-${{ github.event.number }}"
-        id: expo
-      - name: Comment deployment link
-        uses: unsplash/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 💬 Comment deployment link
+        uses: actions/github-script@v4
         with:
-          msg: You can preview [`apps/${{ matrix.app }}` here](https://expo.io/${{ steps.expo.outputs.path }}).<br><br><a href="https://exp.host/${{ steps.expo.outputs.path }}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=exp://exp.host/${{ steps.expo.outputs.path }}" height="200px" width="200px"></a>
+          script: |
+            // Load manifest to fetch project info
+            const app = '${{ matrix.app }}';
+            const manifest = require(`./apps/${app}/app.json`);
+
+            // Get the app information and build links
+            const { owner, slug } = manifest.expo;
+            const project = `@${owner}/${slug}?release-channel=pr-${context.issue.number}`;
+            const projectLink = `https://expo.dev/${project}`;
+            const projectQR = `exp://exp.host/${project}`;
+
+            // Add the comment
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `You can preview [\`apps/${app}\` here](${projectLink}).<br><br><a href="${projectLink}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${projectQR}" height="200px" width="200px"></a>`
+            });
