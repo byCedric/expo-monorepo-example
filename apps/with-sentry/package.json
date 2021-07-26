@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@acme/ui": "*",
+    "@sentry/react-native": "^2.6.0",
     "expo": "^42.0.0",
     "expo-application": "~3.2.0",
     "expo-constants": "~11.0.1",
@@ -35,6 +36,7 @@
     "@acme/babel-preset-expo": "*",
     "@acme/eslint-config": "*",
     "@babel/core": "~7.9.0",
+    "@sentry/cli": "^1.67.2",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
