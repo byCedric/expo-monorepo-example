@@ -11,9 +11,9 @@ on:
         required: true
         default: all
       profile:
-        description: EAS build profile (local/store)
+        description: EAS build profile (development/release)
         required: true
-        default: local
+        default: development
 jobs:
   build:
     name: Install and build

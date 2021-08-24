@@ -1,22 +1,15 @@
 {
-  "builds": {
-    "android": {
-      "local": {
-        "workflow": "generic",
-        "gradleCommand": ":app:assembleRelease"
-      },
-      "store": {
-        "workflow": "generic"
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
       }
     },
-    "ios": {
-      "local": {
-        "workflow": "generic",
-        "distribution": "internal"
-      },
-      "store": {
-        "workflow": "generic",
-        "distribution": "store"
+    "release": {
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
       }
     }
   }
