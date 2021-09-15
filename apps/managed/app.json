@@ -4,6 +4,7 @@
     "slug": "eas-monorepo-app-managed",
     "owner": "bycedric",
     "version": "1.0.0",
+    "sdkVersion": "UNVERSIONED",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
