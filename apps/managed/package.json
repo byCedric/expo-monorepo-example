@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "postinstall": "yarn workspaces run build",
+    "eas-build-post-install": "yarn workspaces run build",
     "build": "echo 'Nothing to build'",
     "test": "eslint --ext js,ts,tsx .",
     "start": "expo start",
