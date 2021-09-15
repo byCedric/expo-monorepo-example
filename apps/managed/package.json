@@ -36,9 +36,6 @@
     "typescript": "^4.4.3"
   },
   "eslintConfig": {
-    "extends": "@acme/eslint-config",
-    "ignorePatterns": [
-      "__generated__"
-    ]
+    "extends": "@acme/eslint-config"
   }
 }
