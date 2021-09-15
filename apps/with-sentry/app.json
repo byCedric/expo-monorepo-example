@@ -4,6 +4,7 @@
     "slug": "eas-monorepo-with-sentry",
     "owner": "bycedric",
     "version": "1.0.0",
+    "sdkVersion": "UNVERSIONED",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {

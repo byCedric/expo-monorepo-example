@@ -4,73 +4,47 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "postinstall": "yarn workspaces run build",
     "build": "echo 'Nothing to build'",
     "test": "eslint --ext js,ts,tsx .",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject",
-    "postinstall": "expo-yarn-workspaces postinstall && cd ../.. && yarn build"
+    "eject": "expo eject"
   },
   "dependencies": {
     "@acme/ui": "*",
     "@sentry/react-native": "^2.6.0",
-    "expo": "^42.0.0",
-    "expo-application": "~3.2.0",
-    "expo-constants": "~11.0.1",
+    "expo": "43.0.0-alpha.2",
+    "expo-application": "~3.3.0",
+    "expo-constants": "~11.1.0",
     "expo-device": "~3.3.0",
-    "expo-file-system": "~11.1.3",
-    "expo-permissions": "~12.1.1",
-    "expo-splash-screen": "~0.11.2",
-    "expo-status-bar": "~1.0.4",
-    "expo-updates": "~0.8.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "0.63.4",
-    "react-native-unimodules": "~0.14.2",
-    "react-native-web": "~0.13.12",
+    "expo-file-system": "~12.0.0",
+    "expo-splash-screen": "~0.12.0",
+    "expo-status-bar": "~1.1.0",
+    "expo-updates": "~0.9.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "0.64.2",
+    "react-native-web": "~0.17.1",
     "sentry-expo": "^4.0.1"
   },
   "devDependencies": {
     "@acme/babel-preset-expo": "*",
     "@acme/eslint-config": "*",
-    "@babel/core": "~7.9.0",
+    "@babel/core": "^7.12.9",
+    "@expo/metro-config": "^0.1.84",
     "@sentry/cli": "^1.67.2",
-    "@types/react": "~16.9.35",
-    "@types/react-dom": "~16.9.8",
-    "@types/react-native": "~0.63.2",
-    "typescript": "~4.0.0"
+    "@types/react": "~17.0.20",
+    "@types/react-dom": "~17.0.9",
+    "@types/react-native": "~0.64.15",
+    "typescript": "^4.4.3"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config",
     "ignorePatterns": [
       "__generated__"
-    ]
-  },
-  "expo-yarn-workspaces": {
-    "symlinks": [
-      "@sentry/cli",
-      "@sentry/react-native",
-      "@unimodules/core",
-      "@unimodules/react-native-adapter",
-      "expo-application",
-      "expo-asset",
-      "expo-constants",
-      "expo-device",
-      "expo-error-recovery",
-      "expo-file-system",
-      "expo-font",
-      "expo-image-loader",
-      "expo-keep-awake",
-      "expo-modules-core",
-      "expo-splash-screen",
-      "expo-structured-headers",
-      "expo-updates-interface",
-      "expo-updates",
-      "sentry-expo",
-      "unimodules-app-loader",
-      "unimodules-task-manager-interface"
     ]
   }
 }
