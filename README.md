@@ -1,8 +1,7 @@
 <div align="center">
   <h1>EAS monorepo example</h1>
-  <p></p>
   <p>Enterprise-ready Expo Application Service monorepo with code sharing</p>
-  <sup>
+  <p>
     <a href="https://github.com/byCedric/eas-monorepo-example/releases">
       <img src="https://img.shields.io/github/workflow/status/byCedric/eas-monorepo-example/preview?style=flat-square" alt="managed preview" />
     </a>
@@ -12,20 +11,18 @@
     <a href="https://github.com/byCedric/eas-monorepo-example/blob/main/LICENSE.md">
       <img src="https://img.shields.io/github/license/byCedric/eas-monorepo-example?style=flat-square" alt="license" />
     </a>
-  </sup>
-  <br />
-  <p align="center">
+  </p>
+  <p>
     <a href="https://github.com/byCedric/eas-monorepo-example#-structure"><b>Structure</b></a>
-    &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+    &ensp;&mdash;&ensp;
     <a href="https://github.com/byCedric/eas-monorepo-example#-workflows"><b>Workflows</b></a>
-    &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+    &ensp;&mdash;&ensp;
     <a href="https://github.com/byCedric/eas-monorepo-example#-how-to-use-it"><b>How to use it</b></a>
-    &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+    &ensp;&mdash;&ensp;
     <a href="https://github.com/byCedric/eas-monorepo-example#%EF%B8%8F-caveats"><b>Caveats</b></a>
-    &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+    &ensp;&mdash;&ensp;
     <a href="https://github.com/byCedric/eas-monorepo-example#-common-errors"><b>Common Errors</b></a>
   </p>
-  <br />
 </div>
 
 ## 📁 Structure
