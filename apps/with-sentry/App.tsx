@@ -1,6 +1,6 @@
 import { Paragraph, Strong } from "@acme/ui";
 import { StatusBar } from "expo-status-bar";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { Button, StyleSheet, View } from "react-native";
 import * as Sentry from "sentry-expo";
 
