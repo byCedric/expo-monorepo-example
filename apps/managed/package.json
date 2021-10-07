@@ -15,20 +15,16 @@
   "dependencies": {
     "@acme/ui": "*",
     "expo": "^43.0.0-beta.3",
-    "expo-file-system": "~13.0.1",
-    "expo-permissions": "~13.0.1",
-    "expo-splash-screen": "~0.13.1",
     "expo-status-bar": "~1.1.0",
-    "expo-updates": "~0.10.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
-    "react-native-unimodules": "~0.15.0",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
     "@acme/babel-preset-expo": "*",
     "@acme/eslint-config": "*",
+    "@acme/metro-config": "*",
     "@babel/core": "^7.12.9",
     "@types/react": "~17.0.21",
     "@types/react-dom": "~17.0.9",
