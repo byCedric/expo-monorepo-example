@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "name": "@acme/metro-config",
+  "version": "1.0.0",
+  "description": "Acme metro configuration for React Native",
+  "author": "Cedric van Putten <me@bycedric.com>",
+  "license": "MIT",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "eslint --ext ts ./src"
+  },
+  "dependencies": {
+    "find-up": "^5.0.0"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "*",
+    "@expo/metro-config": "^0.2.2",
+    "@types/node": "^16.10.3",
+    "typescript": "^4.4.3"
+  },
+  "eslintConfig": {
+    "extends": "@acme/eslint-config"
+  }
+}
