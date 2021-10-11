@@ -4811,6 +4811,14 @@ expo-modules-core@~0.4.2:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
 
+expo-monorepo@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/expo-monorepo/-/expo-monorepo-0.0.1.tgz#a5416987029d43887138361d0b1eb4773beaf75d"
+  integrity sha512-/IEyXOQ/QBKsV8n0uUaxYd0kectfLiGilk9VAG7XgbUyAOb99etXcA36cXJkFf4GnZ11OB0GrEc/Yy2ureDTRQ==
+  dependencies:
+    find-up "^5.0.0"
+    semver "^7.3.5"
+
 expo-splash-screen@~0.13.1:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.13.1.tgz#169e5cbd3ddbc964878623387e1edea98b0b95a7"
