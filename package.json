@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
     "build": "yarn workspaces run build",
-    "test":" yarn workspaces run test",
+    "test": "yarn workspaces run test",
     "managed": "yarn workspace @acme/app-managed",
     "ejected": "yarn workspace @acme/app-ejected",
     "with-sentry": "yarn workspace @acme/app-with-sentry"
