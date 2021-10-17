@@ -23,18 +23,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: Find cache
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Restore cache
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.17.2
+      - name: Cache pnpm modules
         uses: actions/cache@v2
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-pnpm-
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --check-files
+        run: pnpm install --shamefully-hoist
       - name: Build packages
         run: yarn build
       - name: Test packages
