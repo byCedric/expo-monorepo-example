@@ -9,18 +9,47 @@
   "module": "build/module/index.js",
   "types": "build/typescript/index.d.ts",
   "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
   "files": [
     "build",
     "src"
   ],
   "scripts": {
     "build": "bob build",
-    "test": "eslint --ext ts,tsx ./src"
+    "test": "eslint --ext ts,tsx ./src",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "expo": "^43.0.0-beta.3",
+    "expo-constants": "~12.1.1",
+    "expo-font": "~10.0.2",
+    "expo-linear-gradient": "~10.0.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.2",
+    "react-native-web": "0.17.1",
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@acme/eslint-config": "*",
+    "@babel/core": "^7.12.9",
+    "@expo/webpack-config": "^0.16.2",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-knobs": "^6.3",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addon-react-native-web": "^0.0.1",
+    "@storybook/addons": "6.4.0-beta.1",
+    "@storybook/api": "^6.3.12",
+    "@storybook/components": "^6.3.12",
+    "@storybook/core-events": "^6.3.12",
+    "@storybook/react": "^6.3.12",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/theming": "^6.3.12",
+    "babel-loader": "^8.2.2",
     "react-native-builder-bob": "^0.18.1",
-    "typescript": "^4.3.5"
+    "typescript": "~4.4.4"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config"

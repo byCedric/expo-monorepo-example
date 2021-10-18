@@ -1,0 +1,22 @@
+{
+    "private": true,
+    "name": "@acme/webpack-config",
+    "version": "1.0.0",
+    "description": "Acme Babel configuration for React Native",
+    "author": "Cedric van Putten <me@bycedric.com>",
+    "license": "MIT",
+    "main": "index.js",
+    "files": [
+      "index.js"
+    ],
+    "scripts": {
+      "build": "echo 'Nothing to build'",
+      "test": "echo 'Nothing to test'"
+    },
+    "dependencies": {
+        "@babel/core": "^7.15.8",
+        "@babel/node": "^7.15.8",
+        "@expo/webpack-config": "^0.16.2"
+    }
+  }
+  

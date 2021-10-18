@@ -16,10 +16,10 @@
   "dependencies": {
     "@acme/ui": "*",
     "expo": "^43.0.0-beta.3",
-    "expo-file-system": "~13.0.1",
-    "expo-splash-screen": "~0.13.1",
+    "expo-file-system": "~13.0.2",
+    "expo-splash-screen": "~0.13.3",
     "expo-status-bar": "~1.1.0",
-    "expo-updates": "~0.10.2",
+    "expo-updates": "~0.10.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
@@ -33,11 +33,11 @@
     "@acme/babel-preset-expo": "*",
     "@acme/eslint-config": "*",
     "@babel/core": "^7.12.9",
-    "@types/react": "~17.0.27",
+    "@types/react": "~17.0.21",
     "@types/react-dom": "~17.0.9",
     "@types/react-native": "~0.64.12",
-    "expo-monorepo": "^0.0.1",
-    "typescript": "~4.3.5"
+    "expo-monorepo": "^0.0.3",
+    "typescript": "~4.4.4"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config"
