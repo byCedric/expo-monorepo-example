@@ -1509,6 +1509,18 @@
     json5 "^1.0.1"
     write-file-atomic "^2.3.0"
 
+"@expo/metro-config@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@expo/metro-config/-/metro-config-0.2.2.tgz#880f444e59a1922cb2285081d43648147e552330"
+  integrity sha512-onqqfM+W93px7LvzKCTR00Wk1IWJQo05TAJTi5svJBrQYD/eigomuWVwVQ3mhnsiOPp6ip0z4DJH+CPAJrd7YA==
+  dependencies:
+    "@expo/config" "6.0.2"
+    chalk "^4.1.0"
+    debug "^4.3.2"
+    getenv "^1.0.0"
+    metro-react-native-babel-transformer "^0.59.0"
+    sucrase "^3.20.0"
+
 "@expo/metro-config@~0.1.84":
   version "0.1.84"
   resolved "https://registry.yarnpkg.com/@expo/metro-config/-/metro-config-0.1.84.tgz#ddcc7b4f1087c29f86bc9d916933d29bacd2c726"
@@ -5987,7 +5999,7 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1:
+debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
   integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==

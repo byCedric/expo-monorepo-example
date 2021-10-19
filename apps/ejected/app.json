@@ -3,6 +3,7 @@
     "name": "eas-monorepo-app-ejected",
     "slug": "eas-monorepo-app-ejected",
     "version": "1.0.0",
+    "entrypoint": ".",
     "runtimeVersion": "40.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
