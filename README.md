@@ -25,7 +25,6 @@
   </p>
 </div>
 
-> 💡 Can't wait to try out [Expo SDK 43](https://blog.expo.dev/expo-sdk-43-beta-is-now-available-47dc54a8d29f) with improved monorepo support? Check out the [sdk-43-beta](https://github.com/byCedric/eas-monorepo-example/tree/sdk-43-beta) branch!
 
 ## 📁 Structure
 
