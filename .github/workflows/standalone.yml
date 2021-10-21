@@ -45,6 +45,6 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: 📋 Install dependencies
         run: yarn install --frozen-lockfile --check-files
-      - name: 📢 Start EAS build
+      - name: 📢 Start EAS build for ${{ github.event.inputs.app }}
         working-directory: apps/${{ github.event.inputs.app }}
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
