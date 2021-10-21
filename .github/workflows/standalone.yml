@@ -11,7 +11,7 @@ on:
         required: true
         default: all
       profile:
-        description: EAS build profile (development/release)
+        description: EAS build profile (development/production)
         required: true
         default: development
 jobs:
