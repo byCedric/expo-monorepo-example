@@ -11,6 +11,6 @@
     <key>EXUpdatesRuntimeVersion</key>
     <string>40.0.0</string>
     <key>EXUpdatesURL</key>
-    <string>https://exp.host/@username/eas-monorepo-app-ejected</string>
+    <string>https://exp.host/@bycedric/eas-monorepo-app-ejected</string>
   </dict>
 </plist>
