@@ -6,7 +6,7 @@
         "buildType": "apk"
       }
     },
-    "release": {
+    "production": {
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
