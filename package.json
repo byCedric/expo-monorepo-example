@@ -2,7 +2,6 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
     "build": "yarn workspaces run build",
     "test": "yarn workspaces run test",
     "managed": "yarn workspace @acme/app-managed",
@@ -14,7 +13,6 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.1",
-    "expo-yarn-workspaces": "^1.5.2"
+    "@tsconfig/recommended": "^1.0.1"
   }
 }

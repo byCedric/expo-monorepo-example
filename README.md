@@ -60,12 +60,11 @@ To set this repository up, you need an Expo account [with access to EAS](https:/
 
 ### Starting apps
 
-After the initial setup, you can start the apps from their app directories.
+After the initial setup, you can start the apps from their app directories. Or you can use `yarn workspace <name> expo start` command, see `scripts` in [`package.json`](./package.json).
 
-- `$ cd apps/ejected` - From here, you can run your bare project with `yarn start` and `yarn android|ios`.
-- `$ cd apps/managed` - From here, you can start Expo with `yarn start`.
-
-> You can also run these commands with `yarn workspaces` from the monorepo root with `yarn ejected|managed <script>`. But sometimes, the context is incorrectly reverted to the root of the monorepo instead of the app directory.
+- `$ yarn ejected expo run:android|ios` - This will execute `expo run:android|ios` in the ejected app.
+- `$ yarn managed expo start` - This will execute `expo start` in the managed app.
+- `$ yarn with-sentry expo start` - This will execute `expo start` in the with-sentry app.
 
 ## ⚠️ Caveats
 
@@ -85,22 +84,7 @@ If you want to maintain the keystore or certificates yourself, you have to [conf
 
 ## ❌ Common Errors
 
-### Scripts not found
-
-In React Native, your Node modules often contain native code or scripts used during native compilation. Sometimes the default native configuration isn't aware of the monorepo structure and tries to look for packages in the app's `node_modules` directory.
-
-```bash
-# Android example
-> Could not read script '.../packages/app/node_modules/expo-constants/scripts/get-app-config-android.gradle' as it does not exist.
-
-# iOS example
-> fatal error: module map file '.../Release-iphoneos/YogaKit/YogaKit.modulemap' not found
-```
-
-Luckily, we can solve that in different ways:
-
-- **Bare workflow** - You can update the native code to point to the root of the monorepo. You can do that by adding `../../` to the package-specific scripts.
-- **Managed workflow** - You need to symlink these packages into the app's `node_modules` directory. [`expo-yarn-workspaces` can help](./apps/managed/package.json#L45-L61) with that.
+_We are still testing for potential issues, but none are found yet!_
 
 <div align="center">
   <br />
