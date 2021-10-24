@@ -6,7 +6,8 @@
     "test": "yarn workspaces run test",
     "managed": "yarn workspace @acme/app-managed",
     "ejected": "yarn workspace @acme/app-ejected",
-    "with-sentry": "yarn workspace @acme/app-with-sentry"
+    "with-sentry": "yarn workspace @acme/app-with-sentry",
+    "with-dev-client": "yarn workspace @acme/app-with-dev-client"
   },
   "workspaces": [
     "apps/*",
