@@ -26,7 +26,6 @@ jobs:
             // Load all changed files to dynamically fetch the app names
             const path = require('path')
             const changes = ${{ steps.filter.outputs.apps_files }}
-
             // Iterate through all changes and keep unique app names
             return [...new Set(changes.map(file => path.dirname(file).split('/')[1]))]
             
@@ -85,7 +84,7 @@ jobs:
             const projectQR = `exp://exp.host/${project}`;
 
             // Add the comment
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
