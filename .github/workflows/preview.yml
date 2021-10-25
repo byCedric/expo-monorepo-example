@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example'
     outputs:
-      appChanged: ${{ steps.filter.outputs.apps }}
+      appChanged: ${{ steps.filter.outputs.apps == 'true' }}
       appNames: ${{ steps.result.outputs.names }}
     steps:
       - id: filter
@@ -18,23 +18,15 @@ jobs:
       - id: result
         name: 📱 Find changed apps
         uses: actions/github-script@v5
-        if: steps.filter.outputs.apps
+        if: steps.filter.outputs.apps == 'true'
         with:
           script: |
             // Load all changed files to dynamically fetch the app names
-            const path = require('path');
-            const changes = ${{ steps.filter.outputs.changed_files }};
-            const apps = [];
+            const path = require('path')
+            const changes = ${{ steps.filter.outputs.apps_files }}
 
-            // Iterate through all changes and add the app names
-            for (const change of changes) {
-              const name = path.dirname(change)[1]
-              if (!apps.include(name)) {
-                apps.push(name);
-              }
-            }
-
-            return apps;
+            // Iterate through all changes and keep unique app names
+            return new Set(changes.map(file => path.dirname(file)[1]))
             
   preview:
     needs: changes
