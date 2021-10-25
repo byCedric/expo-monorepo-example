@@ -1,8 +1,8 @@
 import { Paragraph, Strong } from "@acme/ui";
 import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import { Button, StyleSheet, TextInput, View } from "react-native";
 import { MMKV, useMMKVString } from "react-native-mmkv";
-import React, { useState } from "react";
 
 const storage = new MMKV();
 
