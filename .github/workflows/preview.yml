@@ -7,7 +7,7 @@ jobs:
     if: github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example'
     outputs:
       appChanged: ${{ steps.filter.outputs.apps == 'true' }}
-      appNames: ${{ steps.result.outputs.names }}
+      appNames: ${{ steps.result.outputs.result }}
     steps:
       - id: filter
         name: 🕵️ Detect changes
@@ -21,6 +21,7 @@ jobs:
         uses: actions/github-script@v5
         if: steps.filter.outputs.apps == 'true'
         with:
+          debug: true
           script: |
             // Load all changed files to dynamically fetch the app names
             const path = require('path')
