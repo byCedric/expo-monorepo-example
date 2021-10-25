@@ -1,5 +1,8 @@
 name: preview
 on: [pull_request]
+concurrency:
+  group: publish-pr-${{ github.event.number }}
+  cancel-in-progress: true
 jobs:
   changes:
     name: Find changed apps
@@ -28,7 +31,6 @@ jobs:
             const changes = ${{ steps.filter.outputs.apps_files }}
             // Iterate through all changes and keep unique app names
             return [...new Set(changes.map(file => path.dirname(file).split('/')[1]))]
-            
   preview:
     needs: changes
     name: Publish preview
@@ -40,13 +42,13 @@ jobs:
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
-      - name: 🚀 Setup repo
+      - name: 🏗️ Setup repo
         uses: actions/checkout@v2
-      - name: 🚀 Setup Node
+      - name: 🏗️ Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - name: 🚀 Setup Expo
+      - name: 🏗️ Setup Expo
         uses: expo/expo-github-action@v6
         with:
           expo-version: 4.x
@@ -66,7 +68,7 @@ jobs:
         run: yarn install --frozen-lockfile --check-files
       - name: 👷 Build packages
         run: yarn build
-      - name: 📢 Publish to Expo
+      - name: 🚀 Publish to Expo
         working-directory: apps/${{ matrix.appName }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
       - name: 💬 Comment deployment link
