@@ -27,7 +27,7 @@ jobs:
             const changes = ${{ steps.filter.outputs.apps_files }}
 
             // Iterate through all changes and keep unique app names
-            return new Set(changes.map(file => path.dirname(file)[1]))
+            return [...new Set(changes.map(file => path.dirname(file)[1]))]
             
   preview:
     needs: changes
