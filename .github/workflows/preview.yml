@@ -18,11 +18,12 @@ jobs:
       - id: result
         name: 📱 Find changed apps
         uses: actions/github-script@v5
+        if: steps.filter.outputs.apps
         with:
           script: |
             // Load all changed files to dynamically fetch the app names
             const path = require('path')
-            const changes = JSON.parse('${{ steps.filter.outputs.changed_files }}')
+            const changes = ${{ steps.filter.outputs.changed_files }}
             const apps = [];
 
             // Iterate through all changes and add the app names
