@@ -14,7 +14,7 @@ jobs:
         uses: dorny/paths-filter@v2
         with:
           filters: |
-            apps: apps/**
+            apps: 'apps/**'
       - id: result
         name: 📱 Find changed apps
         uses: actions/github-script@v5
