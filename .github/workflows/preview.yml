@@ -6,23 +6,43 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example'
     outputs:
-      apps: ${{ steps.filter.outputs.changes }}
+      appChanged: ${{ steps.filter.outputs.apps }}
+      appNames: ${{ steps.result.outputs.names }}
     steps:
       - id: filter
-        name: 🕵️ Detect changed apps
+        name: 🕵️ Detect changes
         uses: dorny/paths-filter@v2
         with:
           filters: |
-            managed: apps/managed
-            with-sentry: apps/with-sentry
+            apps: apps/**
+      - id: result
+        name: 📱 Find changed apps
+        uses: actions/github-script@v5
+        with:
+          script: |
+            // Load all changed files to dynamically fetch the app names
+            const path = require('path')
+            const changes = ${{ steps.filter.outputs.changed_files }}
+            const apps = [];
+
+            // Iterate through all changes and add the app names
+            for (const change of changes) {
+              const name = path.dirname(change)[1]
+              if (!apps.include(name)) {
+                apps.push(name)
+              }
+            }
+
+            return apps;
+            
   preview:
     needs: changes
     name: Publish preview
     runs-on: ubuntu-latest
-    if: needs.changes.outputs.apps != '[]'
+    if: needs.changes.outputs.appChanged
     strategy:
       matrix:
-        app: ${{ fromJSON(needs.changes.outputs.apps) }}
+        appName: ${{ fromJSON(needs.changes.outputs.appNames) }}
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
@@ -53,14 +73,14 @@ jobs:
       - name: 👷 Build packages
         run: yarn build
       - name: 📢 Publish to Expo
-        working-directory: apps/${{ matrix.app }}
+        working-directory: apps/${{ matrix.appName }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
       - name: 💬 Comment deployment link
-        uses: actions/github-script@v4
+        uses: actions/github-script@v5
         with:
           script: |
             // Load manifest to fetch project info
-            const app = '${{ matrix.app }}';
+            const app = '${{ matrix.appName }}';
             const manifest = require(`./apps/${app}/app.json`);
 
             // Get the app information and build links
