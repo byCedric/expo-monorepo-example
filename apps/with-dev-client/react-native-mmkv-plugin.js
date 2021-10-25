@@ -4,9 +4,9 @@ const {
   AndroidConfig,
   withAppBuildGradle,
   withSettingsGradle,
-} = require("@expo/config-plugins");
-const fs = require("fs");
-const path = require("path");
+} = require('@expo/config-plugins');
+const fs = require('fs');
+const path = require('path');
 
 function getMMKVJSIModulePackage(packageName) {
   return `package ${packageName};
@@ -32,35 +32,29 @@ public class MMKVJSIModulePackage extends ReanimatedJSIModulePackage {
 }
 
 async function readFileAsync(path) {
-  return fs.promises.readFile(path, "utf8");
+  return fs.promises.readFile(path, 'utf8');
 }
 
 async function saveFileAsync(path, content) {
-  return fs.promises.writeFile(path, content, "utf8");
+  return fs.promises.writeFile(path, content, 'utf8');
 }
 
 function getPackageRoot(projectRoot) {
-  return path.join(projectRoot, "android", "app", "src", "main", "java");
+  return path.join(projectRoot, 'android', 'app', 'src', 'main', 'java');
 }
 
 function getCurrentPackageName(projectRoot, packageRoot) {
-  const mainApplication = AndroidConfig.Paths.getProjectFilePath(
-    projectRoot,
-    "MainApplication"
-  );
+  const mainApplication = AndroidConfig.Paths.getProjectFilePath(projectRoot, 'MainApplication');
   const packagePath = path.dirname(mainApplication);
-  const packagePathParts = path
-    .relative(packageRoot, packagePath)
-    .split(path.sep)
-    .filter(Boolean);
+  const packagePathParts = path.relative(packageRoot, packagePath).split(path.sep).filter(Boolean);
 
-  return packagePathParts.join(".");
+  return packagePathParts.join('.');
 }
 
 async function editMainApplication(config, action) {
   const mainApplicationPath = AndroidConfig.Paths.getProjectFilePath(
     config.modRequest.projectRoot,
-    "MainApplication"
+    'MainApplication'
   );
 
   try {
@@ -68,7 +62,7 @@ async function editMainApplication(config, action) {
     return await saveFileAsync(mainApplicationPath, mainApplication);
   } catch (e) {
     WarningAggregator.addWarningAndroid(
-      "react-native-mmkv",
+      'react-native-mmkv',
       `Couldn't modify MainApplication.java - ${e}.`
     );
   }
@@ -80,14 +74,14 @@ async function createMMKVJSIModulePackage(config) {
   const packageName = getCurrentPackageName(projectRoot, packageRoot);
   const filePath = path.join(
     packageRoot,
-    `${packageName.split(".").join("/")}/MMKVJSIModulePackage.java`
+    `${packageName.split('.').join('/')}/MMKVJSIModulePackage.java`
   );
 
   try {
     return await saveFileAsync(filePath, getMMKVJSIModulePackage(packageName));
   } catch (e) {
     WarningAggregator.addWarningAndroid(
-      "react-native-mmkv",
+      'react-native-mmkv',
       `Couldn't create MMKVJSIModulePackage.java - ${e}.`
     );
   }
@@ -95,7 +89,7 @@ async function createMMKVJSIModulePackage(config) {
 
 const withMMKVJSIModulePackage = (config) => {
   return withDangerousMod(config, [
-    "android",
+    'android',
     async (config) => {
       await createMMKVJSIModulePackage(config);
 
@@ -106,7 +100,7 @@ const withMMKVJSIModulePackage = (config) => {
 
 const withMainApplication = (config) => {
   return withDangerousMod(config, [
-    "android",
+    'android',
     async (config) => {
       await editMainApplication(config, (mainApplication) => {
         const projectRoot = config.modRequest.projectRoot;
@@ -116,22 +110,18 @@ const withMainApplication = (config) => {
 
         if (
           !mainApplication.includes(importStatement) &&
-          mainApplication.includes(
-            "import com.swmansion.reanimated.ReanimatedJSIModulePackage;"
-          )
+          mainApplication.includes('import com.swmansion.reanimated.ReanimatedJSIModulePackage;')
         ) {
           mainApplication = mainApplication.replace(
-            "import com.swmansion.reanimated.ReanimatedJSIModulePackage;",
+            'import com.swmansion.reanimated.ReanimatedJSIModulePackage;',
             importStatement
           );
         }
 
-        if (
-          mainApplication.includes("return new ReanimatedJSIModulePackage();")
-        ) {
+        if (mainApplication.includes('return new ReanimatedJSIModulePackage();')) {
           mainApplication = mainApplication.replace(
-            "return new ReanimatedJSIModulePackage();",
-            "return new MMKVJSIModulePackage();"
+            'return new ReanimatedJSIModulePackage();',
+            'return new MMKVJSIModulePackage();'
           );
         }
 
@@ -161,11 +151,7 @@ project(':react-native-mmkv').projectDir = new File(["node", "--print", "require
 
 const withCustomAppBuildGradle = (config) => {
   return withAppBuildGradle(config, (config) => {
-    if (
-      config.modResults.contents.includes(
-        `implementation project(':react-native-mmkv')`
-      )
-    ) {
+    if (config.modResults.contents.includes(`implementation project(':react-native-mmkv')`)) {
       return config;
     }
 
