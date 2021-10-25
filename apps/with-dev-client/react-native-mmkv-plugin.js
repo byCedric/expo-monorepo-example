@@ -74,7 +74,7 @@ async function editMainApplication(config, action) {
   }
 }
 
-async function createMMKVJSIModulePackage(config, action) {
+async function createMMKVJSIModulePackage(config) {
   const projectRoot = config.modRequest.projectRoot;
   const packageRoot = getPackageRoot(projectRoot);
   const packageName = getCurrentPackageName(projectRoot, packageRoot);
