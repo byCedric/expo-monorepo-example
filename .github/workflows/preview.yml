@@ -22,7 +22,7 @@ jobs:
           script: |
             // Load all changed files to dynamically fetch the app names
             const path = require('path')
-            const changes = ${{ steps.filter.outputs.changed_files }}
+            const changes = JSON.parse('${{ steps.filter.outputs.changed_files }}')
             const apps = [];
 
             // Iterate through all changes and add the app names
