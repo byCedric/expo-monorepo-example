@@ -13,6 +13,7 @@ jobs:
         name: 🕵️ Detect changes
         uses: dorny/paths-filter@v2
         with:
+          list-files: json
           filters: |
             apps: 'apps/**'
       - id: result
