@@ -153,7 +153,7 @@ const withCustomSettingsGradle = (config) => {
       config.modResults.contents +
       `
 include ':react-native-mmkv'
-project(':react-native-mmkv').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-mmkv/android/')
+project(':react-native-mmkv').projectDir = new File(["node", "--print", "require.resolve('react-native-mmkv/package.json')"].execute().text.trim(), "../android")
 `;
     return config;
   });
@@ -178,7 +178,7 @@ const withCustomAppBuildGradle = (config) => {
   });
 };
 
-module.exports = function withMMKV(config, name) {
+module.exports = function withMMKV(config) {
   config = withMMKVJSIModulePackage(config);
   config = withMainApplication(config);
   config = withCustomSettingsGradle(config);
