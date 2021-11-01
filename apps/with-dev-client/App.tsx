@@ -2,14 +2,15 @@ import { Paragraph, Strong } from "@acme/ui";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { Button, StyleSheet, TextInput, View } from "react-native";
-import { MMKV, useMMKVString } from "react-native-mmkv";
+import { MMKV } from "react-native-mmkv";
+
+import { useMmkvString } from "./hooks";
 
 const storage = new MMKV();
 
 export default function App() {
   const [usernameInput, setUsernameInput] = useState("");
-
-  const [username, setUsername] = useMMKVString("user.name", storage);
+  const [username, saveUsername] = useMmkvString("user.name", storage);
 
   return (
     <View style={styles.container}>
@@ -27,7 +28,7 @@ export default function App() {
       />
       <Button
         title="Save"
-        onPress={() => usernameInput.length && setUsername(usernameInput)}
+        onPress={() => saveUsername(usernameInput || undefined)}
       />
       <StatusBar style="auto" />
     </View>
