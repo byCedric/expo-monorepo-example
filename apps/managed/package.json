@@ -27,6 +27,7 @@
     "@acme/babel-preset-expo": "*",
     "@acme/eslint-config": "*",
     "@babel/core": "^7.12.9",
+    "@expo/webpack-config": "^0.16.6",
     "@types/react": "~17.0.21",
     "@types/react-dom": "~17.0.9",
     "@types/react-native": "~0.64.12",
