@@ -49,7 +49,7 @@ jobs:
         with:
           node-version: 16.x
       - name: 🏗️ Setup Expo
-        uses: expo/expo-github-action@feature/comment-pr
+        uses: expo/expo-github-action@feature/comment-qr
         with:
           expo-version: 4.x
           expo-cache: true
@@ -72,7 +72,7 @@ jobs:
         working-directory: apps/${{ matrix.appName }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
       - name: 💬 Comment deployment link
-        uses: expo/expo-github-action/comment-pr@feature/comment-pr
+        uses: expo/expo-github-action/comment-qr@feature/comment-qr
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           project-root: apps/${{ matrix.appName }}
