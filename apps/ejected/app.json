@@ -2,6 +2,7 @@
   "expo": {
     "name": "eas-monorepo-app-ejected",
     "slug": "eas-monorepo-app-ejected",
+    "owner": "bycedric",
     "version": "1.0.0",
     "runtimeVersion": "40.0.0",
     "orientation": "portrait",
