@@ -73,6 +73,8 @@ jobs:
         run: expo publish --release-channel=pr-${{ github.event.number }}
       - name: 💬 Comment deployment link
         uses: expo/expo-github-action/comment-qr@feature/comment-qr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           project-root: apps/${{ matrix.appName }}
           release-channel: pr-${{ github.event.number }}
