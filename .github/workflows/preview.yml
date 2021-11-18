@@ -49,7 +49,7 @@ jobs:
         with:
           node-version: 16.x
       - name: 🏗️ Setup Expo
-        uses: expo/expo-github-action@v6
+        uses: expo/expo-github-action@feature/comment-pr
         with:
           expo-version: 4.x
           expo-cache: true
@@ -72,23 +72,8 @@ jobs:
         working-directory: apps/${{ matrix.appName }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
       - name: 💬 Comment deployment link
-        uses: actions/github-script@v5
+        uses: expo/expo-github-action/comment-pr@feature/comment-pr
         with:
-          script: |
-            // Load manifest to fetch project info
-            const app = '${{ matrix.appName }}';
-            const manifest = require(`./apps/${app}/app.json`);
-
-            // Get the app information and build links
-            const { owner, slug } = manifest.expo;
-            const project = `@${owner}/${slug}?release-channel=pr-${context.issue.number}`;
-            const projectLink = `https://expo.dev/${project}`;
-            const projectQR = `exp://exp.host/${project}`;
-
-            // Add the comment
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `You can preview [\`apps/${app}\` here](${projectLink}).<br><br><a href="${projectLink}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${projectQR}" height="200px" width="200px"></a>`
-            });
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          project-root: apps/${{ matrix.appName }}
+          release-channel: pr-${{ github.event.number }}
