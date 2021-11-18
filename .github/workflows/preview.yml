@@ -74,6 +74,5 @@ jobs:
       - name: 💬 Comment deployment link
         uses: expo/expo-github-action/comment-qr@feature/comment-qr
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           project-root: apps/${{ matrix.appName }}
           release-channel: pr-${{ github.event.number }}
