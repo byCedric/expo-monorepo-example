@@ -28,10 +28,9 @@ jobs:
     needs: changes
     name: Publish preview
     runs-on: ubuntu-latest
-    if: ${{ needs.changes.outputs.apps != '[]' }}
     strategy:
       matrix:
-        app: ${{ fromJSON(needs.changes.outputs.apps) }}
+        app: ${{ fromJSON('["managed"]') }}
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
