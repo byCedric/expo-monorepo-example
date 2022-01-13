@@ -1,5 +1,8 @@
 name: preview
-on: [pull_request]
+
+on:
+  pull_request:
+    types: [opened, synchronize]
 
 concurrency:
   group: preview-${{ github.ref }}
