@@ -17,25 +17,16 @@ jobs:
           - ubuntu-latest
           - windows-latest
     steps:
-      - name: Setup repo
+      - name: 🏗 Setup repo
         uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
-      - name: Find cache
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Restore cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Install dependencies
+          cache: yarn
+      - name: 📦 Install dependencies
         run: yarn install --frozen-lockfile --check-files
-      - name: Build packages
+      - name: 👷 Build packages
         run: yarn build
-      - name: Test packages
+      - name: 🧪 Test packages
         run: yarn test
