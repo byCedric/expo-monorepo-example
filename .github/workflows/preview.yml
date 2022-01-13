@@ -26,33 +26,23 @@ jobs:
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
-      - name: 🚀 Setup repo
+      - name: 🏗 Setup repo
         uses: actions/checkout@v2
-      - name: 🚀 Setup Node
+      - name: 🏗 Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - name: 🚀 Setup Expo
-        uses: expo/expo-github-action@v6
+          cache: yarn
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@master
         with:
-          expo-version: 4.x
-          expo-cache: true
+          expo-version: 5.x
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: 🔎 Find cache
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: ♻️ Restore cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: 📋 Install dependencies
+      - name: 📦 Install dependencies
         run: yarn install --frozen-lockfile --check-files
       - name: 👷 Build packages
         run: yarn build
-      - name: 📢 Publish to Expo
+      - name: 🚀 Publish to Expo
         working-directory: apps/${{ matrix.app }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
       - name: 💬 Comment deployment link
