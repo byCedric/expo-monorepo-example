@@ -1,10 +1,15 @@
 name: preview
 on: [pull_request]
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   changes:
     name: Find changed apps
     runs-on: ubuntu-latest
-    if: github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example'
+    if: ${{ github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example' }}
     outputs:
       apps: ${{ steps.filter.outputs.changes }}
     steps:
@@ -15,11 +20,12 @@ jobs:
           filters: |
             managed: apps/managed
             with-sentry: apps/with-sentry
+
   preview:
     needs: changes
     name: Publish preview
     runs-on: ubuntu-latest
-    if: needs.changes.outputs.apps != '[]'
+    if: ${{ needs.changes.outputs.apps != '[]' }}
     strategy:
       matrix:
         app: ${{ fromJSON(needs.changes.outputs.apps) }}
@@ -29,7 +35,7 @@ jobs:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
       - name: 🏗 Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 16.x
           cache: yarn
@@ -55,14 +61,15 @@ jobs:
 
             // Get the app information and build links
             const { owner, slug } = manifest.expo;
-            const project = `@${owner}/${slug}?release-channel=pr-${context.issue.number}`;
+            const releaseChannel = `pr-${context.issue.number}`;
+            const project = `@${owner}/${slug}?release-channel=${releaseChannel}`;
             const projectLink = `https://expo.dev/${project}`;
-            const projectQR = `exp://exp.host/${project}`;
+            const projectQR = `https://qr.expo.dev/expo-go?owner=${owner}&slug=${slug}&releaseChannel=${releaseChannel}`;
 
             // Add the comment
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `You can preview [\`apps/${app}\` here](${projectLink}).<br><br><a href="${projectLink}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${projectQR}" height="200px" width="200px"></a>`
+              body: `You can preview [\`apps/${app}\` here](${projectLink}).<br><br><a href="${projectLink}"><img src="${projectQR}" height="200px" width="200px"></a>`
             });

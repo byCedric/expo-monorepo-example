@@ -1,10 +1,16 @@
 name: test
+
 on:
   workflow_dispatch:
   push:
     branches: [main]
   pull_request:
     types: [opened, synchronize]
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build and test
