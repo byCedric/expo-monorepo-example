@@ -6,7 +6,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Paragraph>
-        Hello from an <Strong>EAS</Strong> monorepo (managed)
+        Hello from an <Strong>EAS</Strong> monorepo (managed) trigger preview
       </Paragraph>
       <StatusBar style="auto" />
     </View>
