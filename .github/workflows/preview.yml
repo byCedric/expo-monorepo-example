@@ -14,51 +14,71 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example' }}
     outputs:
-      apps: ${{ steps.filter.outputs.changes }}
+      appChanged: ${{ steps.filter.outputs.apps == 'true' }}
+      appNames: ${{ steps.result.outputs.result }}
     steps:
       - id: filter
-        name: 🕵️ Detect changed apps
+        name: 🕵️ Detect changes
         uses: dorny/paths-filter@v2
         with:
+          list-files: json
           filters: |
-            managed: apps/managed
-            with-sentry: apps/with-sentry
+            apps: 'apps/**'
+
+      - id: result
+        name: 📱 Find changed apps
+        uses: actions/github-script@v5
+        if: steps.filter.outputs.apps == 'true'
+        with:
+          script: |
+            // Load all changed files to dynamically fetch the app names
+            const path = require('path')
+            const changes = ${{ steps.filter.outputs.apps_files }}
+            // Iterate through all changes and keep unique app names
+            return [...new Set(changes.map(file => path.dirname(file).split('/')[1]))]
 
   preview:
     needs: changes
-    name: Publish ${{ matrix.app }}
+    if: ${{ needs.changes.outputs.appChanged }}
+    name: Publish ${{ matrix.appName }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app: ${{ fromJSON('["managed"]') }}
+        appName: ${{ fromJSON(needs.changes.outputs.appNames) }}
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
+
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
           cache: yarn
+
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@main
         with:
           expo-version: 5.x
           token: ${{ secrets.EXPO_TOKEN }}
+
       - name: 📦 Install dependencies
         run: yarn install --frozen-lockfile --check-files
+
       - name: 👷 Build packages
         run: yarn build
+
       - name: 🚀 Publish to Expo
-        working-directory: apps/${{ matrix.app }}
+        working-directory: apps/${{ matrix.appName }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
+
       - name: 💬 Comment deployment link
         uses: actions/github-script@v4
         with:
           script: |
             // Load manifest to fetch project info
-            const app = '${{ matrix.app }}';
+            const app = '${{ matrix.appName }}';
             const manifest = require(`./apps/${app}/app.json`);
 
             // Get the app information and build links
