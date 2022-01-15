@@ -58,7 +58,7 @@ jobs:
           cache: yarn
 
       - name: 🏗 Setup Expo
-        uses: expo/expo-github-action@main
+        uses: expo/expo-github-action@v7
         with:
           expo-version: 5.x
           token: ${{ secrets.EXPO_TOKEN }}
@@ -74,7 +74,7 @@ jobs:
         run: expo publish --release-channel=pr-${{ github.event.number }}
 
       - name: 💬 Comment preview
-        uses: expo/expo-github-action/preview-comment@feature/comment-qr-code
+        uses: expo/expo-github-action/preview-comment@v7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

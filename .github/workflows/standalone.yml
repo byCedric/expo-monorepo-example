@@ -23,20 +23,25 @@ jobs:
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
-      - name: 🚀 Setup repo
+      - name: 🏗 Setup repo
         uses: actions/checkout@v2
-      - name: 🚀 Setup Node
+
+      - name: 🏗 Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
           cache: yarn
-      - name: 🚀 Setup EAS
-        uses: expo/expo-github-action@main
+
+      - name: 🏗 Setup Expo and EAS
+        uses: expo/expo-github-action@v7
         with:
+          expo-version: 5.x
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: 📋 Install dependencies
+
+      - name: 📦 Install dependencies
         run: yarn install --frozen-lockfile --check-files
-      - name: 📢 Start EAS build for ${{ github.event.inputs.app }}
+
+      - name: 🚀 Build ${{ github.event.inputs.app }}
         working-directory: apps/${{ github.event.inputs.app }}
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
