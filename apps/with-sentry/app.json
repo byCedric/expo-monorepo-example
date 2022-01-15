@@ -24,7 +24,7 @@
     },
     "android": {
       "package": "com.bycedric.easmonorepoexample.withsentry",
-      "versionCode": 420010000,
+      "versionCode": 440010000,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

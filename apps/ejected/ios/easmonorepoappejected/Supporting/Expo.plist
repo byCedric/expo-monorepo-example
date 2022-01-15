@@ -9,8 +9,8 @@
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
     <key>EXUpdatesRuntimeVersion</key>
-    <string>40.0.0</string>
+    <string>44.0.0</string>
     <key>EXUpdatesURL</key>
-    <string>https://exp.host/@bycedric/eas-monorepo-app-ejected</string>
+    <string>https://exp.host/@anonymous/eas-monorepo-app-ejected</string>
   </dict>
 </plist>

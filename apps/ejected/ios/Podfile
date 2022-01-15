@@ -11,6 +11,10 @@ target 'easmonorepoappejected' do
   use_expo_modules!
   config = use_native_modules!
 
+  # Uncomment if you use Expo dev clients
+  # pod 'expo-dev-launcher', path: '../../../node_modules/expo-dev-launcher', :configurations => :debug
+  # pod 'expo-dev-menu', path: '../../../node_modules/expo-dev-menu', :configurations => :debug
+  
   use_react_native!(
     :path => config[:reactNativePath],
     :hermes_enabled => podfile_properties['expo.jsEngine'] == 'hermes'
@@ -35,6 +39,14 @@ target 'easmonorepoappejected' do
           end
         end
       end
+    end
+  end
+
+  post_integrate do |installer|
+    begin
+      expo_patch_react_imports!(installer)
+    rescue => e
+      Pod::UI.warn e
     end
   end
 

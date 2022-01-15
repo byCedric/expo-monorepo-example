@@ -1,11 +1,11 @@
-// Learn more https://docs.expo.io/guides/customizing-metro
+// Learn more https://docs.expo.dev/guides/monorepos
 const { getDefaultConfig } = require('expo/metro-config');
 const path = require('path');
 
 const projectRoot = __dirname;
-const workspaceRoot = path.resolve(__dirname, '../..');
+const workspaceRoot = path.resolve(projectRoot, '../..');
 
-const config = getDefaultConfig(__dirname);
+const config = getDefaultConfig(projectRoot);
 
 config.watchFolders = [workspaceRoot];
 config.resolver.nodeModulesPath = [

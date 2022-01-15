@@ -28,6 +28,12 @@
           <string>com.bycedric.easmonorepoexample.ejected</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+eas-monorepo-app-ejected</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1.0.0</string>
@@ -68,6 +74,8 @@
       <string>UIInterfaceOrientationLandscapeLeft</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
+    <key>UIUserInterfaceStyle</key>
+    <string>Light</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
   </dict>
