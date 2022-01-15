@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.shared.json",
+  "extends": "@tsconfig/recommended/tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
     "jsx": "react-native"

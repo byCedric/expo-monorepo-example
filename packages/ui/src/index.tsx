@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, TextProps } from "react-native";
+import React from 'react';
+import { StyleSheet, Text, TextProps } from 'react-native';
 
 export interface ParagraphProps extends TextProps {
   children?: React.ReactNode;
@@ -23,14 +23,14 @@ export const Strong = ({ children, style, ...props }: StrongProps) => (
 
 const styles = StyleSheet.create({
   paragraph: {
-    color: "rgba(0, 0, 0, 0.87)",
+    color: 'rgba(0, 0, 0, 0.87)',
     fontSize: 14,
     letterSpacing: 0.25,
     lineHeight: 20,
     marginVertical: 2,
   },
   strong: {
-    fontWeight: "bold",
-    color: "rgb(0, 0, 238)",
+    fontWeight: 'bold',
+    color: 'rgb(0, 0, 238)',
   },
 });
