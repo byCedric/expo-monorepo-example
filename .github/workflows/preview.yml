@@ -1,78 +1,82 @@
 name: preview
-on: [pull_request]
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   changes:
     name: Find changed apps
     runs-on: ubuntu-latest
-    if: github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example'
+    if: ${{ github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example' }}
     outputs:
-      apps: ${{ steps.filter.outputs.changes }}
+      appChanged: ${{ steps.filter.outputs.apps == 'true' }}
+      appNames: ${{ steps.result.outputs.result }}
     steps:
       - id: filter
-        name: 🕵️ Detect changed apps
+        name: 🕵️ Detect changes
         uses: dorny/paths-filter@v2
         with:
+          list-files: json
           filters: |
-            managed: apps/managed
-            with-sentry: apps/with-sentry
+            apps: 'apps/**'
+
+      - id: result
+        name: 📱 Find changed apps
+        uses: actions/github-script@v5
+        if: steps.filter.outputs.apps == 'true'
+        with:
+          script: |
+            // Load all changed files to dynamically fetch the app names
+            const path = require('path')
+            const changes = ${{ steps.filter.outputs.apps_files }}
+            // Iterate through all changes and keep unique app names
+            return [...new Set(changes.map(file => path.dirname(file).split('/')[1]))]
+
   preview:
     needs: changes
-    name: Publish preview
+    if: ${{ needs.changes.outputs.appChanged }}
+    name: Publish ${{ matrix.appName }}
     runs-on: ubuntu-latest
-    if: needs.changes.outputs.apps != '[]'
     strategy:
       matrix:
-        app: ${{ fromJSON(needs.changes.outputs.apps) }}
+        appName: ${{ fromJSON(needs.changes.outputs.appNames) }}
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
-      - name: 🚀 Setup repo
+      - name: 🏗 Setup repo
         uses: actions/checkout@v2
-      - name: 🚀 Setup Node
-        uses: actions/setup-node@v1
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: 16.x
-      - name: 🚀 Setup Expo
-        uses: expo/expo-github-action@v6
+          cache: yarn
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
         with:
-          expo-version: 4.x
-          expo-cache: true
+          expo-version: 5.x
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: 🔎 Find cache
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: ♻️ Restore cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: 📋 Install dependencies
+
+      - name: 📦 Install dependencies
         run: yarn install --frozen-lockfile --check-files
+
       - name: 👷 Build packages
         run: yarn build
-      - name: 📢 Publish to Expo
-        working-directory: apps/${{ matrix.app }}
+
+      - name: 🚀 Publish to Expo
+        working-directory: apps/${{ matrix.appName }}
         run: expo publish --release-channel=pr-${{ github.event.number }}
-      - name: 💬 Comment deployment link
-        uses: actions/github-script@v4
+
+      - name: 💬 Comment preview
+        uses: expo/expo-github-action/preview-comment@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          script: |
-            // Load manifest to fetch project info
-            const app = '${{ matrix.app }}';
-            const manifest = require(`./apps/${app}/app.json`);
-
-            // Get the app information and build links
-            const { owner, slug } = manifest.expo;
-            const project = `@${owner}/${slug}?release-channel=pr-${context.issue.number}`;
-            const projectLink = `https://expo.dev/${project}`;
-            const projectQR = `exp://exp.host/${project}`;
-
-            // Add the comment
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `You can preview [\`apps/${app}\` here](${projectLink}).<br><br><a href="${projectLink}"><img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${projectQR}" height="200px" width="200px"></a>`
-            });
+          project: apps/${{ matrix.appName }}
+          channel: pr-${{ github.event.number }}
