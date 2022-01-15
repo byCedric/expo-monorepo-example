@@ -3,7 +3,7 @@
     "name": "eas-monorepo-app-ejected",
     "slug": "eas-monorepo-app-ejected",
     "version": "1.0.0",
-    "runtimeVersion": "40.0.0",
+    "runtimeVersion": "44.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -24,7 +24,7 @@
     },
     "android": {
       "package": "com.bycedric.easmonorepoexample.ejected",
-      "versionCode": 400010000,
+      "versionCode": 440010000,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
