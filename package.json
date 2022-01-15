@@ -12,8 +12,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "devDependencies": {
-    "@tsconfig/recommended": "^1.0.1"
-  }
+  ]
 }
