@@ -74,9 +74,7 @@ jobs:
         run: expo publish --release-channel=pr-${{ github.event.number }}
 
       - name: 💬 Comment preview
-        uses: expo/expo-github-action/preview-comment@v7
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: expo/expo-github-action/preview-comment@feature/default-github-token
         with:
           project: apps/${{ matrix.appName }}
           channel: pr-${{ github.event.number }}
