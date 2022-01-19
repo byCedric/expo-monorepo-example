@@ -7682,10 +7682,21 @@ react-native-gesture-handler@~2.1.0:
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
-react-native-mmkv@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-1.3.2.tgz#fb5a3f4f369076c50fa07338c6f24ad02c9342ba"
-  integrity sha512-A1ztKk3YJobuq9LAS3o7LJnxqw8yUKwACRsoVXUYPWw0RbwjmE10Ogdz8axrSIGHd6gjKeIrLgS5eetcj27pCA==
+react-native-gesture-handler@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.2.0.tgz#a551f9ca33d8766d0a24268f49e0f1b05191b105"
+  integrity sha512-WF25CNgn164bF9juW8N/jICIFXiEOgsxCuY7DRlnFdiH5ZfvMYtZHRC+zr1fFMap2ty1f2HWDQNVVSo0FDXP4A==
+  dependencies:
+    "@egjs/hammerjs" "^2.0.17"
+    hoist-non-react-statics "^3.3.0"
+    invariant "^2.2.4"
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
+
+react-native-mmkv@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.0.0.tgz#761e6362bbfe0e81f923b3febae0225413dee228"
+  integrity sha512-Dhy3HrwpWdA7r4vNclKLaD/PgdpsLz0mTzvnNUqbQss1yh3D2ThgFVn8rVKToXHyipxs+Y5eDMLMGGDQyIOV2Q==
 
 react-native-reanimated@~2.3.1:
   version "2.3.1"
