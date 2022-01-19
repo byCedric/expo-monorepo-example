@@ -18,7 +18,7 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.bycedric.easmonorepoexample.withdevclient",
+      "bundleIdentifier": "com.bycedric.easmonorepoexample.withdevclient2",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
@@ -32,7 +32,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "plugins": [["./react-native-mmkv-plugin", "custom"]]
+    }
   }
 }

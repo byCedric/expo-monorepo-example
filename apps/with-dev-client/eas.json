@@ -12,5 +12,8 @@
         "buildType": "app-bundle"
       }
     }
+  },
+  "cli": {
+    "version": ">= 0.43.0"
   }
 }
