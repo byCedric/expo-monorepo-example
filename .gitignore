@@ -56,3 +56,4 @@ xcuserdata
 # VSCode
 .history/
 .turbo
+dist/
