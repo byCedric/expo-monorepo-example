@@ -2,15 +2,32 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
-    "build": "yarn workspaces run build",
-    "test": "yarn workspaces run test",
+    "build": "turbo run build",
+    "start": "turbo run start --parallel --continue",
+    "dev": "turbo run dev --no-cache --parallel --continue",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "yarn clean:turbo && yarn clean:watchman",
+    "clean:turbo": "yarn turbo run clean && rm -rf node_modules",
+    "clean:watchman": "watchman watch-del-all && yarn cache clean",
     "managed": "yarn workspace @acme/app-managed",
     "ejected": "yarn workspace @acme/app-ejected",
     "with-sentry": "yarn workspace @acme/app-with-sentry",
     "with-dev-client": "yarn workspace @acme/app-with-dev-client"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@6.30.1"
 }

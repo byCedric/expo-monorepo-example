@@ -23,20 +23,22 @@ jobs:
           - ubuntu-latest
           - windows-latest
     steps:
-      - name: 🏗 Setup repo
-        uses: actions/checkout@v2
-
-      - name: 🏗 Setup Node
-        uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.0.1
         with:
-          node-version: ${{ matrix.node }}
-          cache: yarn
+          version: 6.17.2
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
 
-      - name: 📦 Install dependencies
-        run: yarn install --frozen-lockfile --check-files
+      - name: Install dependencies
+        run: pnpm install --shamefully-hoist
 
       - name: 👷 Build packages
-        run: yarn build
+        run: pnpm build
 
       - name: 🧪 Test packages
-        run: yarn test
+        run: pnpm test
