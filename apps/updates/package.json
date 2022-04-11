@@ -1,13 +1,17 @@
 {
-  "name": "updates",
+  "private": true,
+  "name": "@acme/app-updates",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "index.js",
   "scripts": {
+    "build": "echo 'Nothing to build'",
+    "test": "eslint --ext js,ts,tsx .",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "eas-build-post-install": "yarn workspaces run build"
   },
   "dependencies": {
     "expo": "~44.0.0",
@@ -18,10 +22,14 @@
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
+    "@acme/babel-preset-expo": "*",
+    "@acme/eslint-config": "*",
     "@babel/core": "^7.12.9",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "typescript": "~4.3.5"
   },
-  "private": true
+  "eslintConfig": {
+    "extends": "@acme/eslint-config"
+  }
 }
