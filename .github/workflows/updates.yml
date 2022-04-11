@@ -16,13 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: 🏗 Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
-          node-version: 16.x
-          cache: yarn
+          node-version: 14.x
 
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7
@@ -35,9 +34,6 @@ jobs:
 
       - name: 👷 Build packages
         run: yarn build
-
-      - name: 🧪 Test packages
-        run: yarn test
 
       - name: 🆙 Publish update
         working-directory: apps/updates
