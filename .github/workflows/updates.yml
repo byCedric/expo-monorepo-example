@@ -35,6 +35,11 @@ jobs:
       - name: 👷 Build packages
         run: yarn build
 
+      - name: Try recreate the error
+        working-directory: apps/updates
+        run: |
+          mkdir dist && echo "hello" > dist/tool.txt
+
       - name: 🆙 Publish update
         working-directory: apps/updates
         run: npx @bycedric/some-cli-test update --branch eas-monorepo-update-test --message "This is a test that should fail"
