@@ -1,0 +1,45 @@
+name: updates
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize]
+
+concurrency:
+  group: updates-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: yarn
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: 👷 Build packages
+        run: yarn build
+
+      - name: 🧪 Test packages
+        run: yarn test
+
+      - name: 🆙 Publish update
+        working-directory: apps/updates
+        run: eas update --branch eas-monorepo-update-test --message "This is a test that should fail"
