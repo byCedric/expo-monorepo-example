@@ -2,10 +2,10 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
-    "managed": "yarn workspace @acme/app-managed",
-    "ejected": "yarn workspace @acme/app-ejected",
-    "with-sentry": "yarn workspace @acme/app-with-sentry",
-    "with-dev-client": "yarn workspace @acme/app-with-dev-client"
+    "managed": "pnpm run --filter @acme/app-managed",
+    "ejected": "pnpm run --filter @acme/app-ejected",
+    "with-sentry": "pnpm run --filter @acme/app-with-sentry",
+    "with-dev-client": "pnpm run --filter @acme/app-with-dev-client"
   },
   "workspaces": [
     "apps/*",

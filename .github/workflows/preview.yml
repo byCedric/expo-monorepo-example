@@ -51,11 +51,16 @@ jobs:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
 
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: yarn
+          cache: pnpm
 
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7
@@ -64,10 +69,10 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: yarn install --frozen-lockfile --check-files
+        run: pnpm install --frozen-lockfile
 
       - name: 👷 Build packages
-        run: yarn build
+        run: pnpm run -r --if-present build
 
       - name: 🚀 Publish to Expo
         working-directory: apps/${{ matrix.appName }}
