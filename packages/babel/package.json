@@ -9,10 +9,6 @@
   "files": [
     "index.js"
   ],
-  "scripts": {
-    "build": "echo 'Nothing to build'",
-    "test": "echo 'Nothing to test'"
-  },
   "dependencies": {
     "@babel/core": "^7.14.6",
     "babel-preset-expo": "^8.5.1"
