@@ -18,29 +18,17 @@ on:
 
 jobs:
   build:
-    name: Install and build
     runs-on: ubuntu-latest
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
-      - name: 🏗 Setup repo
-        uses: actions/checkout@v2
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
 
-      - name: 🏗 Setup Node
-        uses: actions/setup-node@v2
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
         with:
-          node-version: 16.x
-          cache: yarn
-
-      - name: 🏗 Setup Expo and EAS
-        uses: expo/expo-github-action@v7
-        with:
-          expo-version: 5.x
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
-      - name: 📦 Install dependencies
-        run: yarn install --frozen-lockfile --check-files
+          expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 🚀 Build ${{ github.event.inputs.app }}
         working-directory: apps/${{ github.event.inputs.app }}

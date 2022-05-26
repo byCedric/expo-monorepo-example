@@ -49,6 +49,10 @@
 - [`standalone`](./.github/workflows/standalone.yml) - Starts the EAS builds for user-provided OS and build profiles.
 - [`test`](./.github/workflows/test.yml) - Ensures that the apps and packages are passing lint and build checks.
 
+### Composite workflows
+
+- [`setup-monorepo`](./.github/actions/setup-monorepo/action.yml) - Reusable composite workflow to setup the required basics in GitHub Actions.
+
 ## 🚀 How to use it
 
 To set this repository up, you need an Expo account [with access to EAS](https://docs.expo.io/eas/). After that, you need to run these commands.
@@ -83,7 +87,7 @@ If you want to maintain the keystore or certificates yourself, you have to [conf
 
 ## ❌ Common Errors
 
-_We are still testing for potential issues, but none are found yet!_
+_We are actively monitoring potential issues, and fix them_
 
 <div align="center">
   <br />
