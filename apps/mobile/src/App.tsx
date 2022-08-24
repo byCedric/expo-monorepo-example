@@ -1,13 +1,28 @@
+import { CurrentWeather, LocationProvider } from '@acme/feature-weather';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { getLastKnownPositionAsync } from 'expo-location';
+import { StyleSheet, View } from 'react-native';
+
+import { LocationPermission } from './components/LocationPermission';
 
 export function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <LocationPermission>
+        <LocationProvider getLocation={getLocation}>
+          <CurrentWeather />
+        </LocationProvider>
+      </LocationPermission>
       <StatusBar style="auto" />
     </View>
   );
+}
+
+async function getLocation() {
+  return await getLastKnownPositionAsync().then(location => ({
+    latitude: location!.coords.latitude,
+    longitude: location!.coords.longitude,
+  }))
 }
 
 const styles = StyleSheet.create({

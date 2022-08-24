@@ -1,0 +1,39 @@
+{
+  "private": true,
+  "name": "@acme/feature-weather",
+  "version": "1.0.0",
+  "description": "All weather related functionality in our app",
+  "author": "Cedric van Putten <npm@cedric.dev>",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "lint": "echo 'Nothing to lint'",
+    "test": "echo 'Nothing to test'",
+    "clean": "git clean ./build -xdf"
+  },
+  "dependencies": {
+    "@acme/api": "*"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "tsup": "^6.2.2"
+  },
+  "tsup": {
+    "entry": ["./src/index.ts"],
+    "format": [
+      "cjs"
+    ],
+    "outDir": "./build",
+    "dts": true,
+    "splitting": false,
+    "sourcemap": true,
+    "external": ["react", "react-native"],
+    "target": "node16"
+  }
+}

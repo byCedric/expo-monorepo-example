@@ -1,0 +1,64 @@
+{
+  "private": true,
+  "name": "@acme/api",
+  "version": "1.0.0",
+  "description": "tRPC code for serving and using the API",
+  "author": "Cedric van Putten <npm@cedric.dev>",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json", 
+    ".": {
+      "types": "./build/index.d.ts",
+      "default": "./build/index.js"
+    },
+    "./client": {
+      "types": "./build/client.d.ts",
+      "default": "./build/client.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "client": ["./build/client.d.ts"]
+    }
+  },
+  "files": [
+    "./build",
+    "./client.js"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "lint": "echo 'Nothing to lint'",
+    "test": "echo 'Nothing to test'",
+    "clean": "git clean ./build -xdf"
+  },
+  "dependencies": {
+    "@trpc/client": "^9.27.1",
+    "@trpc/next": "^9.27.1",
+    "@trpc/react": "^9.27.1",
+    "@trpc/server": "^9.27.1",
+    "node-fetch": "^2.6.7",
+    "react-query": "^3.39.2",
+    "superjson": "^1.9.1",
+    "zod": "^3.18.0"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "tsup": "^6.2.2"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts",
+      "src/client.ts"
+    ],
+    "format": [
+      "cjs"
+    ],
+    "outDir": "./build",
+    "dts": true,
+    "splitting": false,
+    "sourcemap": true
+  }
+}

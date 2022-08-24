@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "Launch via NPM",
+      "request": "launch",
+      "runtimeArgs": ["build"],
+      "runtimeExecutable": "yarn",
+      "cwd": "${workspaceFolder}/packages/feature-weather",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    }
+  ]
+}
