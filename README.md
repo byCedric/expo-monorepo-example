@@ -35,7 +35,6 @@
 
 - [`apps/ejected`](./apps/ejected) - Expo bare app using `babel`, `eslint`, and `ui` packages.
 - [`apps/managed`](./apps/managed) - Expo managed app using `babel`, `eslint`, and `ui` packages.
-- [`apps/with-sentry`](./apps/with-sentry) - Expo managed app with `expo-sentry` integrated.
 
 ### Packages
 
