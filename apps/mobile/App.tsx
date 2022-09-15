@@ -5,8 +5,8 @@ import { StyleSheet, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <HomeIcon style={{ fontSize: 32 }} />
-      <HomeScreen style={{ margin: 16 }} />
+      <HomeIcon style={{ fontSize: 64 }} />
+      <HomeScreen />
       <StatusBar style="auto" />
     </View>
   );

@@ -4,7 +4,8 @@
   "scripts": {
     "lint": "pnpm run -r --if-present lint",
     "test": "pnpm run -r --if-present test",
-    "build": "pnpm run -r --if-present build"
+    "build": "pnpm run -r --if-present build",
+    "dev": "pnpm run -r --if-present --parallel dev"
   },
   "pnpm": {
     "peerDependencyRules": {
