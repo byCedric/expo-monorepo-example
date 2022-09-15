@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Expo monorepo</h1>
-  <p>Fast, enterprise-ready monorepo for cross-platform apps</p>
+  <p>A fast and enterprise-ready monorepo for cross-platform apps</p>
   <p>
     <a href="https://github.com/byCedric/eas-monorepo-example/releases">
       <img src="https://img.shields.io/github/workflow/status/byCedric/eas-monorepo-example/preview?style=flat-square" alt="managed preview" />
