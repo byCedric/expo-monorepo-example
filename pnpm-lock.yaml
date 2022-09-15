@@ -32,7 +32,7 @@ importers:
       react-native: 0.69.5_2v4hfeslgq4hk22r264lx5s6gm
       react-native-web: 0.18.9_zpnidt7m3osuk7shl3s4oenomq
     devDependencies:
-      '@acme/eslint-config': link:../../packages/eslint
+      '@acme/eslint-config': link:../../packages/eslint-config
       '@babel/core': 7.19.1
       '@types/react': 18.0.20
       '@types/react-dom': 18.0.6
@@ -54,12 +54,12 @@ importers:
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
     devDependencies:
-      '@acme/eslint-config': link:../../packages/eslint
+      '@acme/eslint-config': link:../../packages/eslint-config
       eslint: 7.32.0
       eslint-config-next: 12.3.0_dyxdave6dwjbccc5dgiifcmuza
       typescript: 4.8.3
 
-  packages/eslint:
+  packages/eslint-config:
     specifiers:
       '@typescript-eslint/eslint-plugin': ^5.1.0
       '@typescript-eslint/parser': ^5.1.0
@@ -82,7 +82,7 @@ importers:
       react-native-builder-bob: ^0.18.3
       typescript: ^4.8.3
     devDependencies:
-      '@acme/eslint-config': link:../eslint
+      '@acme/eslint-config': link:../eslint-config
       '@tsconfig/recommended': 1.0.1
       react-native-builder-bob: 0.18.3
       typescript: 4.8.3
