@@ -1,0 +1,31 @@
+{
+  "name": "@acme/app-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "next lint"
+  },
+  "dependencies": {
+    "@acme/feature-home": "*",
+    "next": "12.3.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-native-web": "~0.18.7"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "*",
+    "babel-plugin-react-native-web": "^0.18.9",
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.3.0",
+    "typescript": "^4.8.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@acme/eslint-config",
+      "next"
+    ]
+  }
+}
