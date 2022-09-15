@@ -13,8 +13,8 @@
     "src"
   ],
   "scripts": {
-    "build": "bob build",
-    "test": "eslint --ext ts,tsx ./src"
+    "lint": "eslint --ext js,ts,tsx .",
+    "build": "bob build"
   },
   "devDependencies": {
     "@acme/eslint-config": "*",
@@ -29,7 +29,8 @@
     "react-native": "*"
   },
   "eslintConfig": {
-    "extends": "@acme/eslint-config"
+    "extends": "@acme/eslint-config",
+    "ignorePatterns": ["node_modules", "build"]
   },
   "react-native-builder-bob": {
     "source": "src",

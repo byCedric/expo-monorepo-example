@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "lint": "next lint",
+    "test": "next lint",
     "build": "next build",
-    "start": "next start",
-    "test": "next lint"
+    "dev": "next dev",
+    "start": "next start"
   },
   "dependencies": {
     "@acme/feature-home": "*",
@@ -26,6 +27,7 @@
     "extends": [
       "@acme/eslint-config",
       "next"
-    ]
+    ],
+    "ignorePatterns": ["node_modules", ".next", "public"]
   }
 }

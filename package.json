@@ -2,8 +2,9 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
-    "build": "pnpm run -r --if-present build",
-    "test": "pnpm run -r --if-present test"
+    "lint": "pnpm run -r --if-present lint",
+    "test": "pnpm run -r --if-present test",
+    "build": "pnpm run -r --if-present build"
   },
   "pnpm": {
     "peerDependencyRules": {

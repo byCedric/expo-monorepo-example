@@ -9,6 +9,9 @@
   "files": [
     "index.js"
   ],
+  "scripts": {
+    "lint": "eslint --ext js,ts,tsx ."
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
@@ -16,5 +19,8 @@
     "eslint-config-universe": "^8.0.0",
     "prettier": "^2.4.1",
     "typescript": "^4.8.3"
+  },
+  "eslintConfig": {
+    "extends": "."
   }
 }

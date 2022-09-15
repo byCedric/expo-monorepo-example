@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --ext js,ts,tsx .",
+    "lint": "eslint --ext js,ts,tsx .",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -33,6 +33,7 @@
     "typescript": "^4.8.3"
   },
   "eslintConfig": {
-    "extends": "@acme/eslint-config"
+    "extends": "@acme/eslint-config",
+    "ignorePatterns": ["node_modules", ".expo", ".expo-shared"]
   }
 }
