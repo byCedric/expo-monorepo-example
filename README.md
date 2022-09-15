@@ -61,6 +61,15 @@ To run the repository locally, run these two commands:
 - `$ pnpm` - This installs all required Node libraries using [pnpm](https://pnpm.io/)
 - `$ pnpm build` - To precompile the packages to publish them to NPM and/or use them in your apps.
 
+### Switching to yarn or npm
+
+You can use yarn or npm with this monorepo as well. If you want to use one of these package managers, instead of pnpm, all you have to do is:
+
+- Remove **.npmrc**, **pnpm-lock.yaml**, and **pnpm-workspace.yaml**.
+- Remove the `pnpm` property from the root **package.json** file.
+- Add the [`workspaces`](https://docs.npmjs.com/cli/v8/using-npm/workspaces) property to the root **package.json** file.
+- Update the workflows to use yarn or npm instead.
+
 ## ⚠️ Caveats
 
 ### Precompile packages
