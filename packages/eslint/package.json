@@ -9,10 +9,6 @@
   "files": [
     "index.js"
   ],
-  "scripts": {
-    "build": "echo 'Nothing to build'",
-    "test": "echo 'Nothing to test'"
-  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",

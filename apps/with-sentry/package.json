@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "echo 'Nothing to build'",
     "test": "eslint --ext js,ts,tsx .",
     "start": "expo start",
     "android": "expo start --android",
