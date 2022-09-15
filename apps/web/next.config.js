@@ -2,14 +2,14 @@
 module.exports = {
   reactStrictMode: true,
   swcMinify: true,
-
-  /** Tell webpack to use RNW as drop-in replacement for RN */
   webpack: (config) => {
+    // Set the alias from `react-native` to `react-native-web`
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       'react-native$': 'react-native-web',
     };
 
+    // Add custom `.web.{jsx?,tsx?}` extension resolver
     config.resolve.extensions = [
       '.web.js',
       '.web.jsx',

@@ -13,8 +13,8 @@
     "src"
   ],
   "scripts": {
-    "build": "bob build",
-    "test": "eslint --ext ts,tsx ./src"
+    "lint": "eslint --ext js,ts,tsx .",
+    "build": "bob build"
   },
   "devDependencies": {
     "@acme/eslint-config": "*",
@@ -26,10 +26,20 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-web": "*"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-web": {
+      "optional": true
+    }
   },
   "eslintConfig": {
-    "extends": "@acme/eslint-config"
+    "extends": "@acme/eslint-config",
+    "ignorePatterns": ["node_modules", "build"]
   },
   "react-native-builder-bob": {
     "source": "src",

@@ -12,7 +12,6 @@ const { $paragraph } = StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.87)',
     fontSize: 16,
     letterSpacing: 0.25,
-    lineHeight: 20,
     marginVertical: 2,
   },
 });
