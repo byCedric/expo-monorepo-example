@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@acme/ui",
+  "name": "@acme/feature-home",
   "version": "1.0.0",
-  "description": "Acme UI components for React Native",
+  "description": "Acme home feature for React (Native)",
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
   "main": "build/commonjs/index.js",
@@ -15,6 +15,9 @@
   "scripts": {
     "build": "bob build",
     "test": "eslint --ext ts,tsx ./src"
+  },
+  "dependencies": {
+    "@acme/ui": "*"
   },
   "devDependencies": {
     "@acme/eslint-config": "*",

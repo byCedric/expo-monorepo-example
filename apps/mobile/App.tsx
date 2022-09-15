@@ -1,13 +1,12 @@
-import { Paragraph, Strong } from '@acme/ui';
+import { HomeIcon, HomeScreen } from '@acme/feature-home';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Paragraph>
-        Hello from an <Strong>EAS</Strong> monorepo (managed)
-      </Paragraph>
+      <HomeIcon style={{ fontSize: 32 }} />
+      <HomeScreen style={{ margin: 16 }} />
       <StatusBar style="auto" />
     </View>
   );

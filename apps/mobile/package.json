@@ -13,7 +13,7 @@
     "eas-build-post-install": "pnpm run -w build"
   },
   "dependencies": {
-    "@acme/ui": "*",
+    "@acme/feature-home": "*",
     "expo": "^46.0.0",
     "expo-status-bar": "~1.4.0",
     "expo-updates": "~0.14.5",
