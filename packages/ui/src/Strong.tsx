@@ -1,11 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 
-export interface StrongProps extends TextProps {
-  children?: React.ReactNode;
-}
-
-export const Strong = ({ children, style, ...props }: StrongProps) => (
+export const Strong = ({ children, style, ...props }: TextProps) => (
   <Text {...props} style={[$strong, style]}>
     {children}
   </Text>

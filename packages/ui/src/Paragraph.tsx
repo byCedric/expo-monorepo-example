@@ -1,11 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 
-export interface ParagraphProps extends TextProps {
-  children?: React.ReactNode;
-}
-
-export const Paragraph = ({ children, style, ...props }: ParagraphProps) => (
+export const Paragraph = ({ children, style, ...props }: TextProps) => (
   <Text {...props} style={[$paragraph, style]}>
     {children}
   </Text>
