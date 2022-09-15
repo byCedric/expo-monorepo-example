@@ -55,6 +55,9 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: 👷 Build packages
+        run: pnpm run -r --if-present build
+
       - name: 🚀 Publish to Expo
         working-directory: apps/${{ matrix.appName }}
         run: expo publish --release-channel=pr-${{ github.event.number }}

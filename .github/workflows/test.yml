@@ -27,5 +27,8 @@ jobs:
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
 
+      - name: 👷 Build packages
+        run: pnpm run -r --if-present build
+
       - name: 🧪 Test packages
-        run: yarn test
+        run: pnpm run -r --if-present test
