@@ -30,6 +30,9 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: 👷 Build packages
+        run: pnpm run -r --if-present build
+
       - name: 🚀 Build ${{ github.event.inputs.app }}
         working-directory: apps/${{ github.event.inputs.app }}
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}

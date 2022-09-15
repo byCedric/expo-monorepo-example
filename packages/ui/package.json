@@ -21,7 +21,7 @@
     "@acme/eslint-config": "*",
     "@tsconfig/recommended": "^1.0.1",
     "react-native-builder-bob": "^0.18.3",
-    "typescript": "^4.3.5"
+    "typescript": "^4.8.3"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config"

@@ -2,15 +2,12 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
-    "build": "yarn workspaces run build",
-    "test": "yarn workspaces run test",
-    "managed": "yarn workspace @acme/app-managed",
-    "ejected": "yarn workspace @acme/app-ejected",
-    "with-sentry": "yarn workspace @acme/app-with-sentry",
-    "with-dev-client": "yarn workspace @acme/app-with-dev-client"
+    "build": "pnpm run -r --if-present build",
+    "test": "pnpm run -r --if-present test"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": ["@babel/*"]
+    }
+  }
 }
