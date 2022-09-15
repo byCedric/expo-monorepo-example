@@ -57,7 +57,11 @@
     ]
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/"
+    ]
   },
   "react-native-builder-bob": {
     "source": "src",
