@@ -57,17 +57,16 @@
 
 To set this repository up, you need an Expo account [with access to EAS](https://docs.expo.io/eas/). After that, you need to run these commands.
 
-- `$ yarn` - This installs all required Node libraries using Yarn Workspaces
-- `$ yarn build` - To precompile the packages to publish them to NPM and/or use them in your apps.
+- `$ pnpm` - This installs all required Node libraries using [pnpm](https://pnpm.io/)
+- `$ pnpm build` - To precompile the packages to publish them to NPM and/or use them in your apps.
 - Change the `expo.owner` and `expo.android.package` / `expo.ios.bundleIdentifier` properties in `app.json` for all apps.
 
 ### Starting apps
 
-After the initial setup, you can start the apps from their app directories. Or you can use `yarn workspace <name> expo start` command, see `scripts` in [`package.json`](./package.json).
+After the initial setup, you can start the apps from their app directories.
 
-- `$ yarn ejected expo run:android|ios` - This will execute `expo run:android|ios` in the ejected app.
-- `$ yarn managed expo start` - This will execute `expo start` in the managed app.
-- `$ yarn with-sentry expo start` - This will execute `expo start` in the with-sentry app.
+- `$ cd apps/ejected; pnpx expo run:android|ios` - This will execute `expo run:android|ios` in the ejected app.
+- `$ cd apps/managed; pnpx expo start` - This will execute `expo start` in the managed app.
 
 ## ⚠️ Caveats
 
