@@ -11,8 +11,5 @@
         "@babel/*"
       ]
     }
-  },
-  "dependencies": {
-    "typescript": "^4.8.3"
   }
 }
