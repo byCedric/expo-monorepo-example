@@ -5,9 +5,9 @@
   "description": "Acme home feature for React (Native)",
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
-  "main": "build/commonjs/index.js",
-  "types": "build/typescript/index.d.ts",
-  "react-native": "src/index.tsx",
+  "main": "./build/commonjs/index.js",
+  "types": "./build/typescript/index.d.ts",
+  "react-native": "./src/index.ts",
   "files": [
     "build",
     "src"
