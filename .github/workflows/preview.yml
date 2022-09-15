@@ -9,43 +9,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  detect:
-    if: ${{ github.event.pull_request.head.repo.full_name == 'bycedric/eas-monorepo-example' }}
+  mobile:
     runs-on: ubuntu-latest
-    outputs:
-      appChanged: ${{ steps.filter.outputs.apps == 'true' }}
-      appNames: ${{ steps.result.outputs.result }}
-    steps:
-      - id: filter
-        name: 🕵️ Detect changes
-        uses: dorny/paths-filter@v2
-        with:
-          list-files: json
-          filters: |
-            apps: 'apps/**'
-
-      - id: result
-        name: 📱 Find changed apps
-        uses: actions/github-script@v6
-        if: steps.filter.outputs.apps == 'true'
-        with:
-          script: |
-            // Load all changed files to dynamically fetch the app names
-            const path = require('path')
-            const changes = ${{ steps.filter.outputs.apps_files }}
-            // Iterate through all changes and keep unique app names
-            return [...new Set(changes.map(file => path.dirname(file).split('/')[1]))]
-
-  publish:
-    needs: detect
-    if: ${{ needs.detect.outputs.appChanged }}
-    name: publish ${{ matrix.appName }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        appName: ${{ fromJSON(needs.detect.outputs.appNames) }}
-    env:
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
@@ -58,12 +23,12 @@ jobs:
       - name: 👷 Build packages
         run: pnpm run -r --if-present build
 
-      - name: 🚀 Publish to Expo
-        working-directory: apps/${{ matrix.appName }}
+      - name: 🚀 Publish preview
+        working-directory: apps/mobile
         run: expo publish --release-channel=pr-${{ github.event.number }}
 
       - name: 💬 Comment preview
         uses: expo/expo-github-action/preview-comment@v7
         with:
-          project: apps/${{ matrix.appName }}
+          project: apps/mobile
           channel: pr-${{ github.event.number }}

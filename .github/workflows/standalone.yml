@@ -3,10 +3,6 @@ name: standalone
 on:
   workflow_dispatch:
     inputs:
-      app:
-        description: App to build (apps/<name>)
-        required: true
-        default: managed
       platform:
         description: Platform to build for (all/android/ios)
         required: true
@@ -19,8 +15,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Required for apps/with-sentry
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
@@ -33,6 +27,6 @@ jobs:
       - name: 👷 Build packages
         run: pnpm run -r --if-present build
 
-      - name: 🚀 Build ${{ github.event.inputs.app }}
-        working-directory: apps/${{ github.event.inputs.app }}
+      - name: 🚀 Build mobile
+        working-directory: apps/mobile
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
