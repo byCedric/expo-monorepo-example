@@ -10,7 +10,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "eas-build-post-install": "yarn workspaces run build"
+    "eas-build-post-install": "pnpm run -w build"
   },
   "dependencies": {
     "@acme/ui": "*",
