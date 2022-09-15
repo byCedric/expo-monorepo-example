@@ -9,8 +9,9 @@
     "with-sentry": "yarn workspace @acme/app-with-sentry",
     "with-dev-client": "yarn workspace @acme/app-with-dev-client"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": ["@babel/*"]
+    }
+  }
 }
