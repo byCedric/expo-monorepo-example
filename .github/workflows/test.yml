@@ -13,14 +13,9 @@ concurrency:
 
 jobs:
   packages:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
