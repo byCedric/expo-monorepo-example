@@ -17,11 +17,11 @@
     &ensp;&mdash;&ensp;
     <a href="https://github.com/byCedric/eas-monorepo-example#-workflows"><b>Workflows</b></a>
     &ensp;&mdash;&ensp;
+    <a href="https://github.com/byCedric/eas-monorepo-example#-why-is-it-fast"><b>Why is it fast?</b></a>
+    &ensp;&mdash;&ensp;
     <a href="https://github.com/byCedric/eas-monorepo-example#-how-to-use-it"><b>How to use it</b></a>
     &ensp;&mdash;&ensp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#%EF%B8%8F-caveats"><b>Caveats</b></a>
-    &ensp;&mdash;&ensp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#-common-errors"><b>Common Errors</b></a>
+    <a href="https://github.com/byCedric/eas-monorepo-example#%EF%B8%8F-caveats"><b>Caveats & Issues</b></a>
   </p>
 </div>
 
@@ -108,7 +108,7 @@ If you want to maintain the keystore or certificates yourself, you have to [conf
 
 > It's highly recommended to keep keystores and certificates out of your repository to avoid security issues.
 
-## ❌ Common Errors
+## ❌ Common issues
 
 _We are actively monitoring potential issues, and fix them_
 
