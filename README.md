@@ -2,55 +2,28 @@
   <h1>Expo monorepo</h1>
   <p>A fast and enterprise-ready monorepo for cross-platform apps</p>
   <p>
-    <a href="https://github.com/byCedric/eas-monorepo-example/releases">
-      <img src="https://img.shields.io/github/workflow/status/byCedric/eas-monorepo-example/preview?style=flat-square" alt="managed preview" />
+    <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/test.yml">
+      <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/test/main?label=tests&style=flat-square" alt="Test workflows" />
     </a>
-    <a href="https://github.com/byCedric/eas-monorepo-example/actions">
-      <img src="https://img.shields.io/github/workflow/status/byCedric/eas-monorepo-example/standalone?style=flat-square" alt="latest standalone build" />
+    <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/preview.yml">
+      <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/preview?label=previews&style=flat-square" alt="Preview workflows" />
     </a>
-    <a href="https://github.com/byCedric/eas-monorepo-example/blob/main/LICENSE.md">
-      <img src="https://img.shields.io/github/license/byCedric/eas-monorepo-example?style=flat-square" alt="license" />
+    <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/build.yml">
+      <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/build/main?label=builds&style=flat-square" alt="Build workflows" />
     </a>
   </p>
   <p>
-    <a href="https://github.com/byCedric/eas-monorepo-example#-structure"><b>Structure</b></a>
+    <a href="https://github.com/byCedric/expo-monorepo-example#-why-is-it-fast"><b>Why is it fast?</b></a>
     &ensp;&mdash;&ensp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#-workflows"><b>Workflows</b></a>
+    <a href="https://github.com/byCedric/expo-monorepo-example#-how-to-use-it"><b>How to use it</b></a>
     &ensp;&mdash;&ensp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#-why-is-it-fast"><b>Why is it fast?</b></a>
+    <a href="https://github.com/byCedric/expo-monorepo-example#-structure"><b>Structure</b></a>
     &ensp;&mdash;&ensp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#-how-to-use-it"><b>How to use it</b></a>
+    <a href="https://github.com/byCedric/expo-monorepo-example#-workflows"><b>Workflows</b></a>
     &ensp;&mdash;&ensp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#%EF%B8%8F-caveats"><b>Caveats & Issues</b></a>
+    <a href="https://github.com/byCedric/expo-monorepo-example#%EF%B8%8F-caveats"><b>Caveats & Issues</b></a>
   </p>
 </div>
-
-
-## 📁 Structure
-
-- [`apps`](./apps) - Apps that only use packages and aren't aware of other apps.
-- [`packages`](./packages) - Packages that may use external and/or other monorepo packages.
-
-### Apps
-
-- [`apps/mobile`](./apps/mobile) - Expo app using `eslint-config` and `feature-home` packages.
-- [`apps/web`](./apps/web) - Next.js app using `eslint-config` and `feature-home` packages.
-
-### Packages
-
-- [`packages/eslint-config`](./packages/eslint) - Preconfigured ESLint configuration for each app or package.
-- [`packages/feature-home`](./packages/feature-home) - Shared React Native domain-logic for apps, using both `ui` and `eslint-config` packages.
-- [`packages/ui`](./packages/ui) - Shared React Native UI components for apps, using the `eslint-config` package.
-
-## 👷 Workflows
-
-- [`build`](./.github/workflows/build.yml) - Starts the EAS builds for **apps/mobile** using the given profile.
-- [`preview`](./.github/workflows/preview.yml) - Publishes apps to a PR-specific release channel and adds a QR code to that PR.
-- [`test`](./.github/workflows/test.yml) - Ensures that the apps and packages are healthy on multiple OSs.
-
-### Composite workflows
-
-- [`setup-monorepo`](./.github/actions/setup-monorepo/action.yml) - Reusable composite workflow to setup the monorepo in GitHub Actions.
 
 ## ⚡ Why is it fast?
 
@@ -86,6 +59,32 @@ You can use yarn or npm with this monorepo as well. If you want to use one of th
 - Add the [`workspaces`](https://docs.npmjs.com/cli/v8/using-npm/workspaces) property to the root **package.json** file.
 - Update the workflows to use yarn or npm instead.
 
+## 📁 Structure
+
+- [`apps`](./apps) - Apps that only use packages and aren't aware of other apps.
+- [`packages`](./packages) - Packages that may use external and/or other monorepo packages.
+
+### Apps
+
+- [`apps/mobile`](./apps/mobile) - Expo app using `eslint-config` and `feature-home` packages.
+- [`apps/web`](./apps/web) - Next.js app using `eslint-config` and `feature-home` packages.
+
+### Packages
+
+- [`packages/eslint-config`](./packages/eslint) - Preconfigured ESLint configuration for each app or package.
+- [`packages/feature-home`](./packages/feature-home) - Shared React Native domain-logic for apps, using both `ui` and `eslint-config` packages.
+- [`packages/ui`](./packages/ui) - Shared React Native UI components for apps, using the `eslint-config` package.
+
+## 👷 Workflows
+
+- [`build`](./.github/workflows/build.yml) - Starts the EAS builds for **apps/mobile** using the given profile.
+- [`preview`](./.github/workflows/preview.yml) - Publishes apps to a PR-specific release channel and adds a QR code to that PR.
+- [`test`](./.github/workflows/test.yml) - Ensures that the apps and packages are healthy on multiple OSs.
+
+### Composite workflows
+
+- [`setup-monorepo`](./.github/actions/setup-monorepo/action.yml) - Reusable composite workflow to setup the monorepo in GitHub Actions.
+
 ## ⚠️ Caveats
 
 ### Using environment variables in React Native
@@ -93,6 +92,19 @@ You can use yarn or npm with this monorepo as well. If you want to use one of th
 Reusing Metro caches can be dangerous if you use Babel plugins like [transform-inline-environment-variables](https://babeljs.io/docs/en/babel-plugin-transform-inline-environment-variables/). When using Babel plugins to swap out environment variables for their actual value, you are creating a dependency on environment variables. Because Metro is unaware of dependencies on environment variables, Metro might reuse an incorrect cached environment variable.
 
 Since Turborepo handles the cache in this repository, we can leverage [caching based on environment variables](https://turborepo.org/docs/core-concepts/caching#alter-caching-based-on-environment-variables-and-files). This invalidates the Metro cache whenever certain environment variables are changed and avoid reusing incorrect cached code.
+
+### pnpm workarounds
+
+In the current React Native ecosystem, there are a lot of implicit dependencies. These can be from the native code that is shipped within packages, or even implicit dependencies through installing a specific version of Expo or React Native. In the newer package managers like pnpm, you will run into issues due to these implicit dependencies. Besides that there are other issues like [Metro not following symlinks](https://github.com/facebook/metro/issues/1).
+
+To workaround these issues, we have to change some config:
+
+1. Let pnpm generate a flat **node_modules** folder, without symlinks. You can do that by creating a root [**.npmrc**](./.npmrc) file containing ([`node-linker=hoisted`](https://pnpm.io/npmrc#node-linker)). This works around two things; no Metro symlink support, and having a simple way to determine where the modules are installed (see point 3).
+
+2. Either disable [`strict-peer-dependencies`](https://pnpm.io/npmrc#strict-peer-dependencies) or add [`peerDependencyRules.ignoreMissing`](./package.json#L14-L22) rules in the **package.json**. This disables some of the expected implicit peer dependencies issues. Without these changes, pnpm will fail on install asking you to install various peer dependencies.
+
+3. Update the **metro.config.js** configuration for usage in monorepos. Full explanation per configuration option can be found in the [Expo docs](https://docs.expo.dev/guides/monorepos/#modify-the-metro-config). The only addition in this repository is the [`config.cacheStores`](./apps/mobile/metro.config.js#L22-L24). This change moves the Metro cache to a place which is accessible by Turborepo, our main cache handler (see [Why is it fast?](#-why-is-it-fast)).
+
 
 ### Precompile packages
 
