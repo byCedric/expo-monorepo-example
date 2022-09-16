@@ -5,7 +5,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "build": "turbo run build",
-    "dev": "pnpm run -r --if-present --parallel dev"
+    "dev": "turbo run dev"
   },
   "devDependencies": {
     "turbo": "^1.4.6",

@@ -15,6 +15,9 @@
         "build/**",
         "node_modules/.cache/metro/**"
       ]
+    },
+    "dev": {
+      "dependsOn": ["^build"]
     }
   }
 }
