@@ -14,7 +14,9 @@
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
-        "@babel/*"
+        "@babel/*",
+        "expo-modules-*",
+        "typescript"
       ]
     }
   }
