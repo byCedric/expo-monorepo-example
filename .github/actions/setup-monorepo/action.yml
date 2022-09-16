@@ -37,7 +37,7 @@ runs:
         cache: pnpm
         cache-dependency-path: |
           pnpm-lock.yaml
-          node_modules/.cache/turbo
+          node_modules/.cache
 
     - name: 🏗 Setup Expo
       uses: expo/expo-github-action@v7
@@ -51,5 +51,7 @@ runs:
       shell: bash
 
     - name: 👷 Build packages
-      run: pnpm run -w build
+      run: |
+        ls -la node_modules/.cache
+        ls -la node_modules/.cache/turbo
       shell: bash
