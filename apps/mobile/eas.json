@@ -1,12 +1,22 @@
 {
   "build": {
+    "turbo-cache": {
+      "cache": {
+        "key": "turbo",
+        "customPaths": [
+          "../../node_modules/.cache/turbo"
+        ]
+      }
+    },
     "development": {
+      "extends": "turbo-cache",
       "distribution": "internal",
       "android": {
         "buildType": "apk"
       }
     },
     "production": {
+      "extends": "turbo-cache",
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
