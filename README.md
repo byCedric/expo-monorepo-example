@@ -34,7 +34,7 @@
 ### Apps
 
 - [`apps/mobile`](./apps/mobile) - Expo app using `eslint-config` and `feature-home` packages.
-- [`apps/managed`](./apps/managed) - Next.js app using `eslint-config` and `feature-home` packages.
+- [`apps/web`](./apps/web) - Next.js app using `eslint-config` and `feature-home` packages.
 
 ### Packages
 
