@@ -2,9 +2,9 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
-    "lint": "pnpm run -r --if-present lint",
-    "test": "pnpm run -r --if-present test",
-    "build": "pnpm run -r --if-present build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "build": "turbo run build",
     "dev": "pnpm run -r --if-present --parallel dev"
   },
   "pnpm": {
@@ -13,5 +13,8 @@
         "@babel/*"
       ]
     }
+  },
+  "devDependencies": {
+    "turbo": "^1.4.6"
   }
 }

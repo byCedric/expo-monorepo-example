@@ -2,6 +2,10 @@
 apps/*/credentials.json
 packages/*/build
 
+# Turborepo
+apps/*/.turbo
+packages/*/.turbo
+
 # Expo
 .expo
 __generated__
