@@ -6,10 +6,12 @@
   "scripts": {
     "lint": "eslint --ext js,ts,tsx .",
     "dev": "expo start",
+    "build": "expo export --output-dir ./build --platform all",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "eas-build-pre-install": "npm install --global pnpm@7.x",
     "eas-build-post-install": "pnpm run -w build"
   },
   "dependencies": {
@@ -29,11 +31,15 @@
     "@types/react": "~18.0.0",
     "@types/react-dom": "~18.0.0",
     "@types/react-native": "~0.69.1",
-    "babel-preset-expo": "^9.2.0",
-    "typescript": "^4.8.3"
+    "babel-preset-expo": "^9.2.0"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config",
-    "ignorePatterns": ["node_modules", ".expo", ".expo-shared"]
+    "ignorePatterns": [
+      "node_modules",
+      "build",
+      ".expo",
+      ".expo-shared"
+    ]
   }
 }

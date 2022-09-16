@@ -1,6 +1,11 @@
 # Monorepo
 apps/*/credentials.json
+apps/*/build
 packages/*/build
+
+# Turborepo
+apps/*/.turbo
+packages/*/.turbo
 
 # Expo
 .expo

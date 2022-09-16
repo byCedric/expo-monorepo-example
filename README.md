@@ -17,11 +17,11 @@
     &ensp;&mdash;&ensp;
     <a href="https://github.com/byCedric/eas-monorepo-example#-workflows"><b>Workflows</b></a>
     &ensp;&mdash;&ensp;
+    <a href="https://github.com/byCedric/eas-monorepo-example#-why-is-it-fast"><b>Why is it fast?</b></a>
+    &ensp;&mdash;&ensp;
     <a href="https://github.com/byCedric/eas-monorepo-example#-how-to-use-it"><b>How to use it</b></a>
     &ensp;&mdash;&ensp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#%EF%B8%8F-caveats"><b>Caveats</b></a>
-    &ensp;&mdash;&ensp;
-    <a href="https://github.com/byCedric/eas-monorepo-example#-common-errors"><b>Common Errors</b></a>
+    <a href="https://github.com/byCedric/eas-monorepo-example#%EF%B8%8F-caveats"><b>Caveats & Issues</b></a>
   </p>
 </div>
 
@@ -52,14 +52,30 @@
 
 - [`setup-monorepo`](./.github/actions/setup-monorepo/action.yml) - Reusable composite workflow to setup the monorepo in GitHub Actions.
 
+## ⚡ Why is it fast?
+
+This repository uses both [pnpm](https://pnpm.io/) and [Turborepo](https://turborepo.org/) to speed things up, _by a lot_. With pnpm, we leverage the installation performance using the global store cache. Turborepo helps us to run certain tasks, and cache the result if we rerun tasks with the same input or code. In the workflows we cache the [pnpm store](./.github/actions/setup-monorepo/action.yml#L37) and [Turborepo cache](./.github/actions/setup-monorepo/action.yml#L50-L56) using GitHub Actions built-in cache, resulting in the best performance possible.
+
+### What about Metro?
+
+In **apps/mobile** we leverage the Metro cache to speed up building and publishing. We use Turborepo to restore or invalidate this cache, working around [potential environment variable issues](#using-environment-variables-in-react-native). To populate this Metro cache, the **apps/mobile** has a [`$ pnpm build`](./apps/mobile/package.json#L9) script that exports React Native bundles. The resulting Metro cache is then reused when [publishing previews](./.github/workflows/preview.yml#L26-L28).
+
 ## 🚀 How to use it
 
 You can use and modify this repository however you want. If you want to use EAS to build your app, you'll need to create an [Expo access token](https://expo.dev/accounts/[account]/settings/access-tokens) and set it as `EXPO_TOKEN` GitHub actions secret.
 
 To run the repository locally, run these two commands:
 
-- `$ pnpm` - This installs all required Node libraries using [pnpm](https://pnpm.io/)
-- `$ pnpm build` - To precompile the packages to publish them to NPM and/or use them in your apps.
+- `$ pnpm` - This installs all required Node libraries using [pnpm](https://pnpm.io/).
+- `$ pnpm dev` - Starts the development servers for all **apps**.
+
+### Commands
+
+Because this monorepo uses [Turborepo](https://turborepo.org/), you don't need to run additional commands to set things up. Whenever you run `$ pnpm dev`, it will build all **packages** if they aren't built yet. In this monorepo we use a few other commands or pipelines:
+
+- `$ pnpm lint` - Analyze the source code of all **apps** and **packages** using ESLint.
+- `$ pnpm test` - Run all tests for packages with Jest tests.
+- `$ pnpm build` - Build all **apps** and **packages** for production or to publish them on npm.
 
 ### Switching to yarn or npm
 
@@ -71,6 +87,12 @@ You can use yarn or npm with this monorepo as well. If you want to use one of th
 - Update the workflows to use yarn or npm instead.
 
 ## ⚠️ Caveats
+
+### Using environment variables in React Native
+
+Reusing Metro caches can be dangerous if you use Babel plugins like [transform-inline-environment-variables](https://babeljs.io/docs/en/babel-plugin-transform-inline-environment-variables/). When using Babel plugins to swap out environment variables for their actual value, you are creating a dependency on environment variables. Because Metro is unaware of dependencies on environment variables, Metro might reuse an incorrect cached environment variable.
+
+Since Turborepo handles the cache in this repository, we can leverage [caching based on environment variables](https://turborepo.org/docs/core-concepts/caching#alter-caching-based-on-environment-variables-and-files). This invalidates the Metro cache whenever certain environment variables are changed and avoid reusing incorrect cached code.
 
 ### Precompile packages
 
@@ -86,7 +108,7 @@ If you want to maintain the keystore or certificates yourself, you have to [conf
 
 > It's highly recommended to keep keystores and certificates out of your repository to avoid security issues.
 
-## ❌ Common Errors
+## ❌ Common issues
 
 _We are actively monitoring potential issues, and fix them_
 
