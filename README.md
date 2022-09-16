@@ -58,8 +58,16 @@ You can use and modify this repository however you want. If you want to use EAS 
 
 To run the repository locally, run these two commands:
 
-- `$ pnpm` - This installs all required Node libraries using [pnpm](https://pnpm.io/)
-- `$ pnpm build` - To precompile the packages to publish them to NPM and/or use them in your apps.
+- `$ pnpm` - This installs all required Node libraries using [pnpm](https://pnpm.io/).
+- `$ pnpm dev` - Starts the development servers for all **apps**.
+
+### Commands
+
+Because this monorepo uses [turborepo](https://turborepo.org/), you don't need to run additional commands to set things up. Whenever you run `$ pnpm dev`, it will build all **packages** if they aren't built yet. In this monorepo we use a few other commands or pipelines:
+
+- `$ pnpm lint` - Analyze the source code of all **apps** and **packages** using ESLint.
+- `$ pnpm test` - Run all tests for packages with Jest tests.
+- `$ pnpm build` - Build all packages for production or to publish them on npm.
 
 ### Switching to yarn or npm
 
