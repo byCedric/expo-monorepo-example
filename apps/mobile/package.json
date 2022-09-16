@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint --ext js,ts,tsx .",
     "dev": "expo start",
+    "build": "expo export --output-dir ./build --platform all",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",

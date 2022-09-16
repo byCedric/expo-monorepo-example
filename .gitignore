@@ -1,5 +1,6 @@
 # Monorepo
 apps/*/credentials.json
+apps/*/build
 packages/*/build
 
 # Turborepo
