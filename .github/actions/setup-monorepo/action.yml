@@ -25,7 +25,8 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: pnpm/action-setup@v2
+    - name: 🏗 Setup pnpm
+      uses: pnpm/action-setup@v2
       with:
         version: ${{ inputs.pnpm-version }}
 
@@ -34,6 +35,9 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         cache: pnpm
+        cache-dependency-path: |
+          pnpm-lock.yaml
+          node_modules/.cache/turbo
 
     - name: 🏗 Setup Expo
       uses: expo/expo-github-action@v7
@@ -44,4 +48,8 @@ runs:
 
     - name: 📦 Install dependencies
       run: pnpm install
+      shell: bash
+
+    - name: 👷 Build packages
+      run: pnpm run -w build
       shell: bash

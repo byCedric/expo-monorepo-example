@@ -24,9 +24,6 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 👷 Build packages
-        run: pnpm run -w build
-
       - name: 🚀 Build mobile
         working-directory: apps/mobile
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
