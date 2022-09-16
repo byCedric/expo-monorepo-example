@@ -1,6 +1,9 @@
 {
+  "cli": {
+    "promptToConfigurePushNotifications": false
+  },
   "build": {
-    "turbo-cache": {
+    "monorepo": {
       "cache": {
         "key": "turbo",
         "customPaths": [
@@ -9,14 +12,14 @@
       }
     },
     "development": {
-      "extends": "turbo-cache",
+      "extends": "monorepo",
       "distribution": "internal",
       "android": {
         "buildType": "apk"
       }
     },
     "production": {
-      "extends": "turbo-cache",
+      "extends": "monorepo",
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
