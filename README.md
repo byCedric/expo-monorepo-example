@@ -67,7 +67,7 @@ Because this monorepo uses [turborepo](https://turborepo.org/), you don't need t
 
 - `$ pnpm lint` - Analyze the source code of all **apps** and **packages** using ESLint.
 - `$ pnpm test` - Run all tests for packages with Jest tests.
-- `$ pnpm build` - Build all packages for production or to publish them on npm.
+- `$ pnpm build` - Build all **apps** and **packages** for production or to publish them on npm.
 
 ### Switching to yarn or npm
 
