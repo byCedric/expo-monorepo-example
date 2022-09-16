@@ -35,9 +35,6 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         cache: pnpm
-        cache-dependency-path: |
-          pnpm-lock.yaml
-          node_modules/.cache
 
     - name: 🏗 Setup Expo
       uses: expo/expo-github-action@v7
@@ -50,8 +47,10 @@ runs:
       run: pnpm install
       shell: bash
 
-    - name: 👷 Build packages
-      run: |
-        ls -la node_modules/.cache
-        ls -la node_modules/.cache/turbo
-      shell: bash
+    - name: ♻️ Restore cache
+      uses: actions/cache@v3
+      with:
+        path: node_modules/.cache/turbo
+        key: turbo-${{ runner.os }}-${{ github.job }}-${{ github.sha }}
+        restore-keys: |
+          turbo-${{ runner.os }}-${{ github.job }}
