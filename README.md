@@ -2,14 +2,14 @@
   <h1>Expo monorepo</h1>
   <p>A fast and enterprise-ready monorepo for cross-platform apps</p>
   <p>
-    <a href="https://github.com/byCedric/expo-monorepo-example/releases">
-      <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/preview?style=flat-square" alt="managed preview" />
+    <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/test.yml">
+      <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/test/main?label=tests&style=flat-square" alt="Test workflows" />
     </a>
-    <a href="https://github.com/byCedric/expo-monorepo-example/actions">
-      <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/standalone?style=flat-square" alt="latest standalone build" />
+    <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/preview.yml">
+      <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/preview?label=previews&style=flat-square" alt="Preview workflows" />
     </a>
-    <a href="https://github.com/byCedric/expo-monorepo-example/blob/main/LICENSE.md">
-      <img src="https://img.shields.io/github/license/byCedric/expo-monorepo-example?style=flat-square" alt="license" />
+    <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/build.yml">
+      <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/build/main?label=builds&style=flat-square" alt="Build workflows" />
     </a>
   </p>
   <p>
