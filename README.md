@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Expo monorepo</h1>
-  <p>A fast and enterprise-ready monorepo for cross-platform apps</p>
+  <p>Fast pnpm monorepo for cross-platform apps built with Expo and React</p>
   <p>
     <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/test.yml">
       <img src="https://img.shields.io/github/workflow/status/byCedric/expo-monorepo-example/test/main?label=tests&style=flat-square" alt="Test workflows" />
