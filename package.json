@@ -2,10 +2,10 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "build": "turbo run build",
-    "dev": "turbo run dev"
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "build": "turbo build",
+    "dev": "turbo dev"
   },
   "devDependencies": {
     "turbo": "^1.5.1",
