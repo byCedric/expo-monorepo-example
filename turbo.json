@@ -12,8 +12,7 @@
       "dependsOn": ["^build"],
       "outputs": [
         ".next/**",
-        "build/**",
-        "node_modules/.cache/metro/**"
+        "build/**"
       ]
     },
     "dev": {
