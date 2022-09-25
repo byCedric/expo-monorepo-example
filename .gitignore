@@ -4,8 +4,7 @@ apps/*/build
 packages/*/build
 
 # Turborepo
-apps/*/.turbo
-packages/*/.turbo
+.turbo
 
 # Expo
 .expo
