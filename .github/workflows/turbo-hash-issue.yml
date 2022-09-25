@@ -1,0 +1,50 @@
+name: turbo-hash-issue
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  packages:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 👷 Build packages
+        run: pnpm run -w build
+
+      - name: 🧪 Test turbo hashes
+        run: |
+          echo "::group::Dry run attempt #1"
+          pnpm run -w build --dry-run
+          echo "::endgroup::"
+          echo "::group::Dry run attempt #2"
+          pnpm run -w build --dry-run
+          echo "::endgroup::"
+          sleep 5
+          echo "::group::Dry run attempt #3"
+          pnpm run -w build --dry-run
+          echo "::endgroup::"
+          sleep 10
+          echo "::group::Dry run attempt #4"
+          pnpm run -w build --dry-run
+          echo "::endgroup::"
+          sleep 2
+          echo "::group::Dry run attempt #5"
+          pnpm run -w build --dry-run
+          echo "::endgroup::"
+
+
