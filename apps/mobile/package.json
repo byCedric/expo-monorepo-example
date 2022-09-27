@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "name": "@acme/app-mobile",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext js,ts,tsx .",
+    "dev": "expo start",
+    "build": "expo export --output-dir ./build --platform all",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eas-build-pre-install": "npm install --global pnpm@7.x",
+    "eas-build-post-install": "pnpm run -w build"
+  },
+  "dependencies": {
+    "@acme/feature-home": "*",
+    "expo": "^46.0.0",
+    "expo-dev-client": "~1.2.1",
+    "expo-status-bar": "~1.4.0",
+    "expo-updates": "~0.14.5",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-native": "0.69.5",
+    "react-native-web": "~0.18.7"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "*",
+    "@babel/core": "^7.18.6",
+    "@types/react": "~18.0.0",
+    "@types/react-dom": "~18.0.0",
+    "@types/react-native": "~0.69.1",
+    "babel-preset-expo": "^9.2.0"
+  },
+  "eslintConfig": {
+    "extends": "@acme/eslint-config",
+    "ignorePatterns": [
+      "node_modules",
+      "build",
+      ".expo",
+      ".expo-shared"
+    ]
+  }
+}
