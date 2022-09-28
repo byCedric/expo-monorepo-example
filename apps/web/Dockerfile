@@ -7,15 +7,13 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 FROM base as development
 COPY . ./
 COPY ./node_modules/.cache ./node_modules/.cache
-RUN pnpx rimraf ./apps/[!web]* \
-  && pnpm install \
-  && pnpm build --filter "{./apps/web}..."
+RUN pnpm install --frozen-lockfile && pnpm build --filter "{./apps/web}..."
 
 # Setup monorepo for production
 FROM base as production
 COPY --from=development /project ./
-RUN pnpx rimraf ./**/node_modules \
-  && pnpm install --frozen-lockfile --prod \
+RUN pnpx rimraf ./**/node_modules ./apps/[!web]* \
+  && pnpm install --prod \
   && rm -rf $(pnpm store path) \
   && rm -rf ./apps/web/.next/cache
 
