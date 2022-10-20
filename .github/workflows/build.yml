@@ -38,4 +38,4 @@ jobs:
 
       - name: 🚀 Build mobile
         working-directory: apps/mobile
-        run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
+        run: eas build --non-interactive --wait --resource-class m1-experimental --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
