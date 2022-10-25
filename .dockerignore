@@ -1,0 +1,10 @@
+.next
+.expo
+.turbo
+.git
+node_modules/**
+
+# Compiled JavaScript
+packages/**/build
+
+!node_modules/.cache
