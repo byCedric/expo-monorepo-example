@@ -34,7 +34,7 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 👷 Build packages for mobile
-        run: pnpm run -w build:mobile"
+        run: pnpm run -w build:mobile
 
       - name: 🚀 Build mobile
         working-directory: apps/mobile
