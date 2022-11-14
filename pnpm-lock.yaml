@@ -1,5 +1,10 @@
 lockfileVersion: 5.4
 
+patchedDependencies:
+  eslint-config-universe@11.1.1:
+    hash: tqrjnzwvaqnhtgenkwo5lurvsm
+    path: ./packages/eslint-config/patches/eslint-config-universe@11.1.1.patch
+
 importers:
 
   .:
@@ -35,7 +40,7 @@ importers:
       expo-updates: 0.15.4_expo@47.0.3
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
-      react-native: 0.70.5_react@18.1.0
+      react-native: 0.70.5_naleetjjl2tr2dal5iyxdlhv3y
       react-native-web: 0.18.9_ef5jwxihqo6n7gxfmzogljlgcm
     devDependencies:
       '@acme/eslint-config': link:../../packages/eslint-config
@@ -79,7 +84,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.42.1_jnohwm7eexgw7uduhweedcbnpe
       '@typescript-eslint/parser': 5.42.1_eslint@8.27.0
       eslint: 8.27.0
-      eslint-config-universe: 11.1.1_mbd4zptqpjbepwpyh2zbtslqey
+      eslint-config-universe: 11.1.1_tqrjnzwvaqnhtgenkwo5lurvsm_mbd4zptqpjbepwpyh2zbtslqey
       prettier: 2.7.1
 
   packages/feature-home:
@@ -4197,10 +4202,33 @@ packages:
       metro-runtime: 0.72.3
       readline: 1.3.0
     transitivePeerDependencies:
+      - '@babel/core'
       - bufferutil
       - encoding
       - supports-color
       - utf-8-validate
+    dev: true
+
+  /@react-native-community/cli-plugin-metro/9.2.1_@babel+core@7.20.2:
+    resolution: {integrity: sha512-byBGBH6jDfUvcHGFA45W/sDwMlliv7flJ8Ns9foCh3VsIeYYPoDjjK7SawE9cPqRdMAD4SY7EVwqJnOtRbwLiQ==}
+    dependencies:
+      '@react-native-community/cli-server-api': 9.2.1
+      '@react-native-community/cli-tools': 9.2.1
+      chalk: 4.1.2
+      metro: 0.72.3
+      metro-config: 0.72.3
+      metro-core: 0.72.3
+      metro-react-native-babel-transformer: 0.72.3_@babel+core@7.20.2
+      metro-resolver: 0.72.3
+      metro-runtime: 0.72.3
+      readline: 1.3.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - bufferutil
+      - encoding
+      - supports-color
+      - utf-8-validate
+    dev: false
 
   /@react-native-community/cli-server-api/9.2.1:
     resolution: {integrity: sha512-EI+9MUxEbWBQhWw2PkhejXfkcRqPl+58+whlXJvKHiiUd7oVbewFs0uLW0yZffUutt4FGx6Uh88JWEgwOzAdkw==}
@@ -4263,10 +4291,42 @@ packages:
       prompts: 2.4.2
       semver: 6.3.0
     transitivePeerDependencies:
+      - '@babel/core'
       - bufferutil
       - encoding
       - supports-color
       - utf-8-validate
+    dev: true
+
+  /@react-native-community/cli/9.2.1_@babel+core@7.20.2:
+    resolution: {integrity: sha512-feMYS5WXXKF4TSWnCXozHxtWq36smyhGaENXlkiRESfYZ1mnCUlPfOanNCAvNvBqdyh9d4o0HxhYKX1g9l6DCQ==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      '@react-native-community/cli-clean': 9.2.1
+      '@react-native-community/cli-config': 9.2.1
+      '@react-native-community/cli-debugger-ui': 9.0.0
+      '@react-native-community/cli-doctor': 9.3.0
+      '@react-native-community/cli-hermes': 9.3.1
+      '@react-native-community/cli-plugin-metro': 9.2.1_@babel+core@7.20.2
+      '@react-native-community/cli-server-api': 9.2.1
+      '@react-native-community/cli-tools': 9.2.1
+      '@react-native-community/cli-types': 9.1.0
+      chalk: 4.1.2
+      commander: 9.4.1
+      execa: 1.0.0
+      find-up: 4.1.0
+      fs-extra: 8.1.0
+      graceful-fs: 4.2.10
+      prompts: 2.4.2
+      semver: 6.3.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - bufferutil
+      - encoding
+      - supports-color
+      - utf-8-validate
+    dev: false
 
   /@react-native/assets/1.0.0:
     resolution: {integrity: sha512-KrwSpS1tKI70wuKl68DwJZYEvXktDHdZMG0k2AXD/rJVSlB23/X2CB2cutVR0HwNMJIal9HOUOBB2rVfa6UGtQ==}
@@ -5187,6 +5247,45 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  /babel-preset-fbjs/3.4.0:
+    resolution: {integrity: sha512-9ywCsCvo1ojrw0b+XYk7aFvTH6D9064t0RIL1rtMf3nsa02Xw41MS7sZw216Im35xj/UY0PDBQsa1brUDDF1Ow==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+    dependencies:
+      '@babel/plugin-proposal-class-properties': 7.18.6
+      '@babel/plugin-proposal-object-rest-spread': 7.18.9
+      '@babel/plugin-syntax-class-properties': 7.12.13
+      '@babel/plugin-syntax-flow': 7.18.6
+      '@babel/plugin-syntax-jsx': 7.18.6
+      '@babel/plugin-syntax-object-rest-spread': 7.8.3
+      '@babel/plugin-transform-arrow-functions': 7.18.6
+      '@babel/plugin-transform-block-scoped-functions': 7.18.6
+      '@babel/plugin-transform-block-scoping': 7.18.9
+      '@babel/plugin-transform-classes': 7.19.0
+      '@babel/plugin-transform-computed-properties': 7.18.9
+      '@babel/plugin-transform-destructuring': 7.18.13
+      '@babel/plugin-transform-flow-strip-types': 7.19.0
+      '@babel/plugin-transform-for-of': 7.18.8
+      '@babel/plugin-transform-function-name': 7.18.9
+      '@babel/plugin-transform-literals': 7.18.9
+      '@babel/plugin-transform-member-expression-literals': 7.18.6
+      '@babel/plugin-transform-modules-commonjs': 7.18.6
+      '@babel/plugin-transform-object-super': 7.18.6
+      '@babel/plugin-transform-parameters': 7.18.8
+      '@babel/plugin-transform-property-literals': 7.18.6
+      '@babel/plugin-transform-react-display-name': 7.18.6
+      '@babel/plugin-transform-react-jsx': 7.19.0
+      '@babel/plugin-transform-shorthand-properties': 7.18.6
+      '@babel/plugin-transform-spread': 7.19.0
+      '@babel/plugin-transform-template-literals': 7.18.9
+      babel-plugin-syntax-trailing-function-commas: 7.0.0-beta.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /babel-preset-fbjs/3.4.0_@babel+core@7.20.2:
     resolution: {integrity: sha512-9ywCsCvo1ojrw0b+XYk7aFvTH6D9064t0RIL1rtMf3nsa02Xw41MS7sZw216Im35xj/UY0PDBQsa1brUDDF1Ow==}
@@ -6211,7 +6310,7 @@ packages:
       eslint: 8.27.0
     dev: false
 
-  /eslint-config-universe/11.1.1_mbd4zptqpjbepwpyh2zbtslqey:
+  /eslint-config-universe/11.1.1_tqrjnzwvaqnhtgenkwo5lurvsm_mbd4zptqpjbepwpyh2zbtslqey:
     resolution: {integrity: sha512-42J+/xnwZWcKjpMQbpY1WfAPkiPeTbjIDCrtQ45VsG6+DnpPZMrvD8zrbhPZPSXHF0kTUq22Cp5hQgPqJThHww==}
     peerDependencies:
       eslint: '>=8.10'
@@ -6236,6 +6335,7 @@ packages:
       - supports-color
       - typescript
     dev: false
+    patched: true
 
   /eslint-import-resolver-node/0.3.6:
     resolution: {integrity: sha512-0En0w03NRVMn9Uiyn8YRPDKvWjxCWkslUEhGNTdGx15RvPJYQ+lbOlqrlNI2vEAs4pDYK4f/HN2TbDmk5TP0iw==}
@@ -9206,6 +9306,27 @@ packages:
 
   /metro-react-native-babel-transformer/0.72.3:
     resolution: {integrity: sha512-Ogst/M6ujYrl/+9mpEWqE3zF7l2mTuftDTy3L8wZYwX1pWUQWQpfU1aJBeWiLxt1XlIq+uriRjKzKoRoIK57EA==}
+    peerDependencies:
+      '@babel/core': '*'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+    dependencies:
+      '@babel/core': 7.20.2
+      babel-preset-fbjs: 3.4.0
+      hermes-parser: 0.8.0
+      metro-babel-transformer: 0.72.3
+      metro-react-native-babel-preset: 0.72.3
+      metro-source-map: 0.72.3
+      nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /metro-react-native-babel-transformer/0.72.3_@babel+core@7.20.2:
+    resolution: {integrity: sha512-Ogst/M6ujYrl/+9mpEWqE3zF7l2mTuftDTy3L8wZYwX1pWUQWQpfU1aJBeWiLxt1XlIq+uriRjKzKoRoIK57EA==}
+    peerDependencies:
+      '@babel/core': '*'
     peerDependenciesMeta:
       '@babel/core':
         optional: true
@@ -9219,6 +9340,7 @@ packages:
       nullthrows: 1.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /metro-resolver/0.72.3:
     resolution: {integrity: sha512-wu9zSMGdxpKmfECE7FtCdpfC+vrWGTdVr57lDA0piKhZV6VN6acZIvqQ1yZKtS2WfKsngncv5VbB8Y5eHRQP3w==}
@@ -10351,6 +10473,55 @@ packages:
       - encoding
     dev: false
 
+  /react-native/0.70.5_naleetjjl2tr2dal5iyxdlhv3y:
+    resolution: {integrity: sha512-5NZM80LC3L+TIgQX/09yiyy48S73wMgpIgN5cCv3XTMR394+KpDI3rBZGH4aIgWWuwijz31YYVF5504+9n2Zfw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    peerDependencies:
+      react: 18.1.0
+    dependencies:
+      '@jest/create-cache-key-function': 29.3.1
+      '@react-native-community/cli': 9.2.1_@babel+core@7.20.2
+      '@react-native-community/cli-platform-android': 9.2.1
+      '@react-native-community/cli-platform-ios': 9.2.1
+      '@react-native/assets': 1.0.0
+      '@react-native/normalize-color': 2.0.0
+      '@react-native/polyfills': 2.0.0
+      abort-controller: 3.0.0
+      anser: 1.4.10
+      base64-js: 1.5.1
+      event-target-shim: 5.0.1
+      invariant: 2.2.4
+      jsc-android: 250230.2.1
+      memoize-one: 5.2.1
+      metro-react-native-babel-transformer: 0.72.3_@babel+core@7.20.2
+      metro-runtime: 0.72.3
+      metro-source-map: 0.72.3
+      mkdirp: 0.5.6
+      nullthrows: 1.1.1
+      pretty-format: 26.6.2
+      promise: 8.2.0
+      react: 18.1.0
+      react-devtools-core: 4.24.0
+      react-native-codegen: 0.70.6
+      react-native-gradle-plugin: 0.70.3
+      react-refresh: 0.4.3
+      react-shallow-renderer: 16.15.0_react@18.1.0
+      regenerator-runtime: 0.13.9
+      scheduler: 0.22.0
+      stacktrace-parser: 0.1.10
+      use-sync-external-store: 1.2.0_react@18.1.0
+      whatwg-fetch: 3.6.2
+      ws: 6.2.2
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/preset-env'
+      - bufferutil
+      - encoding
+      - supports-color
+      - utf-8-validate
+    dev: false
+
   /react-native/0.70.5_react@18.1.0:
     resolution: {integrity: sha512-5NZM80LC3L+TIgQX/09yiyy48S73wMgpIgN5cCv3XTMR394+KpDI3rBZGH4aIgWWuwijz31YYVF5504+9n2Zfw==}
     engines: {node: '>=14'}
@@ -10392,11 +10563,13 @@ packages:
       whatwg-fetch: 3.6.2
       ws: 6.2.2
     transitivePeerDependencies:
+      - '@babel/core'
       - '@babel/preset-env'
       - bufferutil
       - encoding
       - supports-color
       - utf-8-validate
+    dev: true
 
   /react-refresh/0.4.3:
     resolution: {integrity: sha512-Hwln1VNuGl/6bVwnd0Xdn1e84gT/8T9aYNL+HAKDArLCS7LWjwr7StE30IEYbIkx0Vi3vs+coQxe+SQDbGbbpA==}
