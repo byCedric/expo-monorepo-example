@@ -4,6 +4,9 @@ patchedDependencies:
   eslint-config-universe@11.1.1:
     hash: tqrjnzwvaqnhtgenkwo5lurvsm
     path: ./packages/eslint-config/patches/eslint-config-universe@11.1.1.patch
+  react-native@0.70.5:
+    hash: vuofj7v3jok4ltnjsgshyytvmy
+    path: ./apps/mobile/patches/react-native@0.70.5.patch
 
 importers:
 
@@ -26,6 +29,7 @@ importers:
       babel-preset-expo: ~9.2.1
       expo: ^47.0.0
       expo-dev-client: ~2.0.0
+      expo-splash-screen: ~0.17.5
       expo-status-bar: ~1.4.2
       expo-updates: ~0.15.4
       react: 18.1.0
@@ -36,11 +40,12 @@ importers:
       '@acme/feature-home': link:../../packages/feature-home
       expo: 47.0.3_@babel+core@7.20.2
       expo-dev-client: 2.0.0_expo@47.0.3
+      expo-splash-screen: 0.17.5_expo@47.0.3
       expo-status-bar: 1.4.2
       expo-updates: 0.15.4_expo@47.0.3
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
-      react-native: 0.70.5_naleetjjl2tr2dal5iyxdlhv3y
+      react-native: 0.70.5_vuofj7v3jok4ltnjsgshyytvmy_naleetjjl2tr2dal5iyxdlhv3y
       react-native-web: 0.18.9_ef5jwxihqo6n7gxfmzogljlgcm
     devDependencies:
       '@acme/eslint-config': link:../../packages/eslint-config
@@ -116,7 +121,7 @@ importers:
       jest: 26.6.3
       jest-expo: 47.0.1_jest@26.6.3+react@18.1.0
       react: 18.1.0
-      react-native: 0.70.5_react@18.1.0
+      react-native: 0.70.5_vuofj7v3jok4ltnjsgshyytvmy_react@18.1.0
       react-native-builder-bob: 0.20.1
       react-test-renderer: 18.1.0_react@18.1.0
 
@@ -146,7 +151,7 @@ importers:
       jest: 26.6.3
       jest-expo: 47.0.1_jest@26.6.3+react@18.1.0
       react: 18.1.0
-      react-native: 0.70.5_react@18.1.0
+      react-native: 0.70.5_vuofj7v3jok4ltnjsgshyytvmy_react@18.1.0
       react-native-builder-bob: 0.20.1
       react-test-renderer: 18.1.0_react@18.1.0
 
@@ -3395,6 +3400,21 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@expo/configure-splash-screen/0.6.0:
+    resolution: {integrity: sha512-4DyPoNXJqx9bN4nEwF3HQreo//ECu7gDe1Xor3dnnzFm9P/VDxAKdbEhA0n+R6fgkNfT2onVHWijqvdpTS3Xew==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      color-string: 1.9.1
+      commander: 5.1.0
+      fs-extra: 9.1.0
+      glob: 7.2.3
+      lodash: 4.17.21
+      pngjs: 5.0.0
+      xcode: 3.0.1
+      xml-js: 1.6.11
+    dev: false
+
   /@expo/dev-server/0.1.123:
     resolution: {integrity: sha512-N6UVzzeemfX0AONUSWInvkAAbqon8hRXpyYE/nMPaC6TvAmgGY5ILZAGoXwlpxwY2VKNT0Lx4s/UJ53ytIaHbA==}
     dependencies:
@@ -3524,6 +3544,29 @@ packages:
       '@expo/json-file': 8.2.36
       debug: 4.3.4
       expo-modules-autolinking: 1.0.0
+      fs-extra: 9.1.0
+      resolve-from: 5.0.0
+      semver: 7.3.2
+      xml2js: 0.4.23
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: false
+
+  /@expo/prebuild-config/5.0.7:
+    resolution: {integrity: sha512-D+TBpJUHe4+oTGFPb4o0rrw/h1xxc6wF+abJnbDHUkhnaeiHkE2O3ByS7FdiZ2FT36t0OKqeSKG/xFwWT3m1Ew==}
+    peerDependencies:
+      expo-modules-autolinking: '>=0.8.1'
+    peerDependenciesMeta:
+      expo-modules-autolinking:
+        optional: true
+    dependencies:
+      '@expo/config': 7.0.3
+      '@expo/config-plugins': 5.0.4
+      '@expo/config-types': 47.0.0
+      '@expo/image-utils': 0.3.22
+      '@expo/json-file': 8.2.36
+      debug: 4.3.4
       fs-extra: 9.1.0
       resolve-from: 5.0.0
       semver: 7.3.2
@@ -4394,7 +4437,7 @@ packages:
       jest: 26.6.3
       pretty-format: 29.3.1
       react: 18.1.0
-      react-native: 0.70.5_react@18.1.0
+      react-native: 0.70.5_vuofj7v3jok4ltnjsgshyytvmy_react@18.1.0
       react-test-renderer: 18.1.0_react@18.1.0
     dev: true
 
@@ -5746,6 +5789,13 @@ packages:
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
+  /color-string/1.9.1:
+    resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}
+    dependencies:
+      color-name: 1.1.4
+      simple-swizzle: 0.2.2
+    dev: false
+
   /colorette/1.4.0:
     resolution: {integrity: sha512-Y2oEozpomLn7Q3HFP7dpww7AtMJplbM9lGZP6RDfHqmbeRjiwRg4n6VM6j4KLmRke85uWEI7JqF17f3pqdRA0g==}
 
@@ -5764,6 +5814,11 @@ packages:
   /commander/4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
+
+  /commander/5.1.0:
+    resolution: {integrity: sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==}
+    engines: {node: '>= 6'}
+    dev: false
 
   /commander/7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
@@ -7019,6 +7074,20 @@ packages:
       invariant: 2.2.4
     dev: false
 
+  /expo-splash-screen/0.17.5_expo@47.0.3:
+    resolution: {integrity: sha512-ejSO78hwHXz8T9u8kh8t4r6CR4h70iBvA65gX8GK+dYxZl6/IANPbIb2VnUpND9vqfW+JnkDw+ZFst+gDnkpcQ==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      '@expo/configure-splash-screen': 0.6.0
+      '@expo/prebuild-config': 5.0.7
+      expo: 47.0.3_@babel+core@7.20.2
+    transitivePeerDependencies:
+      - encoding
+      - expo-modules-autolinking
+      - supports-color
+    dev: false
+
   /expo-status-bar/1.4.2:
     resolution: {integrity: sha512-ZWjO6D4ARGYfAd3SWDD3STNudHDhyBZDZjhhseqoEmsf7bS9ykny8KKOhlzJW24qIQNPhkgdvHhaw9fQwMJy3Q==}
     dev: false
@@ -7835,6 +7904,10 @@ packages:
 
   /is-arrayish/0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
+
+  /is-arrayish/0.3.2:
+    resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
+    dev: false
 
   /is-bigint/1.0.4:
     resolution: {integrity: sha512-zB9CruMamjym81i2JZ3UMn54PKGsQzsJeo6xvN3HJJ4CAsQNB6iRutp2To77OfCNuoxspsIhzaPoO1zyCEhFOg==}
@@ -10187,6 +10260,11 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
+  /pngjs/5.0.0:
+    resolution: {integrity: sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw==}
+    engines: {node: '>=10.13.0'}
+    dev: false
+
   /posix-character-classes/0.1.1:
     resolution: {integrity: sha512-xTgYBc3fuo7Yt7JbiuFxSYGToMoz8fLoE6TC9Wx1P/u+LfeThMOAqmuyECnlBaaJb+u1m9hHiXUEtwW4OzfUJg==}
     engines: {node: '>=0.10.0'}
@@ -10473,7 +10551,7 @@ packages:
       - encoding
     dev: false
 
-  /react-native/0.70.5_naleetjjl2tr2dal5iyxdlhv3y:
+  /react-native/0.70.5_vuofj7v3jok4ltnjsgshyytvmy_naleetjjl2tr2dal5iyxdlhv3y:
     resolution: {integrity: sha512-5NZM80LC3L+TIgQX/09yiyy48S73wMgpIgN5cCv3XTMR394+KpDI3rBZGH4aIgWWuwijz31YYVF5504+9n2Zfw==}
     engines: {node: '>=14'}
     hasBin: true
@@ -10521,8 +10599,9 @@ packages:
       - supports-color
       - utf-8-validate
     dev: false
+    patched: true
 
-  /react-native/0.70.5_react@18.1.0:
+  /react-native/0.70.5_vuofj7v3jok4ltnjsgshyytvmy_react@18.1.0:
     resolution: {integrity: sha512-5NZM80LC3L+TIgQX/09yiyy48S73wMgpIgN5cCv3XTMR394+KpDI3rBZGH4aIgWWuwijz31YYVF5504+9n2Zfw==}
     engines: {node: '>=14'}
     hasBin: true
@@ -10570,6 +10649,7 @@ packages:
       - supports-color
       - utf-8-validate
     dev: true
+    patched: true
 
   /react-refresh/0.4.3:
     resolution: {integrity: sha512-Hwln1VNuGl/6bVwnd0Xdn1e84gT/8T9aYNL+HAKDArLCS7LWjwr7StE30IEYbIkx0Vi3vs+coQxe+SQDbGbbpA==}
@@ -11059,6 +11139,12 @@ packages:
       bplist-creator: 0.1.0
       bplist-parser: 0.3.1
       plist: 3.0.6
+
+  /simple-swizzle/0.2.2:
+    resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
+    dependencies:
+      is-arrayish: 0.3.2
+    dev: false
 
   /sisteransi/1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
@@ -12130,6 +12216,13 @@ packages:
     dependencies:
       simple-plist: 1.3.1
       uuid: 7.0.3
+
+  /xml-js/1.6.11:
+    resolution: {integrity: sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==}
+    hasBin: true
+    dependencies:
+      sax: 1.2.4
+    dev: false
 
   /xml-name-validator/3.0.0:
     resolution: {integrity: sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==}

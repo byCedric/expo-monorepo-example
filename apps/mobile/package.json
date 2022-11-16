@@ -7,9 +7,9 @@
     "lint": "eslint --ext js,ts,tsx .",
     "dev": "expo start",
     "build": "expo export --output-dir ./build --platform all",
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "eas-build-pre-install": "npm install --global pnpm@7.x",
     "eas-build-post-install": "pnpm run -w build:mobile"
@@ -23,7 +23,8 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
-    "react-native-web": "~0.18.7"
+    "react-native-web": "~0.18.7",
+    "expo-splash-screen": "~0.17.5"
   },
   "devDependencies": {
     "@acme/eslint-config": "*",
@@ -43,7 +44,9 @@
     ],
     "overrides": [
       {
-        "files": ["*.js"],
+        "files": [
+          "*.js"
+        ],
         "env": {
           "node": true
         }
