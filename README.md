@@ -39,7 +39,7 @@ You can use and modify this repository however you want. If you want to use EAS 
 
 To run the repository locally, run these two commands:
 
-- `$ pnpm` - This installs all required Node libraries using [pnpm](https://pnpm.io/).
+- `$ pnpm install` - This installs all required Node libraries using [pnpm](https://pnpm.io/).
 - `$ pnpm dev` - Starts the development servers for all **apps**.
 
 ### Commands
