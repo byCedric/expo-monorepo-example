@@ -129,7 +129,7 @@ If you want to maintain the keystore or certificates yourself, you have to [conf
 
 ### Codegen errors when building app
 
-Since Expo SDK 47, and therefore React Native 0.70.5, the codegen code is split out into a different module `react-native-codegen`. Unfortunately, the code which resolves the path to `react-native-codegen` [is not working in monorepo projects](https://github.com/facebook/react-native/issues/35429). You can find a patch for this issue in **apps/mobile/patches/react-native@0.70.5.patch**, added in commit [cffcb8b](https://github.com/byCedric/expo-monorepo-example/commit/cffcb8b19bfc9fdf284163fd53e7da85fb0b2acb).
+Since Expo SDK 47, and therefore React Native 0.70.5, the codegen code is split out into a different module `react-native-codegen`. Unfortunately, the code which resolves the path to `react-native-codegen` [is not working in monorepo projects](https://github.com/facebook/react-native/issues/35429). You can find a patch for this issue in **apps/mobile/patches**, added in commit [cffcb8b](https://github.com/byCedric/expo-monorepo-example/commit/cffcb8b19bfc9fdf284163fd53e7da85fb0b2acb).
 
 <div align="center">
   <br />
