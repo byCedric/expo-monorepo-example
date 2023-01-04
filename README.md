@@ -89,7 +89,7 @@ You can use yarn or npm with this monorepo as well. If you want to use one of th
 
 ### Packages
 
-- [`packages/eslint-config`](./packages/eslint) - Preconfigured ESLint configuration for each app or package.
+- [`packages/eslint-config`](./packages/eslint-config) - Preconfigured ESLint configuration for each app or package.
 - [`packages/feature-home`](./packages/feature-home) - Shared React Native domain-logic for apps, using both `ui` and `eslint-config` packages.
 - [`packages/ui`](./packages/ui) - Shared React Native UI components for apps, using the `eslint-config` package.
 
