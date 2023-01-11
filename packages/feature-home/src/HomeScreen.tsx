@@ -1,5 +1,5 @@
 import { Paragraph, Strong } from '@acme/ui';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
 
 type HomeScreenProps = ComponentProps<typeof Paragraph>;
 
