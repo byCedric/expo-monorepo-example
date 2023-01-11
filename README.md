@@ -57,16 +57,19 @@ To run the repository locally, run these two commands:
 
 ### Commands
 
-Because this monorepo uses [Turborepo](https://turborepo.org/), you don't need to run additional commands to set things up. Whenever you run `$ pnpm dev`, it will build all **packages** if they aren't built yet. In this monorepo we use a few other commands or pipelines:
+Because this monorepo uses [Turborepo](https://turborepo.org/), you don't need to run additional commands to set things up. Whenever you run `$ pnpm build`, it will build all **packages** if they aren't built yet. In this monorepo we use a few commands or pipelines:
 
+- `$ pnpm dev` - Build and watch all **apps** and **packages** for development.
 - `$ pnpm lint` - Analyze the source code of all **apps** and **packages** using ESLint.
 - `$ pnpm test` - Run all tests for packages with Jest tests.
 - `$ pnpm build` - Build all **apps** and **packages** for production or to publish them on npm.
 
-When deploying a single app to production, you only need to build a specific app with all dependencies. This monorepo uses a simple npm script convention of `build:<app-name>` to keep this process simple. Under the hood, it uses [Turborepo's workspace filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), defined as an npm script in the root [**package.json**](./package.json).
+When developing or deploying a single app, you might not need the development server for all apps. For example, if you need to make a fix in the mobile app, you don't need the web development server. Or when deploying a single app to production, you only need to build that single app with all dependencies. This monorepo uses a simple npm script convention of `dev:<app-name>` and `build:<app-name>` to keep this process simple. Under the hood, it uses [Turborepo's workspace filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), defined as an npm script in the root [**package.json**](./package.json).
 
-- `$ pnpm build:mobile` - Build **apps/mobile** and all **packages** used in mobile.
-- `$ pnpm build:web` - Build **apps/web** and all **packages** used in web.
+- `$ pnpm dev:mobile` - Build and watch **app/mobile** and all **packages** used in mobile, for development.
+- `$ pnpm dev:web` - Build and watch **app/web** and all **packages** used in web, for development.
+- `$ pnpm build:mobile` - Build **apps/mobile** and all **packages** used in mobile, for production deployments
+- `$ pnpm build:web` - Build **apps/web** and all **packages** used in web, for production deployments
 
 ### Switching to yarn or npm
 

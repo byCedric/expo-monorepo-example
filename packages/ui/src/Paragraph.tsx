@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 
 export const Paragraph = ({ children, style, ...props }: TextProps) => (
