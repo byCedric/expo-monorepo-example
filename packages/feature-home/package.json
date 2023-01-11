@@ -13,6 +13,7 @@
     "src"
   ],
   "scripts": {
+    "dev": "tsup --watch --silent",
     "lint": "eslint --ext js,ts,tsx .",
     "test": "jest",
     "build": "tsup --clean"

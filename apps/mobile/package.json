@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ext js,ts,tsx .",
     "dev": "expo start",
+    "lint": "eslint --ext js,ts,tsx .",
     "build": "expo export --output-dir ./build --platform all",
     "start": "expo start",
     "android": "expo start --android",
