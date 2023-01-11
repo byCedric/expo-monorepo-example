@@ -64,7 +64,9 @@ Because this monorepo uses [Turborepo](https://turborepo.org/), you don't need t
 - `$ pnpm test` - Run all tests for packages with Jest tests.
 - `$ pnpm build` - Build all **apps** and **packages** for production or to publish them on npm.
 
-When developing or deploying a single app, you might not need the development server for all apps. For example, if you need to make a fix in the mobile app, you don't need the web development server. Or when deploying a single app to production, you only need to build that single app with all dependencies. This monorepo uses a simple npm script convention of `dev:<app-name>` and `build:<app-name>` to keep this process simple. Under the hood, it uses [Turborepo's workspace filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), defined as an npm script in the root [**package.json**](./package.json).
+When developing or deploying a single app, you might not need the development server for all apps. For example, if you need to make a fix in the mobile app, you don't need the web development server. Or when deploying a single app to production, you only need to build that single app with all dependencies.
+
+This monorepo uses a simple npm script convention of `dev:<app-name>` and `build:<app-name>` to keep this process simple. Under the hood, it uses [Turborepo's workspace filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), defined as an npm script in the root [**package.json**](./package.json).
 
 - `$ pnpm dev:mobile` - Build and watch **app/mobile** and all **packages** used in mobile, for development.
 - `$ pnpm dev:web` - Build and watch **app/web** and all **packages** used in web, for development.
