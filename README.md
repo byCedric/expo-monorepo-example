@@ -40,11 +40,17 @@
 
 ## ⚡ Why is it fast?
 
-This repository uses both [pnpm](https://pnpm.io/) and [Turborepo](https://turborepo.org/) to speed things up, _by a lot_. With pnpm, we leverage the installation performance using the global store cache. Turborepo helps us to run certain tasks, and cache the result if we rerun tasks with the same input or code. In the workflows we cache the [pnpm store](./.github/actions/setup-monorepo/action.yml#L37) and [Turborepo cache](./.github/actions/setup-monorepo/action.yml#L50-L56) using GitHub Actions built-in cache, resulting in the best performance possible.
+This repository uses both [pnpm](https://pnpm.io/) and [Turborepo](https://turbo.build/repo) to speed things up, _by a lot_. With pnpm, we leverage the installation performance using the global store cache. Turborepo helps us to run certain tasks, and cache the result if we rerun tasks with the same input or code. In the workflows we cache the [pnpm store](./.github/actions/setup-monorepo/action.yml#L37) and [Turborepo cache](./.github/actions/setup-monorepo/action.yml#L50-L56) using GitHub Actions built-in cache, resulting in the best performance possible.
 
 ### What about Metro?
 
 In **apps/mobile** we leverage the Metro cache to speed up building and publishing. We use Turborepo to restore or invalidate this cache, working around [potential environment variable issues](#using-environment-variables-in-react-native). To populate this Metro cache, the **apps/mobile** has a [`$ pnpm build`](./apps/mobile/package.json#L9) script that exports React Native bundles. The resulting Metro cache is then reused when [publishing previews](./.github/workflows/preview.yml#L26-L28).
+
+## ℹ️ Should I use it?
+
+This repository demonstrates a working stack using [Expo](https://docs.expo.dev/) in a fast monorepo, while sharing most of the codebase with web. The primary goal of this repository is to showcase what is possible with Expo while keeping the code as "vanilla" as possible. Feel free to use this repository however you prefer, but when starting a project from scratch, consider a template with more assumptions. Those assumptions should help you develop your project faster than this repository can.
+
+- [`create-t3-turbo`](https://github.com/t3-oss/create-t3-turbo) → [Expo](https://docs.expo.dev/), [Next.js](https://nextjs.org/), [pnpm](https://pnpm.io/), [Turborepo](https://turbo.build/repo), [NextAuth.js](https://next-auth.js.org/), [Prisma](https://www.prisma.io/), and [tRPC](https://trpc.io/).
 
 ## 🚀 How to use it
 
@@ -57,7 +63,7 @@ To run the repository locally, run these two commands:
 
 ### Commands
 
-Because this monorepo uses [Turborepo](https://turborepo.org/), you don't need to run additional commands to set things up. Whenever you run `$ pnpm build`, it will build all **packages** if they aren't built yet. In this monorepo we use a few commands or pipelines:
+Because this monorepo uses [Turborepo](https://turbo.build/repo), you don't need to run additional commands to set things up. Whenever you run `$ pnpm build`, it will build all **packages** if they aren't built yet. In this monorepo we use a few commands or pipelines:
 
 - `$ pnpm dev` - Build and watch all **apps** and **packages** for development.
 - `$ pnpm lint` - Analyze the source code of all **apps** and **packages** using ESLint.
@@ -114,7 +120,7 @@ You can use yarn or npm with this monorepo as well. If you want to use one of th
 
 Reusing Metro caches can be dangerous if you use Babel plugins like [transform-inline-environment-variables](https://babeljs.io/docs/en/babel-plugin-transform-inline-environment-variables/). When using Babel plugins to swap out environment variables for their actual value, you are creating a dependency on environment variables. Because Metro is unaware of dependencies on environment variables, Metro might reuse an incorrect cached environment variable.
 
-Since Turborepo handles the cache in this repository, we can leverage [caching based on environment variables](https://turborepo.org/docs/core-concepts/caching#alter-caching-based-on-environment-variables-and-files). This invalidates the Metro cache whenever certain environment variables are changed and avoid reusing incorrect cached code.
+Since Turborepo handles the cache in this repository, we can leverage [caching based on environment variables](https://turbo.build/repo/docs/core-concepts/caching#altering-caching-based-on-environment-variables). This invalidates the Metro cache whenever certain environment variables are changed and avoid reusing incorrect cached code.
 
 ### pnpm workarounds
 
