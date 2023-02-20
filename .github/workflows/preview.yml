@@ -34,4 +34,5 @@ jobs:
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
         with:
+          working-directory: apps/mobile
           command: eas update --auto --branch=pr-${{ github.event.number }}
