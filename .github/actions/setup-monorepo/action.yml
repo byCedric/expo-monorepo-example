@@ -37,10 +37,9 @@ runs:
         cache: pnpm
 
     - name: 🏗 Setup Expo
-      uses: expo/expo-github-action@v7
+      uses: expo/expo-github-action@v8
       with:
         eas-version: ${{ inputs.eas-version }}
-        expo-version: ${{ inputs.expo-version }}
         token: ${{ inputs.expo-token }}
 
     - name: 📦 Install dependencies
