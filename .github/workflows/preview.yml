@@ -21,7 +21,7 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 👷 Build packages
-        run: pnpm run -w build
+        run: pnpm run -w build:mobile
 
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
