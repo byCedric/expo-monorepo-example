@@ -33,6 +33,12 @@ jobs:
 
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
+        id: preview
         with:
           working-directory: apps/mobile
           command: eas update --auto --branch=pr-${{ github.event.number }}
+
+      - name: 💬 Comment on commit
+        uses: peter-evans/commit-comment@v2
+        with:
+          body: ${{ steps.preview.outputs.comment }}
