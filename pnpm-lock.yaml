@@ -34,6 +34,7 @@ importers:
       react: 18.1.0
       react-dom: 18.1.0
       react-native: 0.70.5
+      react-native-share: ^8.1.0
       react-native-web: ~0.18.7
     dependencies:
       '@acme/feature-home': link:../../packages/feature-home
@@ -44,6 +45,7 @@ importers:
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
       react-native: 0.70.5_ptzybkyb4wqswozoqj7mlmrdfq_naleetjjl2tr2dal5iyxdlhv3y
+      react-native-share: 8.1.0
       react-native-web: 0.18.9_ef5jwxihqo6n7gxfmzogljlgcm
     devDependencies:
       '@acme/eslint-config': link:../../packages/eslint-config
@@ -10365,6 +10367,10 @@ packages:
 
   /react-native-gradle-plugin/0.70.3:
     resolution: {integrity: sha512-oOanj84fJEXUg9FoEAQomA8ISG+DVIrTZ3qF7m69VQUJyOGYyDZmPqKcjvRku4KXlEH6hWO9i4ACLzNBh8gC0A==}
+
+  /react-native-share/8.1.0:
+    resolution: {integrity: sha512-gME+6+FkQQ5/Ss4ulPjxwtgyZsF/YqBvG3qIVWN1urUhFFG2m2kycrNB0fPLLZy517/G6aDyUMioVZtPQArRHQ==}
+    dev: false
 
   /react-native-web/0.18.9_ef5jwxihqo6n7gxfmzogljlgcm:
     resolution: {integrity: sha512-BaV5Mpe7u9pN5vTRDW2g+MLh6PbPBJZpXRQM3Jr2cNv7hNa3sxCGh9T+NcW6wOFzf/+USrdrEPI1M9wNyr7vyA==}
