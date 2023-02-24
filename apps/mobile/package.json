@@ -16,22 +16,22 @@
   },
   "dependencies": {
     "@acme/feature-home": "*",
-    "expo": "^47.0.0",
-    "expo-dev-client": "~2.0.0",
-    "expo-status-bar": "~1.4.2",
-    "expo-updates": "~0.15.4",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-native": "0.70.5",
-    "react-native-web": "~0.18.7"
+    "expo": "^48.0.4",
+    "expo-dev-client": "~2.1.2",
+    "expo-status-bar": "~1.4.4",
+    "expo-updates": "~0.16.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.71.3",
+    "react-native-web": "~0.18.12"
   },
   "devDependencies": {
     "@acme/eslint-config": "*",
     "@babel/core": "^7.19.3",
-    "@types/react": "~18.0.25",
-    "@types/react-dom": "~18.0.8",
+    "@types/react": "~18.0.28",
+    "@types/react-dom": "~18.0.11",
     "@types/react-native": "~0.70.6",
-    "babel-preset-expo": "~9.2.1"
+    "babel-preset-expo": "~9.3.0"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config",
@@ -43,7 +43,9 @@
     ],
     "overrides": [
       {
-        "files": ["*.js"],
+        "files": [
+          "*.js"
+        ],
         "env": {
           "node": true
         }
