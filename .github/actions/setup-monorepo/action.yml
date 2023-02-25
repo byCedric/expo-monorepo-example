@@ -49,9 +49,9 @@ runs:
     - name: ♻️ Restore cache
       uses: actions/cache@v3
       with:
-        key: turbo-${{ runner.os }}-${{ github.job }}-${{ github.sha }}
+        key: turbo-${{ runner.os }}-${{ github.sha }}
         restore-keys: |
-          turbo-${{ runner.os }}-${{ github.job }}
+          turbo-${{ runner.os }}
         path: |
           node_modules/.cache/turbo
           apps/*/.turbo
