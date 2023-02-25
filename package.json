@@ -22,10 +22,6 @@
         "expo-modules-*",
         "typescript"
       ]
-    },
-    "patchedDependencies": {
-      "eslint-config-universe@11.1.1": "./packages/eslint-config/patches/eslint-config-universe@11.1.1.patch",
-      "react-native@0.70.5": "./apps/mobile/patches/react-native@0.70.5.patch"
     }
   },
   "prettier": {

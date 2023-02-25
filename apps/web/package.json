@@ -10,22 +10,26 @@
   },
   "dependencies": {
     "@acme/feature-home": "*",
-    "next": "12.3.0",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "react-native-web": "~0.18.7"
+    "next": "^13.2.1",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
+    "react-native-web": "~0.18.12"
   },
   "devDependencies": {
     "@acme/eslint-config": "*",
-    "babel-plugin-react-native-web": "^0.18.9",
-    "eslint": "7.32.0",
-    "eslint-config-next": "12.3.0"
+    "babel-plugin-react-native-web": "^0.18.12",
+    "eslint": "^8.34.0",
+    "eslint-config-next": "^13.2.1"
   },
   "eslintConfig": {
     "extends": [
       "@acme/eslint-config",
       "next"
     ],
-    "ignorePatterns": ["node_modules", ".next", "public"]
+    "ignorePatterns": [
+      "node_modules",
+      ".next",
+      "public"
+    ]
   }
 }

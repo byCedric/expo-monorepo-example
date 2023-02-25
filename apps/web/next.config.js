@@ -6,7 +6,7 @@ module.exports = {
     // Set the alias from `react-native` to `react-native-web`
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      'react-native$': 'react-native-web',
+      'react-native': 'react-native-web',
     };
 
     // Add custom `.web.{jsx?,tsx?}` extension resolver
