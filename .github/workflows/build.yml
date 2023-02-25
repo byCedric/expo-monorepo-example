@@ -36,6 +36,14 @@ jobs:
       - name: 👷 Build packages for mobile
         run: pnpm run -w build:mobile
 
+      # You can remove this step if you already configured this
+      # This project shouldn't be pre-configured with this ID, that's why its omitted
+      - name: 👷 Configure project
+        working-directory: apps/mobile
+        run: |
+          eas init --id d202a56f-0162-450d-af3b-a2d2e0678594 --force --non-interactive
+          echo $(jq '.expo.runtimeVersion.policy = "sdkVersion"' app.json) > app.json
+
       - name: 🚀 Build mobile
         working-directory: apps/mobile
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
