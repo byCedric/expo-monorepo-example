@@ -20,6 +20,10 @@ on:
         options:
           - development
           - production
+      submit:
+        description: Auto submit to the store? (production only)
+        type: boolean
+        required: false
 
 jobs:
   mobile:
@@ -45,5 +49,11 @@ jobs:
           echo $(jq '.expo.runtimeVersion.policy = "sdkVersion"' app.json) > app.json
 
       - name: 🚀 Build mobile
+        if: ${{ !github.event.inputs.submit || github.event.inputs.profile != 'production' }}
         working-directory: apps/mobile
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
+
+      - name: 🚀 Build & submit mobile
+        if: ${{ github.event.inputs.submit && github.event.inputs.profile != 'production' }}
+        working-directory: apps/mobile
+        run: eas build --non-interactive --wait --auto-submit --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
