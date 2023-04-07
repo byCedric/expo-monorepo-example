@@ -19,6 +19,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
+          node-version: 16.20.0
 
       - name: 👷 Build packages
         run: pnpm run -w build:mobile
