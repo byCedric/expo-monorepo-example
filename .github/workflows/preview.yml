@@ -30,6 +30,26 @@ jobs:
         run: |
           eas init --id d202a56f-0162-450d-af3b-a2d2e0678594 --force --non-interactive
           echo $(jq '.expo.runtimeVersion.policy = "sdkVersion"' app.json) > app.json
+          
+      - name: 🧪 Test eas channels:list
+        working-directory: apps/mobile
+        run: eas channel:list --json --non-interactive
+
+      - name: 🧪 Test full issue 1752
+        working-directory: apps/mobile
+        shell: bash
+        run: |
+          EXPO_DEBUG=true eas channel:list --json --non-interactive > channels.json
+          echo `EXPO_DEBUG=true eas channel:list --json --non-interactive > channels.json`
+          local channels=`jq '.currentPage[] .name' ./channels.json`
+          echo $channels
+          echo "Looking for $GITHUB_REF_NAME"
+          if printf '%s\0' "${channels[@]}" | grep -Fxqz -- '$GITHUB_REF_NAME'; then
+            eas channel:delete --non-interactive $GITHUB_REF_NAME
+            eas branch:delete --non-interactive $GITHUB_REF_NAME
+          else
+            echo "Preview channel not found"
+          fi
 
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
