@@ -79,8 +79,8 @@ importers:
         specifier: ~18.2.0
         version: 18.2.0(react@18.2.0)
       react-native-web:
-        specifier: ~0.18.12
-        version: 0.18.12(react-dom@18.2.0)(react@18.2.0)
+        specifier: ~0.19.6
+        version: 0.19.6(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@acme/eslint-config':
         specifier: '*'
@@ -120,7 +120,7 @@ importers:
         version: link:../ui
       react-native-web:
         specifier: '*'
-        version: 0.18.12(react-dom@18.2.0)(react@18.2.0)
+        version: 0.19.6(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@acme/eslint-config':
         specifier: '*'
@@ -166,7 +166,7 @@ importers:
     dependencies:
       react-native-web:
         specifier: '*'
-        version: 0.18.12(react-dom@18.2.0)(react@18.2.0)
+        version: 0.19.6(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@acme/eslint-config':
         specifier: '*'
