@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@acme/feature-home": "*",
-    "expo": "^48.0.4",
+    "expo": "^49.0.2",
     "expo-dev-client": "~2.1.2",
     "expo-status-bar": "~1.4.4",
     "expo-updates": "~0.16.3",
