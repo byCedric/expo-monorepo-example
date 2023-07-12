@@ -86,8 +86,8 @@ importers:
         specifier: '*'
         version: link:../../packages/eslint-config
       babel-plugin-react-native-web:
-        specifier: ^0.18.12
-        version: 0.18.12
+        specifier: ^0.19.6
+        version: 0.19.6
       eslint:
         specifier: ^8.34.0
         version: 8.34.0
@@ -3965,6 +3965,10 @@ packages:
 
   /babel-plugin-react-native-web@0.18.12:
     resolution: {integrity: sha512-4djr9G6fMdwQoD6LQ7hOKAm39+y12flWgovAqS1k5O8f42YQ3A1FFMyV5kKfetZuGhZO5BmNmOdRRZQ1TixtDw==}
+
+  /babel-plugin-react-native-web@0.19.6:
+    resolution: {integrity: sha512-kj8LGpki6d1oHdfMvLgiLYrQp89vNv02swTArSHp/2m1sdGWfdicFUJOPkisB/ZZ7oJjdGNSA7WJTBDebIjQRg==}
+    dev: true
 
   /babel-plugin-syntax-trailing-function-commas@7.0.0-beta.0:
     resolution: {integrity: sha512-Xj9XuRuz3nTSbaTXWv3itLOcxyF4oPD8douBBmj7U9BBC6nEBYfyOJYQMf/8PJAFotC62UY5dFfIGEPr7WswzQ==}

@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@acme/eslint-config": "*",
-    "babel-plugin-react-native-web": "^0.18.12",
+    "babel-plugin-react-native-web": "^0.19.6",
     "eslint": "^8.34.0",
     "eslint-config-next": "^13.2.1"
   },
