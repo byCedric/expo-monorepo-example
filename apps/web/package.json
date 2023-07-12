@@ -23,8 +23,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "@acme/eslint-config",
-      "next"
+      "@acme/eslint-config"
     ],
     "ignorePatterns": [
       "node_modules",
