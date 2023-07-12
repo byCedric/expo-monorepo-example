@@ -12,8 +12,8 @@
     "build:web": "turbo build --filter=\"...{./apps/web}\""
   },
   "devDependencies": {
-    "turbo": "^1.5.4",
-    "typescript": "^4.8.3"
+    "turbo": "^1.10.7",
+    "typescript": "^4.9.5"
   },
   "pnpm": {
     "peerDependencyRules": {

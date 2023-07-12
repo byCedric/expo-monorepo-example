@@ -6,7 +6,7 @@
     "monorepo": {
       "cache": {
         "key": "turbo",
-        "customPaths": [
+        "paths": [
           "../../node_modules/.cache/turbo"
         ]
       }
