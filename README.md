@@ -61,6 +61,8 @@ To run the repository locally, run these two commands:
 - `$ pnpm install` - This installs all required Node libraries using [pnpm](https://pnpm.io/).
 - `$ pnpm dev` - Starts the development servers for all **apps**.
 
+In Expo SDK 49+, you can switch between Expo Go and an expo-dev-client development build by pressing "s" after expo start.  This respository doesn't require the expo-dev-client, but because it is installed expo start defaults to it.  If you want to use the expo-dev-client with plugins, you must first build and install the development build on your device or simulator by runing `pnpm ios -d` or `pnpm android -d`.
+
 ### Commands
 
 Because this monorepo uses [Turborepo](https://turbo.build/repo), you don't need to run additional commands to set things up. Whenever you run `$ pnpm build`, it will build all **packages** if they aren't built yet. In this monorepo we use a few commands or pipelines:

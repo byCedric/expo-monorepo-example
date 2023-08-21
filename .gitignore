@@ -3,6 +3,8 @@ apps/*/credentials.json
 apps/*/build
 packages/*/build
 
+apps/*/dist
+
 # Turborepo
 .turbo
 
