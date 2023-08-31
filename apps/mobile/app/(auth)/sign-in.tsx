@@ -1,12 +1,11 @@
 import { Text, View } from 'react-native';
-
 import { useAuth } from '@acme/app-mobile/context/auth';
 
-export default function Index() {
-  const { signOut } = useAuth();
+export default function SignIn() {
+  const { signIn } = useAuth();
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text onPress={() => signOut()}>Sign Out</Text>
+      <Text onPress={() => signIn()}>Sign In</Text>
     </View>
   );
 }
