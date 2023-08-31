@@ -19,6 +19,8 @@
     "dev": {
       "cache": false,
       "persistent": true
-    }
+    },
+    "clean:modules": {},
+    "clean:apps": {}
   }
 }
