@@ -4,27 +4,6 @@
 </div>
 
 <p align="center">
-  <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/test.yml">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/github/actions/workflow/status/byCedric/expo-monorepo-example/test.yml?branch=main&style=flat-square&labelColor=49505A">
-      <img alt="Test workflows" src="https://img.shields.io/github/actions/workflow/status/byCedric/expo-monorepo-example/test.yml?branch=main&style=flat-square&labelColor=D1D5DA" />
-    </picture>
-  </a>
-  <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/preview.yml">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/github/actions/workflow/status/byCedric/expo-monorepo-example/preview.yml?style=flat-square&labelColor=49505A">
-      <img alt="Preview workflows" src="https://img.shields.io/github/actions/workflow/status/byCedric/expo-monorepo-example/preview.yml?style=flat-square&labelColor=D1D5DA" />
-    </picture>
-  </a>
-  <a href="https://github.com/byCedric/expo-monorepo-example/actions/workflows/build.yml">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/github/actions/workflow/status/byCedric/expo-monorepo-example/build.yml?branch=main&style=flat-square&labelColor=49505A">
-      <img alt="Build workflows" src="https://img.shields.io/github/actions/workflow/status/byCedric/expo-monorepo-example/build.yml?branch=main&style=flat-square&labelColor=D1D5DA" />
-    </picture>
-  </a>
-</p>
-
-<p align="center">
   <a href="https://github.com/byCedric/expo-monorepo-example#-why-is-it-fast"><b>Why is it fast?</b></a>
   &ensp;&mdash;&ensp;
   <a href="https://github.com/byCedric/expo-monorepo-example#-how-to-use-it"><b>How to use it</b></a>
