@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "expo-monorepo",
-    "slug": "expo-monorepo",
+    "slug": "expo-monorepo-example",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -30,6 +30,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c406e0fe-bb64-46b4-aef5-49c1e0925844"
+      }
+    },
+    "owner": "bycedrictest"
   }
 }
