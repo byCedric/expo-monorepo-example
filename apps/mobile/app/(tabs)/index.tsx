@@ -1,8 +1,8 @@
-import { vars } from "nativewind";
-import { Text, View } from "react-native";
+import { vars } from 'nativewind';
+import { Text, View } from 'react-native';
 
 const theme = vars({
-  "--theme-fg": "blue",
+  '--theme-fg': 'blue',
 });
 
 const App = () => {
@@ -14,9 +14,7 @@ const App = () => {
       <Text className="text-base font-bold active:scale-150 active:text-[--theme-fg] transition duration-[500ms]">
         Transitions
       </Text>
-      <Text className="text-[14px] font-bold animate-none active:animate-bounce">
-        Animations
-      </Text>
+      <Text className="text-[14px] font-bold animate-none active:animate-bounce">Animations</Text>
     </View>
   );
 };
