@@ -1,26 +1,26 @@
-// Learn more https://docs.expo.dev/guides/monorepos
-const { getDefaultConfig } = require('expo/metro-config');
-const { FileStore } = require('metro-cache');
-const path = require('path');
+const path = require("path");
+const { getDefaultConfig } = require("expo/metro-config");
 
+// 1. Enable CSS for Expo.
+const config = getDefaultConfig(__dirname, {
+  isCSSEnabled: true,
+});
+
+// This is not needed for NativeWind, it is configuration for Metro to understand monorepos
 const projectRoot = __dirname;
-const workspaceRoot = path.resolve(projectRoot, '../..');
-
-const config = getDefaultConfig(projectRoot);
-
-// #1 - Watch all files in the monorepo
+const workspaceRoot = path.resolve(projectRoot, "../..");
 config.watchFolders = [workspaceRoot];
-// #3 - Force resolving nested modules to the folders below
 config.resolver.disableHierarchicalLookup = true;
-// #2 - Try resolving with project modules first, then workspace modules
 config.resolver.nodeModulesPaths = [
-  path.resolve(projectRoot, 'node_modules'),
-  path.resolve(workspaceRoot, 'node_modules'),
+  path.resolve(projectRoot, "node_modules"),
+  path.resolve(workspaceRoot, "node_modules"),
 ];
 
-// Use turborepo to restore the cache when possible
-config.cacheStores = [
-  new FileStore({ root: path.join(projectRoot, 'node_modules', '.cache', 'metro') }),
-];
-
-module.exports = config;
+// 2. Enable NativeWind
+const { withNativeWind } = require("nativewind/metro");
+module.exports = withNativeWind(config, {
+  // 3. Set `input` to your CSS file with the Tailwind at-rules
+  input: "global.css",
+  // This is optional
+  projectRoot,
+});
