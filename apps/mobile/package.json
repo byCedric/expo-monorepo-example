@@ -15,13 +15,13 @@
   },
   "dependencies": {
     "@acme/feature-home": "*",
-    "expo": "50.0.0-canary-20231205-250b31f",
-    "expo-dev-client": "0.0.1-canary-20231205-250b31f",
-    "expo-status-bar": "0.0.1-canary-20231205-250b31f",
-    "expo-updates": "0.0.1-canary-20231205-250b31f",
+    "expo": "50.0.0-beta.0",
+    "expo-dev-client": "3.3.1",
+    "expo-status-bar": "1.11.0",
+    "expo-updates": "0.24.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.73.0-rc.8",
+    "react-native": "0.73.0",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "@babel/runtime": "^7.23.5",
     "@types/react": "~18.2.43",
     "@types/react-dom": "~18.0.11",
-    "babel-preset-expo": "~9.5.0"
+    "babel-preset-expo": "~10.0.0"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config",
