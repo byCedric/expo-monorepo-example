@@ -2,6 +2,7 @@ import '../global.css';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
+import { vars } from 'nativewind';
 import { memo, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
