@@ -14,6 +14,9 @@ jobs:
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
+        with:
+          # Checkout branch instead of automatic merge commit
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
