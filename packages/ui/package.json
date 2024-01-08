@@ -53,7 +53,8 @@
     ]
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": []
   },
   "tsup": {
     "entry": [
