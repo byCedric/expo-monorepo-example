@@ -2,6 +2,7 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
+    "start": "turbo start --filter=\"{./apps/mobile}...\"",
     "dev": "turbo dev",
     "dev:mobile": "turbo dev --filter=\"{./apps/mobile}...\"",
     "dev:web": "turbo dev --filter=\"{./apps/web}...\"",
