@@ -2,6 +2,7 @@
   "private": true,
   "name": "@acme/monorepo",
   "scripts": {
+    "start": "turbo start --filter=\"{./apps/mobile}...\"",
     "dev": "turbo dev",
     "dev:mobile": "turbo dev --filter=\"{./apps/mobile}...\"",
     "dev:web": "turbo dev --filter=\"{./apps/web}...\"",
@@ -9,11 +10,15 @@
     "test": "turbo test",
     "build": "turbo build",
     "build:mobile": "turbo build --filter=\"...{./apps/mobile}\"",
-    "build:web": "turbo build --filter=\"...{./apps/web}\""
+    "build:web": "turbo build --filter=\"...{./apps/web}\"",
+    "clean": "turbo clean:modules && turbo clean:apps && pnpm install",
+    "clean:modules": "rm -rf node_modules && rm -rf apps/*/node_modules && rm -rf packages/*/node_modules",
+    "clean:apps": "rm -rf apps/*/ios && rm -rf apps/*/android && rm -rf apps/*/.expo",
+    "clean:sim": "xcrun simctl erase all"
   },
   "devDependencies": {
     "turbo": "^1.10.7",
-    "typescript": "^4.9.5"
+    "typescript": "^5.1.3"
   },
   "pnpm": {
     "peerDependencyRules": {

@@ -9,7 +9,6 @@
       "inputs": ["**/*.{ts,tsx,js,jsx}"]
     },
     "build": {
-      "dependsOn": ["^build"],
       "outputs": [
         ".next/**",
         "build/**",
@@ -19,6 +18,12 @@
     "dev": {
       "cache": false,
       "persistent": true
-    }
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean:modules": {},
+    "clean:apps": {}
   }
 }
