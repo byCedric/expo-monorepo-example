@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@acme/feature-home": "workspace:*",
+    "@expo/metro-runtime": "^3.2.1",
     "expo": "^51.0.1",
     "expo-dev-client": "~4.0.12",
     "expo-status-bar": "~1.12.1",

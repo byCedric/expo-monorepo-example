@@ -20,6 +20,9 @@ importers:
       '@acme/feature-home':
         specifier: workspace:*
         version: link:../../packages/feature-home
+      '@expo/metro-runtime':
+        specifier: ^3.2.1
+        version: 3.2.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.20.2(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))
       expo:
         specifier: ^51.0.1
         version: 51.0.1(@babel/core@7.24.5)(@babel/preset-env@7.20.2(@babel/core@7.24.5))
@@ -1033,6 +1036,11 @@ packages:
 
   '@expo/metro-config@0.18.3':
     resolution: {integrity: sha512-E4iW+VT/xHPPv+t68dViOsW7egtGIr+sRElcym0iGpC4goLz9WBux/xGzWgxvgvvHEWa21uSZQPM0jWla0OZXg==}
+
+  '@expo/metro-runtime@3.2.1':
+    resolution: {integrity: sha512-L7xNo5SmK+rcuXDm/+VBBImpA7FZsVB+m/rNr3fNl5or+1+yrZe99ViF7LZ8DOoVqAqcb4aCAXvGrP2JNYo1/Q==}
+    peerDependencies:
+      react-native: '*'
 
   '@expo/osascript@2.0.33':
     resolution: {integrity: sha512-FQinlwHrTlJbntp8a7NAlCKedVXe06Va/0DSLXRO8lZVtgbEMrYYSUZWQNcOlNtc58c2elNph6z9dMOYwSo3JQ==}
@@ -7811,6 +7819,10 @@ snapshots:
       resolve-from: 5.0.0
     transitivePeerDependencies:
       - supports-color
+
+  '@expo/metro-runtime@3.2.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.20.2(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))':
+    dependencies:
+      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.20.2(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0)
 
   '@expo/osascript@2.0.33':
     dependencies:
