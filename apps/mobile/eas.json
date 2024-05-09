@@ -10,6 +10,9 @@
         "paths": [
           "../../node_modules/.cache/turbo"
         ]
+      },
+      "env": {
+        "EXPO_USE_FAST_RESOLVER": "true"
       }
     },
     "development": {
