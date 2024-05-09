@@ -65,7 +65,7 @@ You can use any package manager with Expo. If you want to use bun, yarn, or pnpm
 - Remove **.npmrc**, **pnpm-lock.yaml**, and **pnpm-workspace.yaml**.
 - Remove the `pnpm` property from the root **package.json** file.
 - Add the [`workspaces`](https://docs.npmjs.com/cli/v8/using-npm/workspaces) property to the root **package.json** file.
-- Update the workflows to use yarn or npm instead.
+- Update the workflows to use bun, yarn, or npm instead.
 
 > [!WARNING]
 > Unfortunately, npm does not support the [workspace protocol](https://yarnpkg.com/protocol/workspace). You also have to change the `"<package>": "workspace:*"` references to just `"<package>": "*"` for npm.
