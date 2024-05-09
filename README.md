@@ -58,14 +58,17 @@ This monorepo uses a simple npm script convention of `dev:<app-name>` and `build
 - `$ pnpm build:mobile` - Build **apps/mobile** and all **packages** used in mobile, for production deployments
 - `$ pnpm build:web` - Build **apps/web** and all **packages** used in web, for production deployments
 
-### Switching to yarn or npm
+### Switching to bun, yarn or npm
 
-You can use yarn or npm with this monorepo as well. If you want to use one of these package managers, instead of pnpm, all you have to do is:
+You can use any package manager with Expo. If you want to use bun, yarn, or pnpm, instead of pnpm, all you have to do is:
 
 - Remove **.npmrc**, **pnpm-lock.yaml**, and **pnpm-workspace.yaml**.
 - Remove the `pnpm` property from the root **package.json** file.
 - Add the [`workspaces`](https://docs.npmjs.com/cli/v8/using-npm/workspaces) property to the root **package.json** file.
 - Update the workflows to use yarn or npm instead.
+
+> [!WARNING]
+> Unfortunately, npm does not support the [workspace protocol](https://yarnpkg.com/protocol/workspace). You also have to change the `"<package>": "workspace:*"` references to just `"<package>": "*"` for npm.
 
 ## 📁 Structure
 
