@@ -13,11 +13,11 @@
     "lint": "eslint --ext js,ts,tsx ."
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.42.1",
-    "@typescript-eslint/parser": "^5.42.1",
-    "eslint": "^8.34.0",
-    "eslint-config-universe": "^11.2.0",
-    "prettier": "^2.7.1"
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.57.0",
+    "eslint-config-universe": "^12.1.0",
+    "prettier": "^3.2.5"
   },
   "eslintConfig": {
     "extends": "."
