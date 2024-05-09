@@ -14,7 +14,7 @@
     "eas-build-post-install": "pnpm run -w build:mobile"
   },
   "dependencies": {
-    "@acme/feature-home": "*",
+    "@acme/feature-home": "workspace:*",
     "expo": "^49.0.10",
     "expo-dev-client": "~2.4.8",
     "expo-status-bar": "~1.6.0",
@@ -25,7 +25,7 @@
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {
-    "@acme/eslint-config": "*",
+    "@acme/eslint-config": "workspace:*",
     "@babel/core": "^7.19.3",
     "@types/react": "~18.2.43",
     "@types/react-dom": "~18.0.11",
