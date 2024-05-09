@@ -4,11 +4,11 @@ description: Prepare and install everything for the monorepo
 inputs:
   node-version:
     description: Version of Node to use
-    default: 18.x
+    default: 22.x
 
   pnpm-version:
     description: Version of pnpm to use
-    default: 8.x
+    default: 9.x
 
   eas-version:
     description: Version of EAS CLI to use
@@ -22,12 +22,12 @@ runs:
   using: composite
   steps:
     - name: 🏗 Setup pnpm
-      uses: pnpm/action-setup@v2
+      uses: pnpm/action-setup@v4
       with:
         version: ${{ inputs.pnpm-version }}
 
     - name: 🏗 Setup Node
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
         cache: pnpm
@@ -43,7 +43,7 @@ runs:
       shell: bash
 
     - name: ♻️ Restore cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key: turbo-${{ runner.os }}-${{ github.sha }}
         restore-keys: |
