@@ -22,6 +22,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
+          node-version: 16.20.0
 
       - name: 👷 Build packages
         run: pnpm run -w build:mobile
@@ -33,6 +34,10 @@ jobs:
         run: |
           eas init --id d202a56f-0162-450d-af3b-a2d2e0678594 --force --non-interactive
           echo $(jq '.expo.runtimeVersion.policy = "sdkVersion"' app.json) > app.json
+      
+      - name: 🐛 Debug app manifest
+        working-directory: apps/mobile
+        run: cat app.json
 
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
