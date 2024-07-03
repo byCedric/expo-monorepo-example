@@ -23,7 +23,7 @@ This repository uses both [pnpm](https://pnpm.io/) and [Turborepo](https://turbo
 
 ### What about Metro?
 
-In **apps/mobile** we leverage the Metro cache to speed up building and publishing. We use Turborepo to restore or invalidate this cache, working around [potential environment variable issues](#using-environment-variables-in-react-native). To populate this Metro cache, the **apps/mobile** has a [`$ pnpm build`](./apps/mobile/package.json#L9) script that exports React Native bundles. The resulting Metro cache is then reused when [publishing previews](./.github/workflows/preview.yml#L26-L28).
+In **apps/mobile** we leverage the Metro cache to speed up building and publishing. We use Turborepo to restore or invalidate this cache. To populate this Metro cache, the **apps/mobile** has a [`$ pnpm build`](./apps/mobile/package.json#L9) script that exports React Native bundles. The resulting Metro cache is then reused when [publishing previews](./.github/workflows/preview.yml#L26-L28).
 
 ## ℹ️ Should I use it?
 
