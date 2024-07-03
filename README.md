@@ -104,6 +104,9 @@ Reusing Metro caches can be dangerous if you use Babel plugins like [transform-i
 
 Since Turborepo handles the cache in this repository, we can leverage [caching based on environment variables](https://turbo.build/repo/docs/core-concepts/caching#altering-caching-based-on-environment-variables). This invalidates the Metro cache whenever certain environment variables are changed and avoid reusing incorrect cached code.
 
+> [!TIP]
+> Expo now supports `.env` files out-of-the-box. This also means that Metro is now smart enough to invalidate the cache whenever these variables change. There is no need to do this manually anymore.
+
 ### pnpm workarounds
 
 In the current React Native ecosystem, there are a lot of implicit dependencies. These can be from the native code that is shipped within packages, or even implicit dependencies through installing a specific version of Expo or React Native. In the newer package managers like pnpm, you will run into issues due to these implicit dependencies. Besides that there are other issues like [Metro not following symlinks](https://github.com/facebook/metro/issues/1).
