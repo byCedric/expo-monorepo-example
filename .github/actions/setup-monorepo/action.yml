@@ -34,7 +34,7 @@ runs:
         token: ${{ inputs.expo-token }}
 
     - name: 📦 Install dependencies
-      run: pnpm install
+      run: npm install
       shell: bash
 
     - name: ♻️ Restore cache
