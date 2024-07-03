@@ -98,6 +98,21 @@ You can use any package manager with Expo. If you want to use bun, yarn, or pnpm
 
 ## ⚠️ Caveats
 
+### Installing multiple React Native versions
+
+React Native is a complex library, split over multiple different packages. Unfortunately, React Native only supports a single version per monorepo. When using multiple different versions, things might break in unexpected ways without proper error reporting.
+
+You can check if your monorepo is installing multiple versions of React Native with the `npm list` command, supported by all major package managers:
+
+```
+$ npm why react-native
+$ yarn why react-native
+$ bun install --yarn && yarn why react-native
+$ pnpm why --recursive react-native
+```
+
+If you are using multiple versions, try to update all **package.json** files, or use an [`overrides`](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#overrides)/[`resolutions`](https://classic.yarnpkg.com/lang/en/docs/selective-version-resolutions/) in the root **package.json** to force only one React Native version.
+
 ### Using environment variables in React Native
 
 Reusing Metro caches can be dangerous if you use Babel plugins like [transform-inline-environment-variables](https://babeljs.io/docs/en/babel-plugin-transform-inline-environment-variables/). When using Babel plugins to swap out environment variables for their actual value, you are creating a dependency on environment variables. Because Metro is unaware of dependencies on environment variables, Metro might reuse an incorrect cached environment variable.
