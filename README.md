@@ -104,10 +104,14 @@ React Native is a complex library, split over multiple different packages. Unfor
 
 You can check if your monorepo is installing multiple versions of React Native with the `npm list` command, supported by all major package managers:
 
-```
+```bash
 $ npm why react-native
 $ yarn why react-native
+
+# Bun doesn't have `bun why` (yet), but you can use `yarn why` instead
 $ bun install --yarn && yarn why react-native
+
+# pnpm needs `--recursive` to search in all workspaces within the monorepo
 $ pnpm why --recursive react-native
 ```
 
