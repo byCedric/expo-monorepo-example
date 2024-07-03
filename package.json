@@ -1,6 +1,10 @@
 {
   "private": true,
   "name": "@acme/monorepo",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "turbo dev",
     "dev:mobile": "turbo dev --filter=\"{./apps/mobile}...\"",
