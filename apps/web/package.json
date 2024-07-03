@@ -9,14 +9,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "@acme/feature-home": "workspace:*",
+    "@acme/feature-home": "1.0.0",
     "next": "^13.2.1",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
+    "@acme/eslint-config": "1.0.0",
     "babel-plugin-react-native-web": "^0.19.6",
     "eslint": "^8.34.0",
     "eslint-config-next": "^13.2.1"
