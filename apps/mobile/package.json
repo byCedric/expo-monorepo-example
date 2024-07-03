@@ -11,7 +11,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "eas-build-post-install": "pnpm run -w build:mobile"
+    "eas-build-post-install": "npm run -w build:mobile"
   },
   "dependencies": {
     "@acme/feature-home": "1.0.0",
