@@ -38,7 +38,7 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 👷 Build packages for mobile
-        run: pnpm run -w build:mobile
+        run: bun run build:mobile
 
       # You can remove this step if you already configured this
       # This project shouldn't be pre-configured with this ID, that's why its omitted

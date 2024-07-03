@@ -21,16 +21,15 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: 🏗 Setup pnpm
-      uses: pnpm/action-setup@v4
+    - name: 🏗 Setup Bun
+      uses: oven-sh/setup-bun@v1
       with:
-        version: ${{ inputs.pnpm-version }}
+        bun0version: 1.x
 
     - name: 🏗 Setup Node
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
-        cache: pnpm
 
     - name: 🏗 Setup Expo
       uses: expo/expo-github-action@v8
@@ -39,7 +38,7 @@ runs:
         token: ${{ inputs.expo-token }}
 
     - name: 📦 Install dependencies
-      run: pnpm install
+      run: bun install
       shell: bash
 
     - name: ♻️ Restore cache
