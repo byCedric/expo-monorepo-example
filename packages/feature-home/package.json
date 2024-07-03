@@ -19,10 +19,10 @@
     "build": "tsup --clean"
   },
   "dependencies": {
-    "@acme/ui": "workspace:*"
+    "@acme/ui": "1.0.0"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
+    "@acme/eslint-config": "1.0.0",
     "@testing-library/react-native": "^12.5.0",
     "@tsconfig/recommended": "^1.0.6",
     "@types/jest": "^29.5.12",

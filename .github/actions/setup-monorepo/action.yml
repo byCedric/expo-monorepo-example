@@ -21,16 +21,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: 🏗 Setup pnpm
-      uses: pnpm/action-setup@v4
-      with:
-        version: ${{ inputs.pnpm-version }}
-
     - name: 🏗 Setup Node
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
-        cache: pnpm
+        cache: yarn
 
     - name: 🏗 Setup Expo
       uses: expo/expo-github-action@v8
@@ -39,7 +34,7 @@ runs:
         token: ${{ inputs.expo-token }}
 
     - name: 📦 Install dependencies
-      run: pnpm install
+      run: yarn install
       shell: bash
 
     - name: ♻️ Restore cache
