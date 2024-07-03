@@ -24,7 +24,7 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 👷 Build packages
-        run: npm run -w build:mobile
+        run: npm run build:mobile
 
       # You can remove this step if you already configured this
       # This project shouldn't be pre-configured with this ID, that's why its omitted
