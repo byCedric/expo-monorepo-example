@@ -4,7 +4,7 @@ description: Prepare and install everything for the monorepo
 inputs:
   node-version:
     description: Version of Node to use
-    default: 22.x
+    default: 20.x
 
   pnpm-version:
     description: Version of pnpm to use
