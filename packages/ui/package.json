@@ -6,7 +6,7 @@
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
   "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "types": "./src/index.ts",
   "react-native": "./src/index.ts",
   "files": [
     "build",
