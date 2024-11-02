@@ -15,22 +15,22 @@
   },
   "dependencies": {
     "@acme/feature-home": "workspace:*",
-    "@expo/metro-runtime": "^3.2.1",
-    "expo": "^51.0.17",
-    "expo-dev-client": "~4.0.19",
-    "expo-status-bar": "~1.12.1",
-    "expo-updates": "~0.25.18",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-native": "0.74.2",
-    "react-native-web": "~0.19.11"
+    "@expo/metro-runtime": "4.0.0-preview.0",
+    "expo": "52.0.0-preview.18",
+    "expo-dev-client": "5.0.0-preview.6",
+    "expo-status-bar": "~2.0.0",
+    "expo-updates": "~0.26.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native": "0.76.1",
+    "react-native-web": "~0.19.13"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
-    "@babel/core": "^7.24.5",
-    "@types/react": "~18.2.79",
-    "@types/react-dom": "~18.2.25",
-    "babel-preset-expo": "~11.0.11"
+    "@babel/core": "^7.26.0",
+    "@types/react": "~18.3.12",
+    "@types/react-dom": "~18.3.1",
+    "babel-preset-expo": "12.0.0-preview.4"
   },
   "eslintConfig": {
     "extends": "@acme/eslint-config",
