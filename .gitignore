@@ -18,7 +18,8 @@ web-build
 node_modules
 npm-debug.log
 yarn-error.log
-package-lock.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
 
 # Ruby
 .direnv
