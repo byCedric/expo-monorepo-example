@@ -16,6 +16,7 @@
   "dependencies": {
     "@acme/feature-home": "workspace:*",
     "@expo/metro-runtime": "^3.2.1",
+    "@notifee/react-native": "^9.1.2",
     "expo": "^51.0.17",
     "expo-dev-client": "~4.0.19",
     "expo-status-bar": "~1.12.1",
