@@ -154,6 +154,6 @@ _No ongoing issues, we are actively monitoring and fixing potential issues_
 
 <div align="center">
   <br />
-  with&nbsp;:heart:&nbsp;&nbsp;<strong>byCedric</strong>
+  with&nbsp;❤️&nbsp;&nbsp;<strong>byCedric</strong>
   <br />
 </div>
