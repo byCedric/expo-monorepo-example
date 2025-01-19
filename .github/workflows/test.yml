@@ -17,8 +17,6 @@ env:
 jobs:
   packages:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v4
