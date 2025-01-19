@@ -23,7 +23,7 @@ This repository uses both [pnpm](https://pnpm.io/) and [Turborepo](https://turbo
 
 ### What about Metro?
 
-In **apps/example** we leverage the Metro cache to speed up building and publishing. We use Turborepo to restore or invalidate this cache. To populate this Metro cache, the **apps/example** has a [`$ pnpm build`](./apps/example/package.json#L9) script that exports React Native bundles. The resulting Metro cache is then reused when [publishing previews](./.github/workflows/preview.yml#L26-L28).
+In **apps/example** we leverage the Metro cache to speed up building and publishing. We use Turborepo to restore or invalidate this cache. To populate this Metro cache, the **apps/example** has a [`$ pnpm build`](./apps/example/package.json#L9) script that exports React Native bundles. The resulting Metro cache is then reused when [publishing previews](./.github/workflows/preview.yml#L26-L27) or [deploying the app](./.github/workflows/deploy.yml) with [EAS Hosting](https://docs.expo.dev/eas/hosting/introduction/).
 
 ## ℹ️ Should I use it?
 
@@ -126,24 +126,21 @@ Since Turborepo handles the cache in this repository, we can leverage [caching b
 
 ### pnpm workarounds
 
-In the current React Native ecosystem, there are a lot of implicit dependencies. These can be from the native code that is shipped within packages, or even implicit dependencies through installing a specific version of Expo or React Native. In the newer package managers like pnpm, you will run into issues due to these implicit dependencies. Besides that there are other issues like [Metro not following symlinks](https://github.com/facebook/metro/issues/1).
+In the current React Native ecosystem, there are a lot of implicit dependencies. These can be from the native code that is shipped within packages, or even implicit dependencies through installing a specific version of Expo or React Native. In the newer package managers like pnpm, you will run into issues due to these implicit dependencies.
 
-To workaround these issues, we have to change some config:
+To workaround these issues, we changed the following:
 
-1. Let pnpm generate a flat **node_modules** folder, without symlinks. You can do that by creating a root [**.npmrc**](./.npmrc) file containing ([`node-linker=hoisted`](https://pnpm.io/npmrc#node-linker)). This works around two things; no Metro symlink support, and having a simple way to determine where the modules are installed (see point 3).
+1. Let pnpm generate a flat **node_modules** folder, without fully isolating all modules. You can do that by creating a root [**.npmrc**](./.npmrc) file containing ([`node-linker=hoisted`](https://pnpm.io/npmrc#node-linker)). This works around the issue where Expo and React Native doesn't always have correct dependency chains towards consumed libraries. Expo is actively working on removing the last few remaining issues to fully enable isolated modules, see the [internal dependency validation check](https://github.com/expo/expo/blob/main/tools/src/check-packages/checkDependenciesAsync.ts#L28).
 
-2. Either disable [`strict-peer-dependencies`](https://pnpm.io/npmrc#strict-peer-dependencies) or add [`peerDependencyRules.ignoreMissing`](./package.json#L14-L22) rules in the **package.json**. This disables some of the expected implicit peer dependencies issues. Without these changes, pnpm will fail on install asking you to install various peer dependencies.
-
-3. Update the **metro.config.js** configuration for usage in monorepos. Full explanation per configuration option can be found in the [Expo docs](https://docs.expo.dev/guides/monorepos/#modify-the-metro-config). The only addition in this repository is the [`config.cacheStores`](./apps/example/metro.config.js#L22-L24). This change moves the Metro cache to a place which is accessible by Turborepo, our main cache handler (see [Why is it fast?](#-why-is-it-fast)).
-
+2. Customize the **metro.config.js** configuration for usage in this monorepo. Full explanation per configuration option can be found in the [**metro.config.js**](./apps/example/metro.config.js) itself. The only addition in this repository is the [`config.cacheStores`](./apps/example/metro.config.js#L22-L25). This change moves the Metro cache to a place which is accessible by Turborepo, our main cache handler (see [Why is it fast?](#-why-is-it-fast)).
 
 ### Precompile packages
 
-EAS only sends the files which are committed to the repository. That means [the `packages/*/build` folders](.gitignore#L3) need to be generated before building our apps. To tell EAS how to compile our packages, we can [use the `postinstall` hook](https://docs.expo.dev/build-reference/how-tos/#how-to-set-up-eas-build-with).
+EAS only sends the files which are committed to the repository. That means [the `packages/*/build` folders](.gitignore#L3) need to be generated before building our apps. To tell EAS how to compile our packages, we can [use the `postinstall` hook](https://docs.expo.dev/build-reference/build-with-monorepos/).
 
 ### Running EAS from apps directories
 
-As of writing, the `eas build` command needs to be executed from the package folder itself. EAS will still create a tarball with all files from your monorepo, but runs the build commands from this local folder. You can see this happening in the [build workflow](./.github/workflows/build.yml#L32).
+As of writing, the `eas build` or `eas deploy` commands need to be executed from the package folder itself. EAS will still create a tarball with all files from your monorepo, but runs the build commands from this local folder. You can see this happening in the [build workflow](./.github/workflows/build.yml#L32).
 
 ### Using local credentials in CI
 

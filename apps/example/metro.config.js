@@ -4,7 +4,7 @@ const { FileStore } = require('metro-cache');
 const path = require('path');
 
 // Create the default Expo config for Metro
-// This includes the automatic monorepo configuration
+// This includes the automatic monorepo configuration for workspaces
 // See: https://docs.expo.dev/guides/monorepos/#automatic-configuration
 const config = getDefaultConfig(__dirname);
 
