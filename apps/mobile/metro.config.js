@@ -3,23 +3,13 @@ const { getDefaultConfig } = require('expo/metro-config');
 const { FileStore } = require('metro-cache');
 const path = require('path');
 
-const projectRoot = __dirname;
-const workspaceRoot = path.resolve(projectRoot, '../..');
+// Generate the default Metro config for this project
+const config = getDefaultConfig(__dirname);
 
-const config = getDefaultConfig(projectRoot);
-
-// Since we are using pnpm, we have to setup the monorepo manually for Metro
-// #1 - Watch all files in the monorepo
-config.watchFolders = [workspaceRoot];
-// #2 - Try resolving with project modules first, then workspace modules
-config.resolver.nodeModulesPaths = [
-  path.resolve(projectRoot, 'node_modules'),
-  path.resolve(workspaceRoot, 'node_modules'),
-];
-
-// Use turborepo to restore the cache when possible
+// Use turborepo to restore the cache when possible, using the community standard `node_modules/.cache` folder
+// Moving this folder within the project allows for simple cache management in CI, and is easy to reset
 config.cacheStores = [
-  new FileStore({ root: path.join(projectRoot, 'node_modules', '.cache', 'metro') }),
+  new FileStore({ root: path.join(__dirname, 'node_modules', '.cache', 'metro') }),
 ];
 
 module.exports = config;
