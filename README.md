@@ -54,9 +54,7 @@ When developing or deploying a single app, you might not need the development se
 This monorepo uses a simple npm script convention of `dev:<app-name>` and `build:<app-name>` to keep this process simple. Under the hood, it uses [Turborepo's workspace filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), defined as an npm script in the root [**package.json**](./package.json).
 
 - `$ pnpm dev:mobile` - Build and watch **app/mobile** and all **packages** used in mobile, for development.
-- `$ pnpm dev:web` - Build and watch **app/web** and all **packages** used in web, for development.
 - `$ pnpm build:mobile` - Build **apps/mobile** and all **packages** used in mobile, for production deployments
-- `$ pnpm build:web` - Build **apps/web** and all **packages** used in web, for production deployments
 
 ### Switching to bun, yarn or npm
 
@@ -78,7 +76,6 @@ You can use any package manager with Expo. If you want to use bun, yarn, or pnpm
 ### Apps
 
 - [`apps/mobile`](./apps/mobile) - Expo app using `eslint-config` and `feature-home` packages.
-- [`apps/web`](./apps/web) - Next.js app using `eslint-config` and `feature-home` packages.
 
 ### Packages
 
