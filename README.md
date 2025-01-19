@@ -119,10 +119,10 @@ If you are using multiple versions, try to update all **package.json** files, or
 
 Reusing Metro caches can be dangerous if you use Babel plugins like [transform-inline-environment-variables](https://babeljs.io/docs/en/babel-plugin-transform-inline-environment-variables/). When using Babel plugins to swap out environment variables for their actual value, you are creating a dependency on environment variables. Because Metro is unaware of dependencies on environment variables, Metro might reuse an incorrect cached environment variable.
 
-Since Turborepo handles the cache in this repository, we can leverage [caching based on environment variables](https://turbo.build/repo/docs/core-concepts/caching#altering-caching-based-on-environment-variables). This invalidates the Metro cache whenever certain environment variables are changed and avoid reusing incorrect cached code.
+Since Turborepo handles the cache in this repository, you could leverage [caching based on environment variables](https://turbo.build/repo/docs/core-concepts/caching#altering-caching-based-on-environment-variables). This invalidates the Metro cache whenever certain environment variables are changed and avoid reusing incorrect cached code.
 
 > [!TIP]
-> Expo now supports `.env` files out-of-the-box. This also means that Metro is now smart enough to invalidate the cache whenever these variables change. There is no need to do this manually anymore.
+> In this repository we rely on [Expo's built-in environment variables support](https://docs.expo.dev/guides/environment-variables/) to avoid Babel caching related issues with Metro.
 
 ### pnpm workarounds
 
