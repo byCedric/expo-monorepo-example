@@ -32,6 +32,8 @@ jobs:
 
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: ✅ Build apps/example
         run: pnpm run -w build:example
