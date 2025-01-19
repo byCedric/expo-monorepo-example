@@ -86,6 +86,7 @@ You can use any package manager with Expo. If you want to use bun, yarn, or pnpm
 ## 👷 Workflows
 
 - [`build`](./.github/workflows/build.yml) - Starts the EAS builds for **apps/example** using the given profile.
+- [`deploy`](./.github/workflows/deploy.yml) - Deploys apps to a preview URL or production URL using [EAS Hosting](https://docs.expo.dev/eas/hosting/introduction/).
 - [`preview`](./.github/workflows/preview.yml) - Publishes apps to a PR-specific release channel and adds a QR code to that PR.
 - [`test`](./.github/workflows/test.yml) - Ensures that the apps and packages are healthy on multiple OSs.
 

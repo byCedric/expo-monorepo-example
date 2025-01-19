@@ -1,0 +1,57 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Deploy as preview or production
+        type: choice
+        required: true
+        default: preview
+        options:
+          - preview
+          - production
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  EXPO_USE_FAST_RESOLVER: true # Use the faster Metro resolver in SDK 51
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: ✅ Build apps/example
+        run: pnpm run -w build:example
+
+      - name: 🌐 Export apps/example for web
+        working-directory: apps/example
+        run: pnpm expo export --platform web --output-dir ./build
+
+      # You can remove this step if you already configured this
+      # This project shouldn't be pre-configured with this ID, that's why its omitted
+      - name: 👷 Configure project
+        working-directory: apps/example
+        run: eas init --id d202a56f-0162-450d-af3b-a2d2e0678594 --force --non-interactive
+
+      - name: 🚀 Deploy apps/example preview
+        if: ${{ github.event_name == 'pull_request' || github.event.inputs.target == 'preview' }}
+        working-directory: apps/example
+        run: eas deploy --export-dir ./build
+
+      - name: 🚀 Deploy apps/example production
+        if: ${{ (github.event_name == 'push' && github.ref_name == 'main') || github.event.inputs.target == 'production' }}
+        working-directory: apps/example
+        run: eas deploy --export-dir ./build --production
