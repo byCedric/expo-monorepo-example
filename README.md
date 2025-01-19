@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Expo monorepo</h1>
-  <p>Fast pnpm monorepo for cross-platform apps built with Expo and React</p>
+  <p>Fast pnpm monorepo for cross-platform apps built with Expo</p>
 </div>
 
 <p align="center">
@@ -23,7 +23,7 @@ This repository uses both [pnpm](https://pnpm.io/) and [Turborepo](https://turbo
 
 ### What about Metro?
 
-In **apps/mobile** we leverage the Metro cache to speed up building and publishing. We use Turborepo to restore or invalidate this cache. To populate this Metro cache, the **apps/mobile** has a [`$ pnpm build`](./apps/mobile/package.json#L9) script that exports React Native bundles. The resulting Metro cache is then reused when [publishing previews](./.github/workflows/preview.yml#L26-L28).
+In **apps/example** we leverage the Metro cache to speed up building and publishing. We use Turborepo to restore or invalidate this cache. To populate this Metro cache, the **apps/example** has a [`$ pnpm build`](./apps/example/package.json#L9) script that exports React Native bundles. The resulting Metro cache is then reused when [publishing previews](./.github/workflows/preview.yml#L26-L28).
 
 ## ℹ️ Should I use it?
 
@@ -49,12 +49,12 @@ Because this monorepo uses [Turborepo](https://turbo.build/repo), you don't need
 - `$ pnpm test` - Run all tests for packages with Jest tests.
 - `$ pnpm build` - Build all **apps** and **packages** for production or to publish them on npm.
 
-When developing or deploying a single app, you might not need the development server for all apps. For example, if you need to make a fix in the mobile app, you don't need the web development server. Or when deploying a single app to production, you only need to build that single app with all dependencies.
+When developing or deploying a single app, you might not need the development server for all apps. For example, if you need to make a fix in the example app, you don't need the dev server for all other apps. Or when deploying a single app to production, you only need to build that single app with all dependencies only used in this app.
 
 This monorepo uses a simple npm script convention of `dev:<app-name>` and `build:<app-name>` to keep this process simple. Under the hood, it uses [Turborepo's workspace filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), defined as an npm script in the root [**package.json**](./package.json).
 
-- `$ pnpm dev:mobile` - Build and watch **app/mobile** and all **packages** used in mobile, for development.
-- `$ pnpm build:mobile` - Build **apps/mobile** and all **packages** used in mobile, for production deployments
+- `$ pnpm dev:example` - Build and watch **app/example** and all **packages** used in example, for development.
+- `$ pnpm build:example` - Build **apps/example** and all **packages** used in example, for production deployments
 
 ### Switching to bun, yarn or npm
 
@@ -75,7 +75,7 @@ You can use any package manager with Expo. If you want to use bun, yarn, or pnpm
 
 ### Apps
 
-- [`apps/mobile`](./apps/mobile) - Expo app using `eslint-config` and `feature-home` packages.
+- [`apps/example`](./apps/example) - Expo app using `eslint-config` and `feature-home` packages.
 
 ### Packages
 
@@ -85,7 +85,7 @@ You can use any package manager with Expo. If you want to use bun, yarn, or pnpm
 
 ## 👷 Workflows
 
-- [`build`](./.github/workflows/build.yml) - Starts the EAS builds for **apps/mobile** using the given profile.
+- [`build`](./.github/workflows/build.yml) - Starts the EAS builds for **apps/example** using the given profile.
 - [`preview`](./.github/workflows/preview.yml) - Publishes apps to a PR-specific release channel and adds a QR code to that PR.
 - [`test`](./.github/workflows/test.yml) - Ensures that the apps and packages are healthy on multiple OSs.
 
@@ -133,7 +133,7 @@ To workaround these issues, we have to change some config:
 
 2. Either disable [`strict-peer-dependencies`](https://pnpm.io/npmrc#strict-peer-dependencies) or add [`peerDependencyRules.ignoreMissing`](./package.json#L14-L22) rules in the **package.json**. This disables some of the expected implicit peer dependencies issues. Without these changes, pnpm will fail on install asking you to install various peer dependencies.
 
-3. Update the **metro.config.js** configuration for usage in monorepos. Full explanation per configuration option can be found in the [Expo docs](https://docs.expo.dev/guides/monorepos/#modify-the-metro-config). The only addition in this repository is the [`config.cacheStores`](./apps/mobile/metro.config.js#L22-L24). This change moves the Metro cache to a place which is accessible by Turborepo, our main cache handler (see [Why is it fast?](#-why-is-it-fast)).
+3. Update the **metro.config.js** configuration for usage in monorepos. Full explanation per configuration option can be found in the [Expo docs](https://docs.expo.dev/guides/monorepos/#modify-the-metro-config). The only addition in this repository is the [`config.cacheStores`](./apps/example/metro.config.js#L22-L24). This change moves the Metro cache to a place which is accessible by Turborepo, our main cache handler (see [Why is it fast?](#-why-is-it-fast)).
 
 
 ### Precompile packages
