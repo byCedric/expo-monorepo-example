@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react-native';
 
-import { HomeIcon } from '../HomeIcon';
+import { HomeIcon } from '../HomeMessageIcon';
 
 afterEach(cleanup);
 

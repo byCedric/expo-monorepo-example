@@ -1,9 +1,9 @@
 import { Paragraph, Strong } from '@acme/ui';
 import { ComponentProps } from 'react';
 
-type HomeScreenProps = ComponentProps<typeof Paragraph>;
+type HomeMessageProps = ComponentProps<typeof Paragraph>;
 
-export const HomeScreen = (props: HomeScreenProps) => (
+export const HomeMessage = (props: HomeMessageProps) => (
   <Paragraph {...props}>
     Hello from an <Strong>Expo monorepo</Strong>!
   </Paragraph>

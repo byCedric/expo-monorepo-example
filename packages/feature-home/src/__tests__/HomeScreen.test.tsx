@@ -1,10 +1,10 @@
 import { cleanup, render, screen } from '@testing-library/react-native';
 
-import { HomeScreen } from '../HomeScreen';
+import { HomeMessage } from '../HomeMessage';
 
 afterEach(cleanup);
 
 it('says Expo monorepo', () => {
-  render(<HomeScreen />);
+  render(<HomeMessage />);
   expect(screen.getByText('Expo monorepo')).toBeDefined();
 });

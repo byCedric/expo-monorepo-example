@@ -1,2 +1,2 @@
-export * from './HomeIcon';
-export * from './HomeScreen';
+export * from './HomeMessage';
+export * from './HomeMessageIcon';

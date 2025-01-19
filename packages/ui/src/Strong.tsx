@@ -9,6 +9,5 @@ export const Strong = ({ children, style, ...props }: TextProps) => (
 const { $strong } = StyleSheet.create({
   $strong: {
     fontWeight: 'bold',
-    color: 'rgb(0, 0, 238)',
   },
 });

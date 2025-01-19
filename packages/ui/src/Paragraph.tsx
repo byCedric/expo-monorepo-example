@@ -8,8 +8,7 @@ export const Paragraph = ({ children, style, ...props }: TextProps) => (
 
 const { $paragraph } = StyleSheet.create({
   $paragraph: {
-    color: 'rgba(0, 0, 0, 0.87)',
-    fontSize: 16,
+    fontSize: 24,
     letterSpacing: 0.25,
     marginVertical: 2,
   },

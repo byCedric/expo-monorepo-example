@@ -3,24 +3,18 @@
   "name": "@acme/monorepo",
   "scripts": {
     "dev": "turbo dev",
-    "dev:mobile": "turbo dev --filter=\"{./apps/mobile}...\"",
+    "dev:example": "turbo dev --filter=\"{./apps/example}...\"",
     "lint": "turbo lint",
     "test": "turbo test",
     "build": "turbo build",
-    "build:mobile": "turbo build --filter=\"...{./apps/mobile}\""
+    "build:example": "turbo build --filter=\"...{./apps/example}\""
   },
   "devDependencies": {
     "turbo": "^1.10.7",
     "typescript": "^4.9.5"
   },
   "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@babel/*",
-        "expo-modules-*",
-        "typescript"
-      ]
-    }
+    
   },
   "prettier": {
     "printWidth": 100,
