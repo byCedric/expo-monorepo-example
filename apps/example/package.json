@@ -7,7 +7,7 @@
     "dev": "expo start",
     "lint": "eslint --ext js,ts,tsx .",
     "test": "jest",
-    "build": "expo export --output-dir ./build --platform all",
+    "build": "expo export --output-dir ./build",
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",

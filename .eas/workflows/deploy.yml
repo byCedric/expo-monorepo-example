@@ -1,0 +1,35 @@
+name: deploy example
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Deploy
+    outputs:
+      deployment: ${{ steps.deploy.outputs.deployment }}
+    steps:
+      - name: 🏗 Setup pnpm
+        run: npm install --global pnpm@9
+      - name: 🏗 Setup repository
+        uses: eas/checkout
+      - name: 📦 Install dependencies
+        run: pnpm install
+      - name: 👷 Build example packages
+        run: pnpm run -w build:example
+      - name: 🌐 Build example for web only
+        run: pnpm run build --platform web
+        working_directory: apps/example
+      - name: 🚀 Deploy example
+        run: set-output deployment "$(npx eas-cli deploy --non-interactive --json --export-dir ./build --alias staging)"
+        working_directory: apps/example
+        id: deploy
+  promote:
+    name: Promote to production
+    needs: [deploy]
+    steps:
+      - name: 🏗 Setup repository
+        uses: eas/checkout
+      - name: 🧑‍🎓 Promote deployment
+        run: npx eas-cli deploy:promote --production --id "${{ fromJSON(needs.deploy.outputs.deployment).identifier }}"
