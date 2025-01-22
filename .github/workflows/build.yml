@@ -43,6 +43,7 @@ jobs:
       # You can remove this step if you already configured this
       # This project shouldn't be pre-configured with this ID, that's why its omitted
       - name: 👷 Configure project
+        if: ${{ github.repository == 'byCedric/expo-monorepo-example' }}
         working-directory: apps/example
         run: |
           eas init --id d202a56f-0162-450d-af3b-a2d2e0678594 --force --non-interactive
