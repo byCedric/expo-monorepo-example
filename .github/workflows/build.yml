@@ -52,11 +52,11 @@ jobs:
           echo $(jq '.expo.ios.bundleIdentifier = "dev.cedric.monorepo"' app.json) > app.json
 
       - name: 🚀 Build example
-        if: ${{ !github.event.inputs.submit || github.event.inputs.profile != 'production' }}
+        if: ${{ github.event.inputs.submit == 'false' || github.event.inputs.profile != 'production' }}
         working-directory: apps/example
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
 
       - name: 🚀 Build & submit example
-        if: ${{ github.event.inputs.submit && github.event.inputs.profile != 'production' }}
+        if: ${{ github.event.inputs.submit == 'true' && github.event.inputs.profile != 'production' }}
         working-directory: apps/example
         run: eas build --non-interactive --wait --auto-submit --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
