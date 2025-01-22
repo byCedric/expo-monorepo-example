@@ -26,8 +26,8 @@ jobs:
       - name: 👷 Build packages
         run: pnpm run -w build:example
 
-      # You can remove this step if you already configured this
-      # This project shouldn't be pre-configured with this ID, that's why its omitted
+      # Remove this step and configure the app to contain your own project and bundle identifiers.
+      # This is intentionally omitted in the template repository to guide users through the setup when cloning.
       - name: 👷 Configure project
         if: ${{ github.repository == 'byCedric/expo-monorepo-example' }}
         working-directory: apps/example
