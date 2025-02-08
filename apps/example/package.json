@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
-    "dev": "expo start",
+    "dev": "expo start --clear",
     "lint": "eslint --ext js,ts,tsx .",
     "test": "jest",
     "build": "expo export --output-dir ./build --platform all",
@@ -12,10 +12,10 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "eas-build-post-install": "pnpm run -w build:example"
+    "eas-build-post-install": "yarn run -w build:example"
   },
   "dependencies": {
-    "@acme/feature-home": "workspace:*",
+    "@acme/feature-home": "^1.0.0",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
@@ -42,7 +42,7 @@
     "react-native-webview": "13.12.5"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
+    "@acme/eslint-config": "^1.0.0",
     "@babel/core": "^7.25.2",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.3.12",

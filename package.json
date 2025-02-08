@@ -1,6 +1,10 @@
 {
   "private": true,
   "name": "@acme/monorepo",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "turbo dev",
     "dev:example": "turbo dev --filter=\"{./apps/example}...\"",
@@ -12,9 +16,6 @@
   "devDependencies": {
     "turbo": "^1.10.7",
     "typescript": "^4.9.5"
-  },
-  "pnpm": {
-    
   },
   "prettier": {
     "printWidth": 100,
