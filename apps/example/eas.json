@@ -23,6 +23,14 @@
         "buildType": "apk"
       }
     },
+    "simulator": {
+      "extends": "monorepo",
+      "distribution": "internal",
+      "developmentClient": true,
+      "ios": {
+        "simulator": true
+      }
+    },
     "production": {
       "extends": "monorepo",
       "distribution": "store",
