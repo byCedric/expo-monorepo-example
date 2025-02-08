@@ -1,0 +1,29 @@
+diff --git a/node_modules/@react-native-community/cli-config/build/findDependencies.js b/node_modules/@react-native-community/cli-config/build/findDependencies.js
+index 244dd4f..f5d27cb 100644
+--- a/node_modules/@react-native-community/cli-config/build/findDependencies.js
++++ b/node_modules/@react-native-community/cli-config/build/findDependencies.js
+@@ -30,7 +30,23 @@ function findDependencies(root) {
+   } catch (e) {
+     return [];
+   }
+-  const deps = new Set([...Object.keys(pjson.dependencies || {}), ...Object.keys(pjson.peerDependencies || {}), ...Object.keys(pjson.devDependencies || {})]);
++
++  const dependencies = Object.keys(pjson.dependencies || {});
++  const subDeps = dependencies.reduce(function (accumulator, currentValue) {
++    if (!currentValue.includes('@sleeperhq')) {
++      return accumulator;
++    }
++    const subRoot = `${root}/node_modules/${currentValue}`;
++    return accumulator.concat(findDependencies(subRoot));
++  }, []);
++
++  const deps = new Set([
++    ...Object.keys(pjson.dependencies || {}),
++    ...Object.keys(pjson.peerDependencies || {}),
++    ...Object.keys(pjson.devDependencies || {}),
++    ...subDeps
++  ]);
++
+   return Array.from(deps);
+ }
+ 

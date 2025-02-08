@@ -1,0 +1,174 @@
+diff --git a/node_modules/react-native/Libraries/Animated/useAnimatedProps.js b/node_modules/react-native/Libraries/Animated/useAnimatedProps.js
+index df3df01..f55e862 100644
+--- a/node_modules/react-native/Libraries/Animated/useAnimatedProps.js
++++ b/node_modules/react-native/Libraries/Animated/useAnimatedProps.js
+@@ -246,6 +246,14 @@ function addAnimatedValuesListenersToProps(
+ function useAnimatedPropsLifecycle_layoutEffects(node: AnimatedProps): void {
+   const prevNodeRef = useRef<?AnimatedProps>(null);
+   const isUnmountingRef = useRef<boolean>(false);
++  const hasMountedRef = useRef<boolean>(false);
++  const hasInitiallyAttached = useRef<boolean>(false);
++
++  // Attach animated node instantly, avoiding issues with native animations
++  if (!hasMountedRef.current) {
++    hasMountedRef.current = true;
++    node.__attach();
++  }
+ 
+   useEffect(() => {
+     // It is ok for multiple components to call `flushQueue` because it noops
+@@ -276,14 +284,20 @@ function useAnimatedPropsLifecycle_layoutEffects(node: AnimatedProps): void {
+   }, []);
+ 
+   useLayoutEffect(() => {
+-    node.__attach();
+-    if (prevNodeRef.current != null) {
+-      const prevNode = prevNodeRef.current;
+-      // TODO: Stop restoring default values (unless `reset` is called).
+-      prevNode.__restoreDefaultValues();
+-      prevNode.__detach();
+-      prevNodeRef.current = null;
++    // This helps us avoid attaching the animated node twice before first render.
++    if (!hasInitiallyAttached.current && hasMountedRef.current) {
++      hasInitiallyAttached.current = true;
++    } else {
++      node.__attach();
++      if (prevNodeRef.current != null) {
++        const prevNode = prevNodeRef.current;
++        // TODO: Stop restoring default values (unless `reset` is called).
++        prevNode.__restoreDefaultValues();
++        prevNode.__detach();
++        prevNodeRef.current = null;
++      }
+     }
++
+     return () => {
+       if (isUnmountingRef.current) {
+         // NOTE: Do not restore default values on unmount, see D18197735.
+diff --git a/node_modules/react-native/Libraries/Core/Devtools/symbolicateStackTrace.js b/node_modules/react-native/Libraries/Core/Devtools/symbolicateStackTrace.js
+index bdd93fc..1df0f55 100644
+--- a/node_modules/react-native/Libraries/Core/Devtools/symbolicateStackTrace.js
++++ b/node_modules/react-native/Libraries/Core/Devtools/symbolicateStackTrace.js
+@@ -38,9 +38,14 @@ async function symbolicateStackTrace(
+     throw new Error('Bundle was not loaded from Metro.');
+   }
+ 
++  let platform = 'android';
++  if (devServer.fullBundleUrl.includes("platform=ios")) {
++    platform = 'ios';
++  }
++
+   // Lazy-load `fetch` until the first symbolication call to avoid circular requires.
+   const fetch = global.fetch ?? require('../../Network/fetch');
+-  const response = await fetch(devServer.url + 'symbolicate', {
++  const response = await fetch(devServer.url + `symbolicate?platform=${platform}`, {
+     method: 'POST',
+     body: JSON.stringify({stack, extraData}),
+   });
+diff --git a/node_modules/react-native/React/Base/RCTDefines.h b/node_modules/react-native/React/Base/RCTDefines.h
+index ed03868..e61ca2e 100644
+--- a/node_modules/react-native/React/Base/RCTDefines.h
++++ b/node_modules/react-native/React/Base/RCTDefines.h
+@@ -113,7 +113,7 @@
+  * Add the default Metro packager port number
+  */
+ #ifndef RCT_METRO_PORT
+-#define RCT_METRO_PORT 8081
++#define RCT_METRO_PORT 9000
+ #else
+ // test if RCT_METRO_PORT is empty
+ #define RCT_METRO_PORT_DO_EXPAND(VAL) VAL##1
+@@ -122,7 +122,7 @@
+ // Only here if RCT_METRO_PORT is not defined
+ // OR RCT_METRO_PORT is the empty string
+ #undef RCT_METRO_PORT
+-#define RCT_METRO_PORT 8081
++#define RCT_METRO_PORT 9000
+ #endif
+ #endif
+ 
+@@ -130,7 +130,7 @@
+  * Add the default packager name
+  */
+ #ifndef RCT_PACKAGER_NAME
+-#define RCT_PACKAGER_NAME @"Metro"
++#define RCT_PACKAGER_NAME @"Webpack"
+ #endif
+ 
+ /**
+diff --git a/node_modules/react-native/scripts/react-native-xcode.sh b/node_modules/react-native/scripts/react-native-xcode.sh
+index 001b6cb..f602c3d 100755
+--- a/node_modules/react-native/scripts/react-native-xcode.sh
++++ b/node_modules/react-native/scripts/react-native-xcode.sh
+@@ -34,15 +34,11 @@ fi
+ 
+ case "$CONFIGURATION" in
+   *Debug*)
+-    if [[ "$PLATFORM_NAME" == *simulator ]]; then
+-      if [[ "$FORCE_BUNDLING" ]]; then
+-        echo "FORCE_BUNDLING enabled; continuing to bundle."
+-      else
+-        echo "Skipping bundling in Debug for the Simulator (since the packager bundles for you). Use the FORCE_BUNDLING flag to change this behavior."
+-        exit 0;
+-      fi
++    if [[ "$FORCE_BUNDLING" ]]; then
++      echo "FORCE_BUNDLING enabled; continuing to bundle."
+     else
+-      echo "Bundling for physical device. Use the SKIP_BUNDLING flag to change this behavior."
++      echo "Skipping bundling in Debug (since the packager bundles for you). Use the FORCE_BUNDLING flag to change this behavior."
++      exit 0;
+     fi
+ 
+     DEV=true
+@@ -102,7 +98,7 @@ else
+   CONFIG_ARG="--config $BUNDLE_CONFIG"
+ fi
+ 
+-BUNDLE_FILE="$CONFIGURATION_BUILD_DIR/main.jsbundle"
++BUNDLE_FILE="$CONFIGURATION_BUILD_DIR/index.ios.bundle"
+ 
+ EXTRA_ARGS=()
+ 
+@@ -139,15 +135,6 @@ if [[ $USE_HERMES != false && $DEV == false ]]; then
+   EXTRA_ARGS+=("--minify" "false")
+ fi
+ 
+-# Allow opting out of using npx react-native config
+-if [[ -n "$CONFIG_JSON" ]]; then
+-  EXTRA_ARGS+=("--load-config" "$CONFIG_JSON")
+-elif [[ -n "$CONFIG_CMD" ]]; then
+-  EXTRA_ARGS+=("--config-cmd" "$CONFIG_CMD")
+-else
+-  EXTRA_ARGS+=("--config-cmd" "$NODE_BINARY $NODE_ARGS $REACT_NATIVE_DIR/cli.js config")
+-fi
+-
+ # shellcheck disable=SC2086
+ "$NODE_BINARY" $NODE_ARGS "$CLI_PATH" $BUNDLE_COMMAND \
+   $CONFIG_ARG \
+@@ -162,7 +149,7 @@ fi
+ 
+ if [[ $USE_HERMES == false ]]; then
+   cp "$BUNDLE_FILE" "$DEST/"
+-  BUNDLE_FILE="$DEST/main.jsbundle"
++  BUNDLE_FILE="$DEST/index.ios.bundle"
+ else
+   EXTRA_COMPILER_ARGS=
+   if [[ $DEV == true ]]; then
+@@ -173,14 +160,14 @@ else
+   if [[ $EMIT_SOURCEMAP == true ]]; then
+     EXTRA_COMPILER_ARGS="$EXTRA_COMPILER_ARGS -output-source-map"
+   fi
+-  "$HERMES_CLI_PATH" -emit-binary -max-diagnostic-width=80 $EXTRA_COMPILER_ARGS -out "$DEST/main.jsbundle" "$BUNDLE_FILE"
++  "$HERMES_CLI_PATH" -emit-binary -max-diagnostic-width=80 $EXTRA_COMPILER_ARGS -out "$DEST/index.ios.bundle" "$BUNDLE_FILE"
+   if [[ $EMIT_SOURCEMAP == true ]]; then
+-    HBC_SOURCEMAP_FILE="$DEST/main.jsbundle.map"
++    HBC_SOURCEMAP_FILE="$DEST/index.ios.bundle.map"
+     "$NODE_BINARY" "$COMPOSE_SOURCEMAP_PATH" "$PACKAGER_SOURCEMAP_FILE" "$HBC_SOURCEMAP_FILE" -o "$SOURCEMAP_FILE"
+     rm "$HBC_SOURCEMAP_FILE"
+     rm "$PACKAGER_SOURCEMAP_FILE"
+   fi
+-  BUNDLE_FILE="$DEST/main.jsbundle"
++  BUNDLE_FILE="$DEST/index.ios.bundle"
+ fi
+ 
+ if [[ $DEV != true && ! -f "$BUNDLE_FILE" ]]; then

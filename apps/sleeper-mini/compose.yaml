@@ -1,0 +1,11 @@
+name: 'mini-template'
+services:
+  environment:
+    image: environment:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/usr/src/template

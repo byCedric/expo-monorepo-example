@@ -1,0 +1,15 @@
+diff --git a/node_modules/@callstack/repack/dist/modules/ScriptManager/ScriptManager.js b/node_modules/@callstack/repack/dist/modules/ScriptManager/ScriptManager.js
+index af3b789..176870b 100644
+--- a/node_modules/@callstack/repack/dist/modules/ScriptManager/ScriptManager.js
++++ b/node_modules/@callstack/repack/dist/modules/ScriptManager/ScriptManager.js
+@@ -249,10 +249,6 @@ export class ScriptManager extends EventEmitter {
+       this.emit('resolved', script.toObject());
+       return script;
+     } catch (error) {
+-      this.handleError(error, '[ScriptManager] Failed while resolving script locator:', {
+-        scriptId,
+-        caller
+-      });
+       return new Promise(resolve => {
+         resolve(null);
+       });

@@ -1,0 +1,28 @@
+# syntax=docker/dockerfile:1
+ARG NODE_VERSION=20.10.0
+FROM environment:latest
+
+RUN apt-get update && apt-get install -y wget unzip
+RUN wget "https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz" \
+    && tar -xzvf openjdk-11.0.2_linux-x64_bin.tar.gz \
+    && mv jdk-11.0.2 /usr/lib/jvm/ \
+    && rm openjdk-11.0.2_linux-x64_bin.tar.gz
+
+ENV JAVA_HOME=/usr/lib/jvm/
+ENV PATH=$JAVA_HOME/bin:$PATH
+
+# Install Android command-line tools and SDK
+RUN mkdir -p /usr/local/android-sdk/cmdline-tools
+RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O /tmp/cmdline-tools.zip \
+    && unzip /tmp/cmdline-tools.zip -d /usr/local/android-sdk/cmdline-tools \
+    && mv /usr/local/android-sdk/cmdline-tools/cmdline-tools /usr/local/android-sdk/cmdline-tools/latest \
+    && rm /tmp/cmdline-tools.zip
+
+ENV ANDROID_HOME /usr/local/android-sdk
+ENV PATH $PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+
+# Accept licenses
+RUN yes | sdkmanager --licenses
+
+# Install Android components
+RUN sdkmanager "platform-tools" "build-tools;33.0.0" "platforms;android-33" "ndk;23.1.7779620" "cmake;3.22.1"
