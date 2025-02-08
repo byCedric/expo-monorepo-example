@@ -12,6 +12,7 @@
     "clean": "rm -rf node_modules && rm -rf ios/pods"
   },
   "dependencies": {
+    "@acme/feature-home": "1.0.0",
     "@babel/plugin-transform-runtime": "7.25.9",
     "@babel/runtime": "7.26.0",
     "@shopify/flash-list": "1.7.2",

@@ -1172,7 +1172,7 @@
     source-map "^0.7.4"
     ws "^8.7.0"
 
-"@callstack/repack@github:blitzstudios/repack#callstack-repack-v5.0.0-gitpkg":
+"@callstack/repack@blitzstudios/repack.git#callstack-repack-v5.0.0-gitpkg":
   version "5.0.0"
   resolved "https://codeload.github.com/blitzstudios/repack/tar.gz/c29890c7725f2eca64f706464883b0a5d20cf62b"
   dependencies:
@@ -11070,9 +11070,9 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-"react-native-fast-image@git+https://github.com/blitzstudios/react-native-fast-image.git#release/1.4":
+"react-native-fast-image@https://github.com/blitzstudios/react-native-fast-image.git#release/1.4":
   version "8.5.11"
-  resolved "git+https://github.com/blitzstudios/react-native-fast-image.git#8e512296de8748aeb1e801015a3805b64e1ffbc3"
+  resolved "https://github.com/blitzstudios/react-native-fast-image.git#8e512296de8748aeb1e801015a3805b64e1ffbc3"
 
 react-native-gesture-handler@2.21.0:
   version "2.21.0"
@@ -11135,7 +11135,7 @@ react-native-reanimated@~3.16.1:
     convert-source-map "^2.0.0"
     invariant "^2.2.4"
 
-"react-native-rename@github:blitzstudios/react-native-rename#react-native-rename-v3.2.17-gitpkg":
+react-native-rename@blitzstudios/react-native-rename.git#react-native-rename-v3.2.17-gitpkg:
   version "3.2.17"
   resolved "https://codeload.github.com/blitzstudios/react-native-rename/tar.gz/be564d20742ee60c297230ff53edfedf2d650f2b"
   dependencies:

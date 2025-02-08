@@ -4,6 +4,7 @@
   Please do not edit manually.
 */
 
+import '@acme/feature-home';
 import '@shopify/flash-list';
 import '@sleeperhq/mini-core';
 import 'he';

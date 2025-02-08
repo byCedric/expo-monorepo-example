@@ -1,6 +1,7 @@
 import React from 'react';
 import * as RN from 'react-native';
-import {Types, Sleeper, Fonts, Theme} from '@sleeperhq/mini-core';
+import { Types, Sleeper, Fonts, Theme } from '@sleeperhq/mini-core';
+import { HomeMessage } from '@acme/feature-home';
 
 type OwnProps = {
   context: Types.Context;
@@ -10,14 +11,19 @@ type OwnProps = {
 };
 
 const Mini = (props: OwnProps) => {
-  const {context} = props;
+  const { context } = props;
 
   return (
     <RN.View style={styles.container}>
       <Sleeper.Text style={styles.text}>
-        Hello {context?.user?.display_name}!
+        Hello {context?.user?.display_name}! Bryan
       </Sleeper.Text>
+
+      <RN.View>
+        <HomeMessage style={{ color: 'white' }} />
+      </RN.View>
       <Sleeper.Text style={styles.text}>
+        Open app.json and select a sample to learn what API features are
         Open app.json and select a sample to learn what API features are
         available.
       </Sleeper.Text>
