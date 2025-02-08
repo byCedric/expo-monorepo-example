@@ -12,7 +12,8 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "eas-build-post-install": "yarn run -w build:example"
+    "eas-build-post-install": "yarn run -w build:example",
+    "clean": "rm -rf node_modules dist .turbo .expo build"
   },
   "dependencies": {
     "@acme/feature-home": "^1.0.0",

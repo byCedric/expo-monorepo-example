@@ -11,7 +11,10 @@
     "lint": "turbo lint",
     "test": "turbo test",
     "build": "turbo build",
-    "build:example": "turbo build --filter=\"...{./apps/example}\""
+    "build:example": "turbo build --filter=\"...{./apps/example}\"",
+    "build:packages": "yarn workspace @acme/ui build && yarn workspace @acme/feature-home build",
+    "example": "turbo dev --filter=\"...{./apps/example}\"",
+    "clean": "rm -rf node_modules && rm -rf .turbo && yarn workspaces run clean"
   },
   "devDependencies": {
     "turbo": "^1.10.7",

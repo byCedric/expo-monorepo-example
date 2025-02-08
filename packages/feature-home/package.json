@@ -6,15 +6,27 @@
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
   "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "types": "./src/index.ts",
   "react-native": "./src/index.ts",
+  "exports": {
+    ".": {
+      "react-native": "./src/index.ts",
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
   "files": [
-    "src"
+    "src",
+    "build"
   ],
   "scripts": {
     "dev": "tsup --watch --silent",
     "lint": "eslint --ext js,ts,tsx .",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsup --clean",
+    "prepare": "yarn build",
+    "clean": "rm -rf node_modules dist .turbo .expo build"
   },
   "dependencies": {
     "@acme/ui": "^1.0.0"
@@ -58,5 +70,18 @@
   },
   "jest": {
     "preset": "jest-expo"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "outDir": "build",
+    "sourcemap": true,
+    "dts": true,
+    "external": [
+      "react",
+      "react-native",
+      "react-native-web"
+    ]
   }
 }

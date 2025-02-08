@@ -10,7 +10,8 @@
     "index.js"
   ],
   "scripts": {
-    "lint": "eslint --ext js,ts,tsx ."
+    "lint": "eslint --ext js,ts,tsx .",
+    "clean": "rm -rf node_modules dist .turbo .expo build"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^7.18.0",
