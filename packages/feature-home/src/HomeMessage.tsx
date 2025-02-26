@@ -1,5 +1,5 @@
-import Lang from '@acme/lang';
-import { Paragraph } from '@acme/ui';
+import Lang from '@repo/lang';
+import { Paragraph } from '@repo/ui';
 import { ComponentProps } from 'react';
 
 type HomeMessageProps = ComponentProps<typeof Paragraph>;

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@acme/lang",
+  "name": "@repo/lang",
   "version": "1.0.0",
   "description": "Acme UI components for React Native",
   "author": "Cedric van Putten <me@bycedric.com>",
@@ -19,7 +19,7 @@
     "build": "tsup --clean"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
     "@testing-library/react-native": "^12.9.0",
     "@tsconfig/recommended": "^1.0.8",
     "@types/jest": "^29.5.14",
@@ -49,7 +49,7 @@
     }
   },
   "eslintConfig": {
-    "extends": "@acme/eslint-config",
+    "extends": "@repo/eslint-config",
     "ignorePatterns": [
       "node_modules",
       "build"

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@acme/eslint-config",
+  "name": "@repo/eslint-config",
   "version": "1.0.0",
   "description": "Acme eslint configuration for React Native",
   "author": "Cedric van Putten <me@bycedric.com>",

@@ -1,4 +1,4 @@
-import { Paragraph } from '@acme/ui';
+import { Paragraph } from '@repo/ui';
 import { ComponentProps } from 'react';
 
 type HomeMessageIconProps = ComponentProps<typeof Paragraph>;

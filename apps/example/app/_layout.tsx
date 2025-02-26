@@ -1,4 +1,4 @@
-import Lang from '@acme/lang';
+import Lang from '@repo/lang';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { getLocales } from 'expo-localization';

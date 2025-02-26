@@ -17,12 +17,6 @@ importers:
 
   apps/example:
     dependencies:
-      '@acme/feature-home':
-        specifier: workspace:*
-        version: link:../../packages/feature-home
-      '@acme/lang':
-        specifier: workspace:*
-        version: link:../../packages/lang
       '@expo/vector-icons':
         specifier: ^14.0.2
         version: 14.0.4
@@ -32,6 +26,12 @@ importers:
       '@react-navigation/native':
         specifier: ^7.0.14
         version: 7.0.14(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)
+      '@repo/feature-home':
+        specifier: workspace:*
+        version: link:../../packages/feature-home
+      '@repo/lang':
+        specifier: workspace:*
+        version: link:../../packages/lang
       expo:
         specifier: ~52.0.26
         version: 52.0.26(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native-webview@13.12.5(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)
@@ -99,12 +99,12 @@ importers:
         specifier: 13.12.5
         version: 13.12.5(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)
     devDependencies:
-      '@acme/eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/eslint-config
       '@babel/core':
         specifier: ^7.25.2
         version: 7.26.0
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -147,69 +147,14 @@ importers:
 
   packages/feature-home:
     dependencies:
-      '@acme/lang':
+      '@repo/lang':
         specifier: workspace:*
         version: link:../lang
-      '@acme/ui':
+      '@repo/ui':
         specifier: workspace:*
         version: link:../ui
     devDependencies:
-      '@acme/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@testing-library/react-native':
-        specifier: ^12.9.0
-        version: 12.9.0(jest@29.7.0(@types/node@18.7.18))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react-test-renderer@18.3.1(react@18.3.1))(react@18.3.1)
-      '@tsconfig/recommended':
-        specifier: ^1.0.8
-        version: 1.0.8
-      '@types/jest':
-        specifier: ^29.5.14
-        version: 29.5.14
-      '@types/react':
-        specifier: ~18.3.18
-        version: 18.3.18
-      babel-preset-expo:
-        specifier: ~12.0.6
-        version: 12.0.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))
-      expo:
-        specifier: ~52.0.26
-        version: 52.0.26(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native-webview@13.12.5(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)
-      jest:
-        specifier: ^29.7.0
-        version: 29.7.0(@types/node@18.7.18)
-      jest-expo:
-        specifier: ~52.0.3
-        version: 52.0.3(@babel/core@7.26.0)(expo@52.0.26(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native-webview@13.12.5(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(jest@29.7.0(@types/node@18.7.18))(react-dom@18.3.1(react@18.3.1))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)(webpack@5.97.1)
-      react:
-        specifier: 18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: 18.3.1
-        version: 18.3.1(react@18.3.1)
-      react-native:
-        specifier: 0.76.6
-        version: 0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1)
-      react-native-web:
-        specifier: ~0.19.13
-        version: 0.19.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-test-renderer:
-        specifier: 18.3.1
-        version: 18.3.1(react@18.3.1)
-      tsup:
-        specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.38)(typescript@5.7.3)
-
-  packages/lang:
-    dependencies:
-      html-react-parser:
-        specifier: ^5.2.2
-        version: 5.2.2(@types/react@18.3.18)(react@18.3.1)
-      i18n-js:
-        specifier: ^4.5.1
-        version: 4.5.1
-    devDependencies:
-      '@acme/eslint-config':
+      '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
       '@testing-library/react-native':
@@ -255,9 +200,64 @@ importers:
         specifier: ^8.3.5
         version: 8.3.5(postcss@8.4.38)(typescript@5.7.3)
 
+  packages/lang:
+    dependencies:
+      html-react-parser:
+        specifier: ^5.2.2
+        version: 5.2.2(@types/react@18.3.18)(react@18.3.1)
+      i18n-js:
+        specifier: ^4.5.1
+        version: 4.5.1
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@testing-library/react-native':
+        specifier: ^12.9.0
+        version: 12.9.0(jest@29.7.0(@types/node@18.7.18))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react-test-renderer@18.3.1(react@18.3.1))(react@18.3.1)
+      '@tsconfig/recommended':
+        specifier: ^1.0.8
+        version: 1.0.8
+      '@types/jest':
+        specifier: ^29.5.14
+        version: 29.5.14
+      '@types/react':
+        specifier: ~18.3.18
+        version: 18.3.18
+      babel-preset-expo:
+        specifier: ~12.0.6
+        version: 12.0.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))
+      expo:
+        specifier: ~52.0.26
+        version: 52.0.26(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native-webview@13.12.5(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)
+      jest:
+        specifier: ^29.7.0
+        version: 29.7.0(@types/node@18.7.18)
+      jest-expo:
+        specifier: ~52.0.3
+        version: 52.0.3(@babel/core@7.26.0)(expo@52.0.26(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native-webview@13.12.5(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(jest@29.7.0(@types/node@18.7.18))(react-dom@18.3.1(react@18.3.1))(react-native@0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)(webpack@5.97.1)
+      react:
+        specifier: 18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+      react-native:
+        specifier: 0.76.6
+        version: 0.76.6(@babel/core@7.26.0)(@babel/preset-env@7.20.2(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.8)(@types/react@18.3.18)(react@18.3.1)
+      react-native-web:
+        specifier: ~0.19.13
+        version: 0.19.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-test-renderer:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+      tsup:
+        specifier: ^8.3.5
+        version: 8.3.5(postcss@8.4.38)(typescript@5.7.3)
+
   packages/ui:
     devDependencies:
-      '@acme/eslint-config':
+      '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
       '@testing-library/react-native':

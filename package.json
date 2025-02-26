@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@acme/monorepo",
+  "name": "@repo/monorepo",
   "scripts": {
     "dev": "turbo dev",
     "dev:example": "turbo dev --filter=\"{./apps/example}...\"",

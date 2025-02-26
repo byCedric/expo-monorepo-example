@@ -1,4 +1,4 @@
-import { HomeMessage, HomeMessageIcon } from '@acme/feature-home';
+import { HomeMessage, HomeMessageIcon } from '@repo/feature-home';
 import { Image, StyleSheet, Platform } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
