@@ -6,8 +6,8 @@
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
   "main": "./build/index.js",
-  "types": "./src/index.ts",
-  "react-native": "./src/index.ts",
+  "types": "./src/index.tsx",
+  "react-native": "./src/index.tsx",
   "files": [
     "build",
     "src"
@@ -17,6 +17,10 @@
     "lint": "eslint --ext js,ts,tsx .",
     "test": "jest",
     "build": "tsup --clean"
+  },
+  "dependencies": {
+    "@repo/ui": "workspace:*",
+    "i18n-js": "^4.5.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -60,7 +64,7 @@
   },
   "tsup": {
     "entry": [
-      "src/index.ts"
+      "src/index.tsx"
     ],
     "outDir": "build",
     "sourcemap": true,
@@ -70,9 +74,5 @@
       "react-native",
       "react-native-web"
     ]
-  },
-  "dependencies": {
-    "html-react-parser": "^5.2.2",
-    "i18n-js": "^4.5.1"
   }
 }

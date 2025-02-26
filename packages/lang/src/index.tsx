@@ -1,5 +1,5 @@
-import parse from 'html-react-parser';
 import { I18n, TranslateOptions } from 'i18n-js';
+import React from 'react';
 
 import en from './lang.en';
 import es from './lang.es';
@@ -25,12 +25,12 @@ export default {
   },
 
   /**
-   * Get a localized text and render HTML content as React components.
-   * This function is designed to parse HTML content embedded in translation strings.
+   * Get a localized text or component.
+   * This function is designed to return either plain text or a React Native component.
    *
-   * @param {string} key - Name of the text.
+   * @param {string} key - Name of the text or component.
    * @param {TranslateOptions} options - Some options, not really necessary.
-   * @returns {ReactNode} The text in the correct locale with parsed HTML as React components
+   * @returns {ReactNode} The text or component in the correct locale
    */
   getComponent({
     textKey,
@@ -39,8 +39,8 @@ export default {
     textKey: string;
     options?: TranslateOptions;
   }): JSX.Element {
-    const text = i18n.t(textKey, options);
-    return <>{parse(text)}</>;
+    const component = i18n.t(textKey, options);
+    return <>{component}</>; // Should have a unique key, but it doesn't make much sense, considering that only text or a component is returned.
   },
 
   /**

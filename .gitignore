@@ -2,6 +2,8 @@
 apps/*/credentials.json
 apps/*/build
 packages/*/build
+apps/*/node_modules
+packages/*/node_modules
 
 # Turborepo
 .turbo
