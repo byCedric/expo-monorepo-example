@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@acme/feature-home",
+  "name": "@acme/lang",
   "version": "1.0.0",
-  "description": "Acme home feature for React (Native)",
+  "description": "Acme UI components for React Native",
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -17,10 +17,6 @@
     "lint": "eslint --ext js,ts,tsx .",
     "test": "jest",
     "build": "tsup --clean"
-  },
-  "dependencies": {
-    "@acme/ui": "workspace:*",
-    "@acme/lang": "workspace:*"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
@@ -74,5 +70,9 @@
       "react-native",
       "react-native-web"
     ]
+  },
+  "dependencies": {
+    "html-react-parser": "^5.2.2",
+    "i18n-js": "^4.5.1"
   }
 }

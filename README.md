@@ -75,13 +75,14 @@ You can use any package manager with Expo. If you want to use bun, yarn, or pnpm
 
 ### Apps
 
-- [`apps/example`](./apps/example) - Expo app using `eslint-config` and `feature-home` packages.
+- [`apps/example`](./apps/example) - Expo app using `lang`, `eslint-config` and `feature-home` packages.
 
 ### Packages
 
 - [`packages/eslint-config`](./packages/eslint-config) - Preconfigured ESLint configuration for each app or package.
-- [`packages/feature-home`](./packages/feature-home) - Shared React Native domain-logic for apps, using both `ui` and `eslint-config` packages.
+- [`packages/feature-home`](./packages/feature-home) - Shared React Native domain-logic for apps, using `lang`, `ui` and `eslint-config` packages.
 - [`packages/ui`](./packages/ui) - Shared React Native UI components for apps, using the `eslint-config` package.
+- [`packages/lang`](./packages/lang) - Localization system for apps, using the `i18n-js` and `expo-localization` package.
 
 ## 👷 Workflows
 

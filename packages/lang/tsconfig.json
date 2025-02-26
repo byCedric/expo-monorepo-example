@@ -1,0 +1,8 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "include": ["src"],
+  "resolveJsonModule": true,
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
+}

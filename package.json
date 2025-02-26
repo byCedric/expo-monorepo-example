@@ -13,9 +13,7 @@
     "turbo": "^1.10.7",
     "typescript": "^4.9.5"
   },
-  "pnpm": {
-    
-  },
+  "pnpm": {},
   "prettier": {
     "printWidth": 100,
     "tabWidth": 2,
