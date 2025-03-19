@@ -1,6 +1,7 @@
 import { HomeMessage, HomeMessageIcon } from '@acme/feature-home';
 import { Image, StyleSheet, Platform } from 'react-native';
 
+import HelloWeb from '@/components/HelloWeb';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -16,6 +17,9 @@ export default function HomeScreen() {
         />
       }
     >
+      <ThemedView style={styles.titleContainer}>
+        <HelloWeb name="Tyler" />
+      </ThemedView>
       <ThemedView style={styles.titleContainer}>
         <ThemedText>
           <HomeMessage />
