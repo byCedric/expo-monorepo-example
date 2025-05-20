@@ -1,15 +1,21 @@
 {
-  "$schema": "https://turbo.build/schema.v1.json",
-  "pipeline": {
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
     "lint": {
       "outputs": []
     },
     "test": {
-      "dependsOn": ["build"],
-      "inputs": ["**/*.{ts,tsx,js,jsx}"]
+      "dependsOn": [
+        "build"
+      ],
+      "inputs": [
+        "**/*.{ts,tsx,js,jsx}"
+      ]
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "outputs": [
         "build/**",
         "node_modules/.cache/metro/**"
