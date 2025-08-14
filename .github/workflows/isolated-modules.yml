@@ -71,7 +71,7 @@ jobs:
 
       - name: ⚙️ Configure npm
         run: |
-          git rm .npmrc
+          git rm .npmrc pnpm-lock.yaml pnpm-workspace.yaml
           echo $(jq '.workspaces = ["apps/*","packages/*"]' package.json) > package.json
           cat package.json | jq
 
