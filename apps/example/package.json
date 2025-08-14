@@ -15,7 +15,7 @@
     "eas-build-post-install": "pnpm run -w build:example"
   },
   "dependencies": {
-    "@acme/feature-home": "workspace:*",
+    "@acme/feature-home": "*",
     "@expo/vector-icons": "^14.1.0",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.1.17",
@@ -42,7 +42,7 @@
     "react-native-webview": "13.15.0"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
+    "@acme/eslint-config": "*",
     "@babel/core": "^7.25.2",
     "@testing-library/react-native": "^13.2.0",
     "@types/jest": "^29.5.12",
