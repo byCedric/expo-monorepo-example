@@ -72,6 +72,15 @@ jobs:
           echo $(jq '.workspaces = ["apps/*","packages/*"]' package.json) > package.json
           cat package.json | jq
 
+      - name: ⚙️ Remove workspace protocol
+        run: |
+          cd ${{ github.workspace }}/apps/example
+          echo $(jq '.dependencies["@acme/feature-home"] = "*"' package.json) > package.json
+          cd ${{ github.workspace }}/packages/feature-home
+          echo $(jq '.devDependencies["@acme/eslint-config"] = "*"' package.json) > package.json
+          cd ${{ github.workspace }}/packages/ui
+          echo $(jq '.devDependencies["@acme/eslint-config"] = "*"' package.json) > package.json
+
       - name: 📦 Install dependencies
         if: ${{ matrix.mode == 'isolated' }}
         run: npm install --install-strategy=linked
