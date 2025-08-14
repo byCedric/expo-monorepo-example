@@ -1,6 +1,7 @@
 {
-  "$schema": "https://turbo.build/schema.v1.json",
-  "pipeline": {
+  "$schema": "https://turbo.build/schema.json",
+  "dangerouslyDisablePackageManagerCheck": true,
+  "tasks": {
     "lint": {
       "outputs": []
     },
