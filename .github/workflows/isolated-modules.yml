@@ -15,6 +15,7 @@ jobs:
   bun:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         mode: [isolated, hoisted]
     steps:
@@ -56,6 +57,7 @@ jobs:
   npm:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         mode: [isolated, hoisted]
     steps:
@@ -104,6 +106,7 @@ jobs:
   pnpm:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         mode: [isolated, hoisted]
     steps:
