@@ -110,7 +110,7 @@ jobs:
         run: git rm .npmrc
 
       - name: 📦 Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: 👷 Build packages
         run: pnpm run -w build
