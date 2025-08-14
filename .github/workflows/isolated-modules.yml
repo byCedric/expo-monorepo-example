@@ -33,6 +33,7 @@ jobs:
         run: |
           git rm .npmrc pnpm-lock.yaml pnpm-workspace.yaml
           echo $(jq '.workspaces = ["apps/*","packages/*"]' package.json) > package.json
+          cat package.json | jq
 
       - name: ⚙️ Configure isolation
         if: ${{ matrix.mode == 'isolated' }}
@@ -66,9 +67,10 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: ⚙️ Configure npm
-        run:
+        run: |
           git rm .npmrc
           echo $(jq '.workspaces = ["apps/*","packages/*"]' package.json) > package.json
+          cat package.json | jq
 
       - name: 📦 Install dependencies
         if: ${{ matrix.mode == 'isolated' }}
