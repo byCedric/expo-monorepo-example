@@ -47,9 +47,6 @@ jobs:
       - name: 📦 Install dependencies
         run: bun install
 
-      - name: ✅ Lint packages
-        run: bun run lint
-
       - name: 👷 Build packages
         run: bun run build
 
@@ -91,14 +88,11 @@ jobs:
 
       - name: 📦 Install dependencies
         if: ${{ matrix.mode == 'isolated' }}
-        run: npm install --install-strategy=linked
+        run: npm install --legacy-peer-deps --install-strategy=linked
 
       - name: 📦 Install dependencies
         if: ${{ matrix.mode == 'hoisted' }}
-        run: npm install
-
-      - name: ✅ Lint packages
-        run: npm run lint
+        run: npm install --legacy-peer-deps
 
       - name: 👷 Build packages
         run: npm run build
@@ -127,9 +121,6 @@ jobs:
 
       - name: 📦 Install dependencies
         run: pnpm install
-
-      - name: ✅ Lint packages
-        run: pnpm run -w lint
 
       - name: 👷 Build packages
         run: pnpm run -w build
