@@ -78,6 +78,7 @@ jobs:
           echo $(jq '.dependencies["@acme/feature-home"] = "*"' package.json) > package.json
           cat package.json
           cd ${{ github.workspace }}/packages/feature-home
+          echo $(jq '.dependencies["@acme/ui"] = "*"' package.json) > package.json
           echo $(jq '.devDependencies["@acme/eslint-config"] = "*"' package.json) > package.json
           cat package.json
           cd ${{ github.workspace }}/packages/ui

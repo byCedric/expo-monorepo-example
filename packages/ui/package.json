@@ -23,7 +23,7 @@
     "@testing-library/react-native": "^13.2.0",
     "@tsconfig/recommended": "^1.0.8",
     "@types/jest": "^29.5.14",
-   "@types/react": "~19.1.10",
+    "@types/react": "~19.1.10",
     "babel-preset-expo": "~13.2.3",
     "expo": "54.0.0-preview.0",
     "jest": "^29.7.0",
