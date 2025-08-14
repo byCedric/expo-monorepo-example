@@ -18,6 +18,10 @@ inputs:
     description: Expo token to authenticate with
     required: false
 
+  install-modules:
+    description: If it needs to auto-install modules
+    default: 'yes'
+
 runs:
   using: composite
   steps:
@@ -39,6 +43,7 @@ runs:
         token: ${{ inputs.expo-token }}
 
     - name: 📦 Install dependencies
+      if: ${{ inputs.install-modules == 'yes' }}
       run: pnpm install
       shell: bash
 

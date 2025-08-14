@@ -23,6 +23,8 @@ jobs:
 
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
+        with:
+          install-modules: 'no'
 
       - name: 🏗 Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -65,6 +67,8 @@ jobs:
 
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
+        with:
+          install-modules: 'no'
 
       - name: ⚙️ Configure npm
         run: |
@@ -114,6 +118,8 @@ jobs:
 
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
+        with:
+          install-modules: 'no'
 
       - name: ⚙️ Configure isolation
         if: ${{ matrix.mode == 'isolated' }}
