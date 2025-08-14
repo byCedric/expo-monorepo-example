@@ -36,7 +36,10 @@ jobs:
 
       - name: ⚙️ Configure isolation
         if: ${{ matrix.mode == 'isolated' }}
-        run: echo "[install]\nlinker = \"isolated\"" > bunfig.toml
+        run: |
+          touch bunfig.toml
+          echo "[install]" >> bunfig.toml
+          echo "linker = \"isolated\"" >> bunfig.toml
 
       - name: 📦 Install dependencies
         run: bun install
