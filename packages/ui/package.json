@@ -5,18 +5,15 @@
   "description": "Acme UI components for React Native",
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
-  "main": "./build/index.js",
+  "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "react-native": "./src/index.ts",
   "files": [
     "build",
     "src"
   ],
   "scripts": {
-    "dev": "tsup --watch --silent",
     "lint": "eslint --ext js,ts,tsx .",
-    "test": "jest",
-    "build": "tsup --clean"
+    "test": "jest"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
@@ -31,8 +28,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.0",
-    "react-native-web": "~0.21.1",
-    "tsup": "^8.3.5"
+    "react-native-web": "~0.21.1"
   },
   "peerDependencies": {
     "react": "*",
@@ -56,18 +52,5 @@
   },
   "jest": {
     "preset": "jest-expo"
-  },
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "outDir": "build",
-    "sourcemap": true,
-    "dts": true,
-    "external": [
-      "react",
-      "react-native",
-      "react-native-web"
-    ]
   }
 }
