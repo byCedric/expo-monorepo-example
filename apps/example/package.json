@@ -18,6 +18,7 @@
     "@acme/feature-home": "workspace:*",
     "@expo/vector-icons": "^15.0.0",
     "@react-navigation/bottom-tabs": "^7.4.6",
+    "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.17",
     "expo": "54.0.0-preview.9",
     "expo-blur": "~15.0.3",
