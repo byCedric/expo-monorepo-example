@@ -44,6 +44,9 @@ importers:
       expo-router:
         specifier: ~6.0.0
         version: 6.0.0(f1a68e1c50966185b86ad74ca4ac75fa)
+      expo-splash-screen:
+        specifier: ~31.0.8
+        version: 31.0.8(expo@54.0.1)
       expo-status-bar:
         specifier: ~3.0.7
         version: 3.0.7(react-native@0.81.4(@babel/core@7.26.10)(@react-native/metro-config@0.81.1(@babel/core@7.26.10))(@types/react@19.1.12)(react@19.1.0))(react@19.1.0)
@@ -765,6 +768,9 @@ packages:
   '@expo/config-plugins@11.0.4':
     resolution: {integrity: sha512-hGTA2oGKPgys1Ti8bw6NO+3E0ejhqTH9fQK3IdTx+nqgm0U7iEmbQ0anl8ulaA7tj+dRI8sq2jI60gr6xZ3tWQ==}
 
+  '@expo/config-plugins@11.0.7':
+    resolution: {integrity: sha512-kak5m27fPTzwmzYPbaYL6I67OFnhdrzV0h5JcoljrEC7uM3R18V/RrnEMzv10XQk+s+qmPfMkr0aK9YYgGqR6g==}
+
   '@expo/config-plugins@54.0.0':
     resolution: {integrity: sha512-b2yFNKwaiHjDfh7K+zhMvRKA09gdaP/raqIzB112qeacVJaT66vka8m6cffYbbiXMe1srqofSJvyvr+g3H6+nA==}
 
@@ -844,6 +850,11 @@ packages:
 
   '@expo/plist@0.4.6':
     resolution: {integrity: sha512-6yklhtUWohs1rBSC8dGyBBpElEbosjXN0zJN/+1/B121n7pPWvd9y/UGJm+2x7b81VnW3AHmWVnbU/u0INQsqA==}
+
+  '@expo/prebuild-config@10.0.8':
+    resolution: {integrity: sha512-9ibcRuWngmMnoYe25XXfZEWcPCdx6LiyzqHqpojsvHBI+sMsyZPf4b/5y/zmeJy3PKjR4LSzMRonEitTfUSL/A==}
+    peerDependencies:
+      expo: '*'
 
   '@expo/prebuild-config@54.0.1':
     resolution: {integrity: sha512-f2FFDQlIh83rc89/AOdRBtO9nwkE4BCSji0oPBSq0YmAUSXZE7q/cYKABkArZNjuuwjb6jRjD8JfSMcwV7ybTA==}
@@ -1333,6 +1344,9 @@ packages:
 
   '@react-native/normalize-colors@0.74.89':
     resolution: {integrity: sha512-qoMMXddVKVhZ8PA1AbUCk83trpd6N+1nF2A6k1i6LsQObyS92fELuk8kU/lQs6M7BsMHwqyLCpQJ1uFgNvIQXg==}
+
+  '@react-native/normalize-colors@0.81.1':
+    resolution: {integrity: sha512-TsaeZlE8OYFy3PSWc+1VBmAzI2T3kInzqxmwXoGU4w1d4XFkQFg271Ja9GmDi9cqV3CnBfqoF9VPwRxVlc/l5g==}
 
   '@react-native/normalize-colors@0.81.4':
     resolution: {integrity: sha512-9nRRHO1H+tcFqjb9gAM105Urtgcanbta2tuqCVY0NATHeFPDEAB7gPyiLxCHKMi1NbhP6TH0kxgSWXKZl1cyRg==}
@@ -2714,6 +2728,11 @@ packages:
         optional: true
       react-server-dom-webpack:
         optional: true
+
+  expo-splash-screen@31.0.8:
+    resolution: {integrity: sha512-NNgNhrqkuJAt98k9CKJ9JeCInv5g/xRhe1fWbciQrqTQWPXeIGg3tn5T5HNFwfRD1aKr2uOs1Ctly8rE6i5vtQ==}
+    peerDependencies:
+      expo: '*'
 
   expo-status-bar@3.0.7:
     resolution: {integrity: sha512-8AyNDAsOIR0sAh8uUuOnCNrntr2sM2Q8MW173bQJQIDRNClK7WLVnho1mQhZU3it7MrSWp3QOyUTNU0RcQrL1w==}
@@ -5951,6 +5970,25 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@expo/config-plugins@11.0.7':
+    dependencies:
+      '@expo/config-types': 54.0.7
+      '@expo/json-file': 10.0.7
+      '@expo/plist': 0.4.6
+      '@expo/sdk-runtime-versions': 1.0.0
+      chalk: 4.1.2
+      debug: 4.4.0
+      getenv: 2.0.0
+      glob: 10.4.5
+      resolve-from: 5.0.0
+      semver: 7.7.2
+      slash: 3.0.0
+      slugify: 1.6.6
+      xcode: 3.0.1
+      xml2js: 0.6.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@expo/config-plugins@54.0.0':
     dependencies:
       '@expo/config-types': 54.0.7
@@ -6169,6 +6207,22 @@ snapshots:
       '@xmldom/xmldom': 0.8.10
       base64-js: 1.5.1
       xmlbuilder: 15.1.1
+
+  '@expo/prebuild-config@10.0.8(expo@54.0.1)':
+    dependencies:
+      '@expo/config': 12.0.8
+      '@expo/config-plugins': 11.0.7
+      '@expo/config-types': 54.0.7
+      '@expo/image-utils': 0.8.7
+      '@expo/json-file': 10.0.7
+      '@react-native/normalize-colors': 0.81.1
+      debug: 4.4.0
+      expo: 54.0.1(@babel/core@7.26.10)(@expo/metro-runtime@6.1.1)(expo-router@6.0.0)(react-native-webview@13.15.0(react-native@0.81.4(@babel/core@7.26.10)(@react-native/metro-config@0.81.1(@babel/core@7.26.10))(@types/react@19.1.12)(react@19.1.0))(react@19.1.0))(react-native@0.81.4(@babel/core@7.26.10)(@react-native/metro-config@0.81.1(@babel/core@7.26.10))(@types/react@19.1.12)(react@19.1.0))(react@19.1.0)
+      resolve-from: 5.0.0
+      semver: 7.7.2
+      xml2js: 0.6.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@expo/prebuild-config@54.0.1(expo@54.0.1)':
     dependencies:
@@ -6863,6 +6917,8 @@ snapshots:
     optional: true
 
   '@react-native/normalize-colors@0.74.89': {}
+
+  '@react-native/normalize-colors@0.81.1': {}
 
   '@react-native/normalize-colors@0.81.4': {}
 
@@ -8558,6 +8614,13 @@ snapshots:
       - '@react-native-masked-view/masked-view'
       - '@types/react'
       - '@types/react-dom'
+      - supports-color
+
+  expo-splash-screen@31.0.8(expo@54.0.1):
+    dependencies:
+      '@expo/prebuild-config': 10.0.8(expo@54.0.1)
+      expo: 54.0.1(@babel/core@7.26.10)(@expo/metro-runtime@6.1.1)(expo-router@6.0.0)(react-native-webview@13.15.0(react-native@0.81.4(@babel/core@7.26.10)(@react-native/metro-config@0.81.1(@babel/core@7.26.10))(@types/react@19.1.12)(react@19.1.0))(react@19.1.0))(react-native@0.81.4(@babel/core@7.26.10)(@react-native/metro-config@0.81.1(@babel/core@7.26.10))(@types/react@19.1.12)(react@19.1.0))(react@19.1.0)
+    transitivePeerDependencies:
       - supports-color
 
   expo-status-bar@3.0.7(react-native@0.81.4(@babel/core@7.26.10)(@react-native/metro-config@0.81.1(@babel/core@7.26.10))(@types/react@19.1.12)(react@19.1.0))(react@19.1.0):
