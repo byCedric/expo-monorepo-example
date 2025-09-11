@@ -5,34 +5,30 @@
   "description": "Acme UI components for React Native",
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
-  "main": "./build/index.js",
+  "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "react-native": "./src/index.ts",
   "files": [
     "build",
     "src"
   ],
   "scripts": {
-    "dev": "tsup --watch --silent",
     "lint": "eslint --ext js,ts,tsx .",
-    "test": "jest",
-    "build": "tsup --clean"
+    "test": "jest"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@testing-library/react-native": "^13.2.0",
     "@tsconfig/recommended": "^1.0.8",
     "@types/jest": "^29.5.14",
-    "@types/react": "~19.0.14",
-    "babel-preset-expo": "~13.1.11",
-    "expo": "~53.0.6",
+    "@types/react": "~19.1.12",
+    "babel-preset-expo": "~54.0.0",
+    "expo": "~54.0.1",
     "jest": "^29.7.0",
-    "jest-expo": "~53.0.4",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-native": "0.79.2",
-    "react-native-web": "~0.20.0",
-    "tsup": "^8.3.5"
+    "jest-expo": "~54.0.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.4",
+    "react-native-web": "~0.21.1"
   },
   "peerDependencies": {
     "react": "*",
@@ -56,18 +52,5 @@
   },
   "jest": {
     "preset": "jest-expo"
-  },
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "outDir": "build",
-    "sourcemap": true,
-    "dts": true,
-    "external": [
-      "react",
-      "react-native",
-      "react-native-web"
-    ]
   }
 }
