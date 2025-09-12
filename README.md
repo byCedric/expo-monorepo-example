@@ -124,20 +124,6 @@ Since Turborepo handles the cache in this repository, you could leverage [cachin
 > [!TIP]
 > In this repository we rely on [Expo's built-in environment variables support](https://docs.expo.dev/guides/environment-variables/) to avoid Babel caching related issues with Metro.
 
-### pnpm workarounds
-
-In the current React Native ecosystem, there are a lot of implicit dependencies. These can be from the native code that is shipped within packages, or even implicit dependencies through installing a specific version of Expo or React Native. In the newer package managers like pnpm, you will run into issues due to these implicit dependencies.
-
-To workaround these issues, we changed the following:
-
-1. Let pnpm generate a flat **node_modules** folder, without fully isolating all modules. You can do that by creating a root [**.npmrc**](./.npmrc) file containing ([`node-linker=hoisted`](https://pnpm.io/npmrc#node-linker)). This works around the issue where Expo and React Native doesn't always have correct dependency chains towards consumed libraries. Expo is actively working on removing the last few remaining issues to fully enable isolated modules, see the [internal dependency validation check](https://github.com/expo/expo/blob/main/tools/src/check-packages/checkDependenciesAsync.ts#L28).
-
-2. Customize the **metro.config.js** configuration for usage in this monorepo. Full explanation per configuration option can be found in the [**metro.config.js**](./apps/example/metro.config.js) itself. The only addition in this repository is the [`config.cacheStores`](./apps/example/metro.config.js#L22-L25). This change moves the Metro cache to a place which is accessible by Turborepo, our main cache handler (see [Why is it fast?](#-why-is-it-fast)).
-
-### Precompile packages
-
-EAS only sends the files which are committed to the repository. That means [the `packages/*/build` folders](.gitignore#L3) need to be generated before building our apps. To tell EAS how to compile our packages, we can [use the `postinstall` hook](https://docs.expo.dev/build-reference/build-with-monorepos/).
-
 ### Running EAS from apps directories
 
 As of writing, the `eas build` or `eas deploy` commands need to be executed from the package folder itself. EAS will still create a tarball with all files from your monorepo, but runs the build commands from this local folder. You can see this happening in the [build workflow](./.github/workflows/build.yml#L32).
