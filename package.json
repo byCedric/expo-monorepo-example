@@ -10,8 +10,8 @@
     "build:example": "turbo build --filter=\"...{./apps/example}\""
   },
   "devDependencies": {
-    "turbo": "^1.13.4",
-    "typescript": "^5.8.3"
+    "turbo": "^2.5.6",
+    "typescript": "^5.9.2"
   },
   "prettier": {
     "printWidth": 100,

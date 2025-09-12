@@ -1,6 +1,6 @@
 // Learn more https://docs.expo.dev/guides/monorepos
-const { getDefaultConfig } = require('expo/metro-config');
 const { FileStore } = require('@expo/metro/metro-cache');
+const { getDefaultConfig } = require('expo/metro-config');
 const path = require('node:path');
 
 // Create the default Expo config for Metro
