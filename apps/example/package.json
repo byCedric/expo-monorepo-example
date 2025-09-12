@@ -64,8 +64,5 @@
         }
       }
     ]
-  },
-  "jest": {
-    "preset": "jest-expo"
   }
 }
