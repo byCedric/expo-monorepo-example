@@ -16,7 +16,11 @@ env:
 
 jobs:
   packages:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos, ubuntu]
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v4
