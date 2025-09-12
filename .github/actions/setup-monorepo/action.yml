@@ -42,13 +42,11 @@ runs:
       run: pnpm install
       shell: bash
 
+    # See: https://turborepo.com/docs/guides/ci-vendors/github-actions#remote-caching-with-github-actionscache
     - name: ♻️ Restore cache
       uses: actions/cache@v4
       with:
         key: turbo-${{ runner.os }}-${{ github.sha }}
         restore-keys: |
           turbo-${{ runner.os }}
-        path: |
-          node_modules/.cache/turbo
-          apps/*/.turbo
-          packages/*/.turbo
+        path: .turbo
