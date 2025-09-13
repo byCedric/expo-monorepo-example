@@ -33,10 +33,10 @@ runs:
         cache: pnpm
 
     - name: 🏗 Setup Expo
-      uses: expo/expo-github-action@v8
+      uses: expo/eas-actions/setup@test
       with:
         eas-version: ${{ inputs.eas-version }}
-        token: ${{ inputs.expo-token }}
+        expo-token: ${{ inputs.expo-token }}
 
     - name: 📦 Install dependencies
       run: pnpm install
