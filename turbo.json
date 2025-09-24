@@ -6,7 +6,6 @@
       "outputs": []
     },
     "test": {
-      "dependsOn": ["build"],
       "inputs": ["**/*.{ts,tsx,js,jsx}"]
     },
     "build": {
