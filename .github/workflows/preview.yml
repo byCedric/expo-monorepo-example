@@ -34,6 +34,10 @@ jobs:
         run: |
           eas init --id d202a56f-0162-450d-af3b-a2d2e0678594 --force --non-interactive
           echo $(jq '.expo.runtimeVersion.policy = "sdkVersion"' app.json) > app.json
+          
+      - name: 🧪 Test eas channels:list
+        working-directory: apps/mobile
+        run: eas channel:list --json --non-interactive
 
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
