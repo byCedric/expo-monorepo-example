@@ -1,3 +1,5 @@
+allowBuilds:
+  msgpackr-extract: false
 minimumReleaseAge: 1440
 packages:
   - 'apps/*'
